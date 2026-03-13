@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -22,19 +23,11 @@ scroll-behavior:smooth;
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
+background:#000;
 color:white;
-background:linear-gradient(-45deg,#000000,#0a0a0a,#0c2c35,#000000);
-background-size:400% 400%;
-animation:gradientBG 15s ease infinite;
 }
 
-@keyframes gradientBG{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-h1,h2,h3{
+h1,h2{
 font-family:'Playfair Display',serif;
 letter-spacing:2px;
 }
@@ -42,8 +35,9 @@ letter-spacing:2px;
 /* NAVBAR */
 
 nav{
-position:sticky;
+position:fixed;
 top:0;
+width:100%;
 background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 padding:18px;
@@ -55,7 +49,6 @@ nav a{
 color:white;
 margin:20px;
 text-decoration:none;
-font-weight:500;
 transition:0.3s;
 }
 
@@ -66,23 +59,81 @@ color:#00eaff;
 /* HERO */
 
 .hero{
-height:90vh;
+position:relative;
+height:100vh;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
-padding:20px;
+overflow:hidden;
+}
+
+.slider{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+animation:slideShow 28s infinite;
+}
+
+.slide:nth-child(1){
+background-image:url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9");
+animation-delay:0s;
+}
+
+.slide:nth-child(2){
+background-image:url("https://images.unsplash.com/photo-1519699047748-de8e457a634e");
+animation-delay:7s;
+}
+
+.slide:nth-child(3){
+background-image:url("https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4");
+animation-delay:14s;
+}
+
+.slide:nth-child(4){
+background-image:url("https://images.unsplash.com/photo-1515378791036-0648a3ef77b2");
+animation-delay:21s;
+}
+
+@keyframes slideShow{
+0%{opacity:0}
+5%{opacity:1}
+25%{opacity:1}
+30%{opacity:0}
+100%{opacity:0}
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
 }
 
 .hero h1{
-font-size:60px;
-margin-bottom:10px;
+font-size:70px;
 }
 
 .hero p{
-font-size:20px;
-color:#ccc;
+font-size:22px;
+color:#ddd;
 }
 
 .hero button{
@@ -93,12 +144,7 @@ border-radius:30px;
 background:#00eaff;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 20px rgba(0,234,255,0.8);
-transition:0.3s;
-}
-
-.hero button:hover{
-transform:scale(1.05);
+box-shadow:0 0 25px rgba(0,234,255,0.8);
 }
 
 /* SECTIONS */
@@ -119,16 +165,14 @@ gap:25px;
 
 .card{
 background:rgba(255,255,255,0.05);
-border-radius:15px;
 padding:25px;
+border-radius:12px;
 text-align:center;
 transition:0.4s;
-backdrop-filter:blur(6px);
 }
 
 .card:hover{
 transform:translateY(-10px);
-background:rgba(255,255,255,0.08);
 }
 
 /* GALLERY */
@@ -146,51 +190,72 @@ transition:0.4s;
 }
 
 .gallery img:hover{
-transform:scale(1.08);
+transform:scale(1.1);
 }
 
-/* INSTAGRAM */
+/* BEFORE AFTER SLIDER */
 
-.instagram{
+.compare{
+position:relative;
+max-width:700px;
+margin:auto;
+}
+
+.compare img{
+width:100%;
+display:block;
+}
+
+.compare .after{
+position:absolute;
+top:0;
+left:0;
+width:50%;
+overflow:hidden;
+}
+
+.slider-handle{
+position:absolute;
+top:0;
+left:50%;
+width:4px;
+height:100%;
+background:white;
+cursor:ew-resize;
+}
+
+/* INSTAGRAM SCROLL */
+
+.insta-scroll{
 display:flex;
-justify-content:center;
+overflow-x:auto;
+gap:20px;
+padding:20px 0;
 }
 
-/* REVIEWS */
-
-.review{
-background:rgba(255,255,255,0.05);
-padding:20px;
+.insta-scroll img{
+width:250px;
 border-radius:10px;
-margin-bottom:20px;
+transition:0.3s;
 }
 
-/* SOCIAL ICONS */
-
-.social{
-text-align:center;
-margin-top:20px;
+.insta-scroll img:hover{
+transform:scale(1.1);
 }
+
+/* SOCIAL */
 
 .social i{
 font-size:30px;
 margin:15px;
-color:white;
 transition:0.3s;
 }
 
 .social i:hover{
 color:#00eaff;
-transform:scale(1.2);
 }
 
-/* MAP */
-
-.map{
-margin-top:30px;
-}
-
-/* FLOATING BOOK BUTTON */
+/* FLOAT BOOK BUTTON */
 
 .book-btn{
 position:fixed;
@@ -198,16 +263,11 @@ bottom:25px;
 right:25px;
 background:#00eaff;
 color:black;
-padding:16px 25px;
+padding:15px 25px;
 border-radius:30px;
 font-weight:bold;
 text-decoration:none;
 box-shadow:0 0 20px rgba(0,234,255,0.8);
-transition:0.3s;
-}
-
-.book-btn:hover{
-transform:scale(1.1);
 }
 
 /* FOOTER */
@@ -216,7 +276,6 @@ footer{
 text-align:center;
 padding:40px;
 background:black;
-margin-top:40px;
 }
 
 </style>
@@ -235,11 +294,18 @@ margin-top:40px;
 
 <div class="hero">
 
+<div class="slider">
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+</div>
+
+<div class="hero-content">
 <h1>ICEY BEAUTY STUDIO</h1>
-
-<p>Luxury Hair • Nails • Lashes • Beauty</p>
-
+<p>Luxury Hair • Nails • Lashes</p>
 <button onclick="location.href='#booking'">Book Appointment</button>
+</div>
 
 </div>
 
@@ -249,15 +315,35 @@ margin-top:40px;
 
 <div class="services">
 
-<div class="card"><h3>Acrylic Nails</h3></div>
-<div class="card"><h3>Gel Nails</h3></div>
-<div class="card"><h3>Pedicure</h3></div>
-<div class="card"><h3>Lash Application</h3></div>
-<div class="card"><h3>Eyebrow Services</h3></div>
-<div class="card"><h3>Wig Maintenance</h3></div>
-<div class="card"><h3>Braiding</h3></div>
-<div class="card"><h3>Weaving</h3></div>
-<div class="card"><h3>Hairstyling</h3></div>
+<div class="card">Acrylic Nails</div>
+<div class="card">Gel Nails</div>
+<div class="card">Pedicure</div>
+<div class="card">Lash Application</div>
+<div class="card">Eyebrow Services</div>
+<div class="card">Wig Maintenance</div>
+<div class="card">Braiding</div>
+<div class="card">Weaving</div>
+<div class="card">Hairstyling</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Hair Transformation</h2>
+
+<div class="compare">
+
+<img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8">
+
+<div class="after">
+
+<img src="https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4">
+
+</div>
+
+<div class="slider-handle"></div>
 
 </div>
 
@@ -271,7 +357,22 @@ margin-top:40px;
 
 <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
 <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
+<img src="https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4">
 <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Instagram</h2>
+
+<div class="insta-scroll">
+
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+<img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
+<img src="https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4">
 
 </div>
 
@@ -281,13 +382,10 @@ margin-top:40px;
 
 <h2>Featured Work</h2>
 
-<div class="instagram">
-
-<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DKN3Sy8ve59/?utm_source=ig_embed&amp;utm_campaign=loading"></blockquote>
+<blockquote class="instagram-media"
+data-instgrm-permalink="https://www.instagram.com/reel/DKN3Sy8ve59/?utm_source=ig_embed"></blockquote>
 
 <script async src="//www.instagram.com/embed.js"></script>
-
-</div>
 
 </section>
 
@@ -298,8 +396,7 @@ margin-top:40px;
 <iframe src="https://calendly.com/omoseleesther1113/30min"
 width="100%"
 height="650"
-frameborder="0">
-</iframe>
+frameborder="0"></iframe>
 
 </section>
 
@@ -308,7 +405,7 @@ frameborder="0">
 <h2>Visit ICEY BEAUTY STUDIO</h2>
 
 <p>📍 Windsor, Ontario</p>
-<p>📞 226-979-3569</p>
+<p>📞 226-340-9285</p>
 <p>📧 omoseleesther113@gmail.com</p>
 
 <div class="social">
@@ -323,16 +420,8 @@ frameborder="0">
 
 </div>
 
-<div class="map">
-
-<iframe
-width="100%"
-height="300"
-frameborder="0"
-src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed">
-</iframe>
-
-</div>
+<iframe width="100%" height="300"
+src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
 
 </section>
 
