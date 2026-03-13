@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ICEY Salon</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+}
+
+header{
+background:black;
+padding:25px;
+text-align:center;
+}
+
+header h1{
+font-size:40px;
+letter-spacing:4px;
+color:#00eaff;
+}
+
+nav{
+background:#151515;
+text-align:center;
+padding:15px;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.hero{
+height:420px;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.8)),
+url("https://images.unsplash.com/photo-1562322140-8baeececf3df");
+background-size:cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h2{
+font-size:45px;
+}
+
+section{
+padding:60px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.card{
+background:#1a1a1a;
+padding:25px;
+border-radius:10px;
+text-align:center;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+.review{
+background:#1a1a1a;
+padding:20px;
+margin:15px 0;
+border-radius:8px;
+}
+
+.booking input, .booking select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:6px;
+}
+
+.booking button{
+padding:12px 20px;
+background:#00eaff;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+
+footer{
+background:black;
+text-align:center;
+padding:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>ICEY Salon</h1>
+<p>Luxury Hair • Style • Confidence</p>
+</header>
+
+<nav>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#booking">Booking</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+<h2>Your Signature ICEY Look</h2>
+</div>
+
+<section id="services">
+
+<h2>Services</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>Haircuts</h3>
+<p>Professional cuts for all styles.</p>
+</div>
+
+<div class="card">
+<h3>Hair Coloring</h3>
+<p>Highlights, balayage, and custom color.</p>
+</div>
+
+<div class="card">
+<h3>Styling</h3>
+<p>Blowouts, curls, and special event hair.</p>
+</div>
+
+<div class="card">
+<h3>Hair Treatments</h3>
+<p>Repair and hydration treatments.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="gallery">
+
+<h2>Hair Gallery</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+<img src="https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4">
+<img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486">
+<img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
+
+</div>
+
+</section>
+
+<section id="booking">
+
+<h2>Book Appointment</h2>
+
+<form class="booking">
+
+<input type="text" placeholder="Full Name" required>
+
+<input type="email" placeholder="Email" required>
+
+<select>
+<option>Select Service</option>
+<option>Haircut</option>
+<option>Hair Coloring</option>
+<option>Styling</option>
+<option>Treatment</option>
+</select>
+
+<input type="date">
+
+<button>Book Now</button>
+
+</form>
+
+</section>
+
+<section id="reviews">
+
+<h2>Customer Reviews</h2>
+
+<div class="review">
+⭐️⭐️⭐️⭐️⭐️
+<p>Best salon experience ever! My hair looks amazing.</p>
+</div>
+
+<div class="review">
+⭐️⭐️⭐️⭐️⭐️
+<p>Professional stylists and beautiful results.</p>
+</div>
+
+<div class="review">
+⭐️⭐️⭐️⭐️⭐️
+<p>I love the atmosphere and the quality service.</p>
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Visit ICEY Salon</h2>
+
+<p>📍 Your City</p>
+<p>📞 (555) 123-4567</p>
+<p>📧 iceysalon@email.com</p>
+
+<h3>Find Us</h3>
+
+<iframe
+width="100%"
+height="300"
+frameborder="0"
+style="border:0"
+src="https://maps.google.com/maps?q=toronto&t=&z=13&ie=UTF8&iwloc=&output=embed"
+allowfullscreen>
+</iframe>
+
+<h3>Follow Us</h3>
+
+<p>
+<a href="#">Instagram</a> |
+<a href="#">Facebook</a>
+</p>
+
+</section>
+
+<footer>
+
+<p>© 2026 ICEY Salon</p>
+
+</footer>
+
+</body>
+</html>
