@@ -2,168 +2,223 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ICEY BEAUTY SALON</title>
+<title>ICEY BEAUTY STUDIO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
-font-family:Arial;
-background:#0f0f0f;
+font-family:'Poppins',sans-serif;
+background:#0a0a0a;
 color:white;
+}
+
+h1,h2{
+font-family:'Playfair Display',serif;
+letter-spacing:2px;
 }
 
 header{
 background:black;
 padding:25px;
 text-align:center;
+border-bottom:1px solid #333;
 }
 
 header h1{
-font-size:40px;
-letter-spacing:4px;
 color:#00eaff;
+font-size:42px;
 }
 
 nav{
-background:#151515;
-text-align:center;
+background:#111;
 padding:15px;
+text-align:center;
 }
 
 nav a{
 color:white;
 margin:15px;
 text-decoration:none;
-font-weight:bold;
+font-weight:500;
 }
 
 .hero{
-height:420px;
-background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.8)),
-url("https://images.unsplash.com/photo-1562322140-8baeececf3df");
+height:520px;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+url("https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4");
 background-size:cover;
 display:flex;
-align-items:center;
+flex-direction:column;
 justify-content:center;
+align-items:center;
 text-align:center;
 }
 
 .hero h2{
-font-size:45px;
+font-size:52px;
+}
+
+.hero p{
+font-size:20px;
+color:#ccc;
+}
+
+.hero button{
+margin-top:20px;
+padding:15px 30px;
+background:#00eaff;
+border:none;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
 }
 
 section{
-padding:60px 20px;
+padding:70px 20px;
 max-width:1100px;
 margin:auto;
 }
 
 .services{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
 .card{
-background:#1a1a1a;
+background:#161616;
 padding:25px;
-border-radius:10px;
+border-radius:12px;
 text-align:center;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+background:#1d1d1d;
 }
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 .gallery img{
 width:100%;
-border-radius:10px;
+border-radius:12px;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.07);
+}
+
+.reviews{
+display:grid;
+gap:20px;
 }
 
 .review{
-background:#1a1a1a;
+background:#161616;
 padding:20px;
-margin:15px 0;
-border-radius:8px;
+border-radius:10px;
 }
 
-.booking input, .booking select{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:6px;
+.instagram{
+text-align:center;
 }
 
-.booking button{
-padding:12px 20px;
-background:#00eaff;
-border:none;
-border-radius:6px;
-font-weight:bold;
-cursor:pointer;
+.social{
+text-align:center;
+font-size:28px;
+}
+
+.social a{
+margin:15px;
+text-decoration:none;
+}
+
+.map{
+margin-top:30px;
 }
 
 footer{
 background:black;
 text-align:center;
 padding:30px;
+border-top:1px solid #333;
+}
+
+/* floating book button */
+
+.book-btn{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#00eaff;
+color:black;
+padding:15px 22px;
+border-radius:30px;
+font-weight:bold;
+text-decoration:none;
+box-shadow:0 0 15px rgba(0,234,255,0.7);
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
-<h1>ICEY BEAUTY SALON</h1>
-<p>Luxury Hair • Style • Confidence</p>
+
+<h1>ICEY BEAUTY STUDIO</h1>
+<p>Luxury Beauty Experience</p>
+
 </header>
 
 <nav>
+
 <a href="#">Home</a>
 <a href="#services">Services</a>
-<a href="#gallery">Gallery</a>
+<a href="#gallery">Our Work</a>
 <a href="#booking">Booking</a>
-<a href="#reviews">Reviews</a>
 <a href="#contact">Contact</a>
+
 </nav>
 
 <div class="hero">
-<h2>Your Signature ICEY Look</h2>
+
+<h2>Where Beauty Meets Luxury</h2>
+<p>Nails • Hair • Lashes • Beauty</p>
+
+<button onclick="location.href='#booking'">Book Appointment</button>
+
 </div>
 
 <section id="services">
 
-<h2>Services</h2>
+<h2>Our Services</h2>
 
 <div class="services">
 
-<div class="card">
-<h3>Haircuts</h3>
-<p>Professional cuts for all styles.</p>
-</div>
-
-<div class="card">
-<h3>Hair Coloring</h3>
-<p>Highlights, balayage, and custom color.</p>
-</div>
-
-<div class="card">
-<h3>Styling</h3>
-<p>Blowouts, curls, and special event hair.</p>
-</div>
-
-<div class="card">
-<h3>Hair Treatments</h3>
-<p>Repair and hydration treatments.</p>
-</div>
+<div class="card"><h3>Acrylic Nails</h3></div>
+<div class="card"><h3>Gel Nails</h3></div>
+<div class="card"><h3>Pedicure</h3></div>
+<div class="card"><h3>Lash Application</h3></div>
+<div class="card"><h3>Eyebrow Services</h3></div>
+<div class="card"><h3>Wig Maintenance</h3></div>
+<div class="card"><h3>Braiding</h3></div>
+<div class="card"><h3>Weaving</h3></div>
+<div class="card"><h3>Hairstyling</h3></div>
 
 </div>
 
@@ -171,15 +226,50 @@ padding:30px;
 
 <section id="gallery">
 
-<h2>Hair Gallery</h2>
+<h2>Our Work</h2>
 
 <div class="gallery">
 
 <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
-<img src="https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4">
-<img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486">
 <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
+<img src="https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4">
+<img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
 
+</div>
+
+</section>
+
+<section class="instagram">
+
+<h2>Latest From Instagram</h2>
+
+<p>Follow our beauty transformations on Instagram.</p>
+
+<a href="https://www.instagram.com/windsor_hairstyles_nailtech" target="_blank">
+
+Visit Our Instagram
+
+</a>
+
+</section>
+
+<section class="reviews">
+
+<h2>Client Reviews</h2>
+
+<div class="review">
+★★★★★
+Amazing service and beautiful nails!
+</div>
+
+<div class="review">
+★★★★★
+Best beauty studio experience in Windsor.
+</div>
+
+<div class="review">
+★★★★★
+Professional and friendly environment.
 </div>
 
 </section>
@@ -188,88 +278,53 @@ padding:30px;
 
 <h2>Book Appointment</h2>
 
-<form class="booking">
+<!-- Calendly booking widget -->
 
-<input type="text" placeholder="Full Name" required>
-
-<input type="email" placeholder="Email" required>
-
-<select>
-<option>Select Service</option>
-<option>Hair braiding</option>
-<option>Hair weaving</option>
-<option>Styling</option>
-<option>Treatment</option>
-</select>
-
-<input type="date">
-
-<button>Book Now</button>
-
-</form>
-
-</section>
-
-<section id="reviews">
-
-<h2>Customer Reviews</h2>
-
-<div class="review">
-⭐️⭐️⭐️⭐️⭐️
-<p>Best salon experience ever! My hair looks amazing.</p>
-</div>
-
-<div class="review">
-⭐️⭐️⭐️⭐️⭐️
-<p>Professional stylists and beautiful results.</p>
-</div>
-
-<div class="review">
-⭐️⭐️⭐️⭐️⭐️
-<p>I love the atmosphere and the quality service.</p>
-</div>
+<iframe src="https://calendly.com"
+width="100%"
+height="650"
+frameborder="0">
+</iframe>
 
 </section>
 
 <section id="contact">
 
-<h2>Visit ICEY Salon</h2>
+<h2>Visit ICEY BEAUTY STUDIO</h2>
 
-<p>📍 windsor</p>
-<p>📞 (226) 340-9285</p>
+<p>📍 Windsor, Ontario</p>
+<p>📞 226-979-3569</p>
 <p>📧 omoseleesther113@gmail.com</p>
 
-<h3>Find Us</h3>
+<div class="social">
+
+<a href="https://www.instagram.com/windsor_hairstyles_nailtech" target="_blank">📸</a>
+
+<a href="https://www.tiktok.com/@iceybeautystudio" target="_blank">🎵</a>
+
+</div>
+
+<div class="map">
 
 <iframe
 width="100%"
 height="300"
 frameborder="0"
-style="border:0"
-src="https://maps.google.com/maps?q=windsor&t=&z=13&ie=UTF8&iwloc=&output=embed"
-allowfullscreen>
+src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed">
 </iframe>
 
-<h3>Follow Us</h3>
-
-<p> 
-<a href="https://www.instagram.com/windsor_hairstyles_nailtech?igsh=MWM1Mm13aTUyOTByeA==
-">Instagram</a> |
-<a href="https://www.tiktok.com/@iceybeautystudio?_r=1&_t=ZS-94eC0AoOTtY">Tiktok</a>
-</p>
+</div>
 
 </section>
 
 <footer>
 
-<p>© 2026 ICEYBEAUTYSALON</p>
+<p>© 2026 ICEYBEAUTYSTUDIO</p>
 
 </footer>
+
+<a href="#booking" class="book-btn">Book Now</a>
 
 </body>
 
 </html>
-
-
-
-
