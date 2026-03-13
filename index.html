@@ -23,6 +23,12 @@ background:#0a0a0a;
 color:white;
 }
 
+section{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
 button{
 background:#00eaff;
 border:none;
@@ -351,9 +357,33 @@ src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&out
 
 <a href="#booking" class="book-btn">Book Now</a>
 
+<script>
+
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+
+sections.forEach(section => {
+
+const position = section.getBoundingClientRect().top;
+
+if(position < window.innerHeight - 100){
+
+section.style.opacity = 1;
+section.style.transform = "translateY(0)";
+
+}
+
+});
+
+});
+
+</script>
+
 </body>
 
 </html>
+
 
 
 
