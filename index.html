@@ -8,7 +8,7 @@
 
 <title>ICEY BEAUTY STUDIO</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -23,7 +23,7 @@ scroll-behavior:smooth;
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#000;
+background:black;
 color:white;
 }
 
@@ -47,8 +47,9 @@ z-index:1000;
 
 nav a{
 color:white;
-margin:20px;
+margin:18px;
 text-decoration:none;
+font-weight:500;
 transition:0.3s;
 }
 
@@ -67,6 +68,8 @@ justify-content:center;
 text-align:center;
 overflow:hidden;
 }
+
+/* BACKGROUND SLIDER */
 
 .slider{
 position:absolute;
@@ -145,6 +148,11 @@ background:#00eaff;
 font-weight:bold;
 cursor:pointer;
 box-shadow:0 0 25px rgba(0,234,255,0.8);
+transition:0.3s;
+}
+
+.hero button:hover{
+transform:scale(1.05);
 }
 
 /* SECTIONS */
@@ -173,6 +181,7 @@ transition:0.4s;
 
 .card:hover{
 transform:translateY(-10px);
+background:rgba(255,255,255,0.1);
 }
 
 /* GALLERY */
@@ -190,60 +199,15 @@ transition:0.4s;
 }
 
 .gallery img:hover{
-transform:scale(1.1);
-}
-
-/* BEFORE AFTER SLIDER */
-
-.compare{
-position:relative;
-max-width:700px;
-margin:auto;
-}
-
-.compare img{
-width:100%;
-display:block;
-}
-
-.compare .after{
-position:absolute;
-top:0;
-left:0;
-width:50%;
-overflow:hidden;
-}
-
-.slider-handle{
-position:absolute;
-top:0;
-left:50%;
-width:4px;
-height:100%;
-background:white;
-cursor:ew-resize;
-}
-
-/* INSTAGRAM SCROLL */
-
-.insta-scroll{
-display:flex;
-overflow-x:auto;
-gap:20px;
-padding:20px 0;
-}
-
-.insta-scroll img{
-width:250px;
-border-radius:10px;
-transition:0.3s;
-}
-
-.insta-scroll img:hover{
-transform:scale(1.1);
+transform:scale(1.08);
 }
 
 /* SOCIAL */
+
+.social{
+text-align:center;
+margin-top:20px;
+}
 
 .social i{
 font-size:30px;
@@ -253,6 +217,7 @@ transition:0.3s;
 
 .social i:hover{
 color:#00eaff;
+transform:scale(1.2);
 }
 
 /* FLOAT BOOK BUTTON */
@@ -263,11 +228,16 @@ bottom:25px;
 right:25px;
 background:#00eaff;
 color:black;
-padding:15px 25px;
+padding:16px 25px;
 border-radius:30px;
 font-weight:bold;
 text-decoration:none;
 box-shadow:0 0 20px rgba(0,234,255,0.8);
+transition:0.3s;
+}
+
+.book-btn:hover{
+transform:scale(1.1);
 }
 
 /* FOOTER */
@@ -276,6 +246,7 @@ footer{
 text-align:center;
 padding:40px;
 background:black;
+margin-top:40px;
 }
 
 </style>
@@ -303,7 +274,7 @@ background:black;
 
 <div class="hero-content">
 <h1>ICEY BEAUTY STUDIO</h1>
-<p>Luxury Hair • Nails • Lashes</p>
+<p>Luxury Hair • Nails • Lashes • Beauty</p>
 <button onclick="location.href='#booking'">Book Appointment</button>
 </div>
 
@@ -329,26 +300,6 @@ background:black;
 
 </section>
 
-<section>
-
-<h2>Hair Transformation</h2>
-
-<div class="compare">
-
-<img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8">
-
-<div class="after">
-
-<img src="https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4">
-
-</div>
-
-<div class="slider-handle"></div>
-
-</div>
-
-</section>
-
 <section id="gallery">
 
 <h2>Our Work</h2>
@@ -366,24 +317,11 @@ background:black;
 
 <section>
 
-<h2>Instagram</h2>
-
-<div class="insta-scroll">
-
-<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
-<img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
-<img src="https://images.unsplash.com/photo-1595475038665-7a8a61d6e1b4">
-
-</div>
-
-</section>
-
-<section>
-
 <h2>Featured Work</h2>
 
 <blockquote class="instagram-media"
-data-instgrm-permalink="https://www.instagram.com/reel/DKN3Sy8ve59/?utm_source=ig_embed"></blockquote>
+data-instgrm-permalink="https://www.instagram.com/reel/DKN3Sy8ve59/?utm_source=ig_embed"
+data-instgrm-version="14"></blockquote>
 
 <script async src="//www.instagram.com/embed.js"></script>
 
@@ -420,14 +358,17 @@ frameborder="0"></iframe>
 
 </div>
 
-<iframe width="100%" height="300"
-src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+<iframe
+width="100%"
+height="300"
+src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe>
 
 </section>
 
 <footer>
 
-<p>© 2026 ICEY BEAUTY STUDIO</p>
+<p>© 2026 ICEYBEAUTYSTUDIO</p>
 
 </footer>
 
