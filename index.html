@@ -16,6 +16,8 @@
 
 <style>
 
+/* GLOBAL */
+
 html{scroll-behavior:smooth;}
 
 body{
@@ -23,6 +25,12 @@ margin:0;
 font-family:'Poppins',sans-serif;
 background:black;
 color:white;
+}
+
+h1,h2{
+font-family:'Playfair Display',serif;
+letter-spacing:2px;
+text-align:center;
 }
 
 /* NAVBAR */
@@ -96,21 +104,25 @@ height:100%;
 background:rgba(0,0,0,0.55);
 }
 
-.hero-content{z-index:2}
+.hero-content{z-index:2;}
 
-.hero h1{
-font-family:'Playfair Display';
-font-size:65px;
+.hero h1{font-size:65px;}
+
+.btn{
+padding:14px 30px;
+border-radius:30px;
+border:none;
+background:#00eaff;
+color:black;
+font-weight:600;
+cursor:pointer;
+transition:all .3s ease;
+box-shadow:0 0 20px rgba(0,234,255,0.6);
 }
 
-.hero button{
-margin-top:20px;
-padding:15px 35px;
-border:none;
-border-radius:30px;
-background:#00eaff;
-font-weight:bold;
-cursor:pointer;
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 35px rgba(0,234,255,0.9);
 }
 
 /* SECTIONS */
@@ -143,10 +155,10 @@ border:1px solid rgba(255,255,255,0.1);
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 20px rgba(0,234,255,0.4);
+box-shadow:0 0 25px rgba(0,234,255,0.4);
 }
 
-/* SERVICE MODAL */
+/* MODAL */
 
 .modal{
 display:none;
@@ -175,15 +187,7 @@ from{opacity:0;transform:scale(.9);}
 to{opacity:1;transform:scale(1);}
 }
 
-.modal button{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-border-radius:25px;
-background:#00eaff;
-cursor:pointer;
-font-weight:bold;
-}
+.modal button{margin-top:12px}
 
 /* GALLERY */
 
@@ -200,9 +204,7 @@ border-radius:12px;
 transition:0.4s;
 }
 
-.gallery img:hover{
-transform:scale(1.08);
-}
+.gallery img:hover{transform:scale(1.08)}
 
 /* POLICY */
 
@@ -212,8 +214,6 @@ padding:30px;
 border-radius:10px;
 margin-top:40px;
 }
-
-.policy li{margin:10px 0}
 
 /* SOCIAL */
 
@@ -226,7 +226,7 @@ margin:15px;
 
 .social i:hover{color:#00eaff}
 
-/* FLOAT BUTTON */
+/* FLOAT BOOK */
 
 .book-btn{
 position:fixed;
@@ -241,13 +241,7 @@ text-decoration:none;
 box-shadow:0 0 20px rgba(0,234,255,0.7);
 }
 
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:40px;
-background:black;
-}
+footer{text-align:center;padding:40px;background:black;}
 
 </style>
 
@@ -259,7 +253,6 @@ background:black;
 <a href="#">Home</a>
 <a href="#services">Services</a>
 <a href="#gallery">Gallery</a>
-<a href="#booking">Booking</a>
 <a href="#contact">Contact</a>
 </nav>
 
@@ -276,7 +269,8 @@ background:black;
 <h1>ICEY BEAUTY STUDIO</h1>
 <p>Luxury Hair • Nails • Lashes • Beauty</p>
 
-<button onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
+<button class="btn"
+onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
 Book Appointment
 </button>
 
@@ -286,45 +280,54 @@ Book Appointment
 
 <section id="services">
 
-<h2 style="text-align:center">Our Services</h2>
+<h2>Our Services</h2>
 
 <div class="services">
 
-<div class="card" onclick="openService('Acrylic Nails')">Acrylic Nails</div>
-<div class="card" onclick="openService('Gel Nails')">Gel Nails</div>
-<div class="card" onclick="openService('Pedicure')">Pedicure</div>
-<div class="card" onclick="openService('Lash Application')">Lash Application</div>
-<div class="card" onclick="openService('Eyebrow Services')">Eyebrow Services</div>
-<div class="card" onclick="openService('Wig Maintenance')">Wig Maintenance</div>
-<div class="card" onclick="openService('Braiding')">Braiding</div>
-<div class="card" onclick="openService('Weaving')">Weaving</div>
-<div class="card" onclick="openService('Hairstyling')">Hairstyling</div>
+<div class="card" onclick="openService('Acrylic Nails','Luxury acrylic nail extensions.')">Acrylic Nails</div>
+<div class="card" onclick="openService('Gel Nails','Long-lasting gel manicure.')">Gel Nails</div>
+<div class="card" onclick="openService('Pedicure','Relaxing luxury pedicure.')">Pedicure</div>
+<div class="card" onclick="openService('Lash Application','Premium lash extension service.')">Lash Application</div>
+<div class="card" onclick="openService('Eyebrow Services','Shaping and brow beauty services.')">Eyebrow Services</div>
+<div class="card" onclick="openService('Wig Maintenance','Professional wig styling and care.')">Wig Maintenance</div>
+<div class="card" onclick="openService('Braiding','Protective braid styles.')">Braiding</div>
+<div class="card" onclick="openService('Weaving','Professional weave installation.')">Weaving</div>
+<div class="card" onclick="openService('Hairstyling','Luxury hairstyling services.')">Hairstyling</div>
 
 </div>
 
 </section>
 
 <div id="serviceModal" class="modal">
+
 <div class="modal-content">
 
 <h2 id="serviceTitle"></h2>
 
-<p>Professional luxury beauty service at ICEY BEAUTY STUDIO.</p>
+<p id="serviceDesc"></p>
 
-<button onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
-Book This Service
+<button class="btn"
+onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
+Book Appointment
 </button>
 
-<br><br>
+<br>
 
-<button onclick="closeService()">Close</button>
+<a href="PAYMENT_LINK_HERE" target="_blank">
+<button class="btn">Pay Deposit</button>
+</a>
+
+<br>
+
+<button class="btn" onclick="closeService()">Close</button>
 
 </div>
+
 </div>
 
 <section id="gallery">
 
-<h2 style="text-align:center">Our Work</h2>
+<h2>Our Work</h2>
 
 <div class="gallery">
 
@@ -336,26 +339,9 @@ Book This Service
 
 </section>
 
-<section id="booking">
-
-<h2 style="text-align:center">Booking Policy</h2>
-
-<div class="policy">
-
-<ul>
-<li>Deposit required for appointments.</li>
-<li>24 hour cancellation notice required.</li>
-<li>Late arrivals may result in cancellation.</li>
-<li>No call no show = deposit forfeited.</li>
-</ul>
-
-</div>
-
-</section>
-
 <section id="contact">
 
-<h2 style="text-align:center">Visit ICEY BEAUTY STUDIO</h2>
+<h2>Visit ICEY BEAUTY STUDIO</h2>
 
 <p style="text-align:center">📍 Windsor, Ontario</p>
 <p style="text-align:center">📞 226-340-9285</p>
@@ -373,24 +359,33 @@ Book This Service
 
 </div>
 
+<br>
+
+<iframe
+width="100%"
+height="320"
+style="border-radius:12px;border:none"
+src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
 </section>
 
 <footer>
-
-<p>© 2026 ICEYBEAUTYSTUDIO</p>
-
+<p>© 2026 ICEY BEAUTY STUDIO</p>
 </footer>
 
-<a href="#" class="book-btn"
+<a href="#"
+class="book-btn"
 onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
 Book Now
 </a>
 
 <script>
 
-function openService(service){
+function openService(title,desc){
+document.getElementById("serviceTitle").innerText=title;
+document.getElementById("serviceDesc").innerText=desc;
 document.getElementById("serviceModal").style.display="flex";
-document.getElementById("serviceTitle").innerText=service;
 }
 
 function closeService(){
