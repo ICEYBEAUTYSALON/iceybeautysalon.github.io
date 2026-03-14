@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
 
 <title>ICEY BEAUTY STUDIO | Windsor Nails Braids Lashes Beauty</title>
 
-<meta name="description" content="Icey Beauty Studio in Windsor Ontario offering luxury nails, braids, hairstyling, lashes and beauty services. Book your appointment online.">
+<meta name="description" content="Icey Beauty Studio Windsor Ontario offering luxury nails, braids, hairstyling, lashes and beauty services. Book your appointment online today.">
 
 <meta name="keywords" content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lashes Windsor, beauty salon Windsor, Icey Beauty Studio">
 
@@ -34,10 +35,9 @@ scroll-behavior:smooth;
 h1,h2{
 font-family:'Playfair Display',serif;
 text-align:center;
-letter-spacing:2px;
 }
 
-/* NAV */
+/* NAVBAR */
 
 nav{
 position:fixed;
@@ -64,12 +64,7 @@ gap:10px;
 }
 
 .logo{
-height:48px;
-filter:drop-shadow(0 0 6px gold);
-}
-
-.brand-name{
-font-weight:600;
+height:45px;
 }
 
 .nav-links a{
@@ -99,7 +94,7 @@ content:"";
 position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.65);
+background:rgba(0,0,0,.6);
 }
 
 .hero-content{
@@ -108,31 +103,21 @@ z-index:2;
 }
 
 .hero h1{
-font-size:70px;
-}
-
-.hero p{
-color:#ddd;
-font-size:20px;
+font-size:65px;
 }
 
 .btn{
-padding:14px 32px;
+padding:14px 30px;
 border:none;
 border-radius:30px;
 background:#00eaff;
 color:black;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 25px rgba(0,234,255,.6);
+box-shadow:0 0 20px rgba(0,234,255,.6);
 }
 
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 35px rgba(0,234,255,.9);
-}
-
-/* SECTIONS */
+/* SERVICES */
 
 section{
 padding:90px 20px;
@@ -140,30 +125,27 @@ max-width:1100px;
 margin:auto;
 }
 
-/* SERVICES */
-
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
-margin-top:40px;
 }
 
 .card{
 background:#111;
-padding:30px;
-border-radius:12px;
+padding:25px;
+border-radius:10px;
 text-align:center;
 cursor:pointer;
-transition:.4s;
+transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 25px rgba(0,234,255,.4);
+transform:translateY(-8px);
+box-shadow:0 0 20px rgba(0,234,255,.4);
 }
 
-/* POPUP */
+/* POPUP MODAL */
 
 .modal{
 display:none;
@@ -181,92 +163,61 @@ z-index:2000;
 .modal-content{
 background:#111;
 padding:35px;
-border-radius:12px;
+border-radius:10px;
 max-width:420px;
 text-align:center;
 }
 
-.payment-box{
-background:#0d0d0d;
-padding:20px;
-border-radius:10px;
-margin-top:20px;
-}
+/* BOOKING POLICY */
 
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.gallery img{
-width:100%;
-border-radius:12px;
-transition:.4s;
-}
-
-.gallery img:hover{
-transform:scale(1.05);
-}
-
-/* BOOKING POLICIES */
-
-.policy-box{
+.policy{
 background:#111;
-padding:35px;
-border-radius:12px;
+padding:30px;
+border-radius:10px;
 line-height:1.8;
 }
 
-.policy-box p{
-margin-bottom:18px;
-}
+/* FLOAT BUTTONS */
 
-/* SOCIAL */
-
-.social{
-text-align:center;
-margin-top:20px;
-}
-
-.social i{
-font-size:28px;
-margin:15px;
-}
-
-.social i:hover{
-color:#00eaff;
-}
-
-/* FLOAT BUTTON */
-
-.book-btn{
+.float-buttons{
 position:fixed;
 bottom:25px;
 right:25px;
-background:#00eaff;
-color:black;
-padding:15px 25px;
+display:flex;
+flex-direction:column;
+gap:12px;
+z-index:1000;
+animation:slideIn .6s ease;
+}
+
+@keyframes slideIn{
+from{transform:translateX(100px);opacity:0;}
+to{transform:translateX(0);opacity:1;}
+}
+
+.float-btn{
+padding:14px 22px;
 border-radius:30px;
 font-weight:bold;
 text-decoration:none;
-box-shadow:0 0 20px rgba(0,234,255,.7);
+display:flex;
+align-items:center;
+gap:8px;
+color:black;
+}
+
+.book-btn{background:#00eaff;}
+.text-btn{background:#ffd400;}
+.whatsapp-btn{background:#25D366;}
+
+.float-btn:hover{
+transform:scale(1.05);
 }
 
 /* MOBILE */
 
 @media(max-width:700px){
-
-.hero h1{
-font-size:40px;
-}
-
-.hero p{
-font-size:16px;
-}
-
+.hero h1{font-size:40px;}
 }
 
 footer{
@@ -280,21 +231,18 @@ padding:40px;
 
 <body>
 
-<!-- NAV -->
-
 <nav>
 
 <div class="nav-container">
 
 <div class="brand">
 <img src="logo.png" class="logo">
-<span class="brand-name">ICEY BEAUTY STUDIO</span>
+<b>ICEY BEAUTY STUDIO</b>
 </div>
 
 <div class="nav-links">
 <a href="#">Home</a>
 <a href="#services">Services</a>
-<a href="#gallery">Gallery</a>
 <a href="#policy">Policies</a>
 <a href="#contact">Contact</a>
 </div>
@@ -303,15 +251,13 @@ padding:40px;
 
 </nav>
 
-<!-- HERO -->
-
 <div class="hero">
 
 <div class="hero-content">
 
 <h1>ICEY BEAUTY STUDIO</h1>
 
-<p>Luxury Hair • Nails • Lashes • Beauty</p>
+<p>Luxury Hair • Nails • Lashes</p>
 
 <button class="btn"
 onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
@@ -322,31 +268,27 @@ Book Appointment
 
 </div>
 
-<!-- SERVICES -->
-
 <section id="services">
 
 <h2>Our Services</h2>
 
 <div class="services">
 
-<div class="card" onclick="openService('Acrylic Nails','Luxury acrylic nail extensions designed for durability and beauty.')">Acrylic Nails</div>
+<div class="card" onclick="openService('Acrylic Nails','Luxury acrylic nail extensions.')">Acrylic Nails</div>
 
-<div class="card" onclick="openService('Gel Nails','Long lasting gel manicure with a flawless glossy finish.')">Gel Nails</div>
+<div class="card" onclick="openService('Gel Nails','Durable glossy gel manicure.')">Gel Nails</div>
 
-<div class="card" onclick="openService('Pedicure','Relaxing pedicure treatment for healthy beautiful feet.')">Pedicure</div>
+<div class="card" onclick="openService('Pedicure','Relaxing luxury pedicure.')">Pedicure</div>
 
-<div class="card" onclick="openService('Lash Extensions','Full beautiful lashes customized for your style.')">Lash Extensions</div>
+<div class="card" onclick="openService('Lash Extensions','Full beautiful lash extensions.')">Lash Extensions</div>
 
-<div class="card" onclick="openService('Braiding','Protective braid styles tailored to your hair.')">Braiding</div>
+<div class="card" onclick="openService('Braiding','Protective braid styles.')">Braiding</div>
 
-<div class="card" onclick="openService('Weaving','Professional weave installations for a natural look.')">Weaving</div>
+<div class="card" onclick="openService('Weaving','Professional weave installation.')">Weaving</div>
 
 </div>
 
 </section>
-
-<!-- SERVICE MODAL -->
 
 <div id="serviceModal" class="modal">
 
@@ -361,36 +303,18 @@ onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/3
 Book Appointment
 </button>
 
-<div class="payment-box">
+<p style="margin-top:15px">
 
-<h3>$20 Deposit Required</h3>
+<b>$20 Deposit Required</b><br>
 
-<p>
-A $20 deposit is required to reserve your appointment.  
-This deposit goes toward the total cost of your service.
-</p>
-
-<p>
-Deposits help us secure your time slot and ensure we can provide the best experience for every client.
-</p>
-
-<a href="YOUR_PAYMENT_LINK">
-<button class="btn">Pay Deposit</button>
-</a>
-
-<p style="font-size:14px">
-
-Prefer e-Transfer?  
-Send your deposit to  
-<b>omoseleesther113@gmail.com</b>
+A $20 deposit secures your appointment and goes toward your final service total.
 
 <br><br>
 
-Include your **name and service** in the payment note.
+Send deposit to  
+<b>omoseleesther113@gmail.com</b>
 
 </p>
-
-</div>
 
 <br>
 
@@ -400,85 +324,36 @@ Include your **name and service** in the payment note.
 
 </div>
 
-<!-- GALLERY -->
-
-<section id="gallery">
-
-<h2>Our Work</h2>
-
-<div class="gallery">
-
-<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
-
-<img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
-
-<img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
-
-<img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f">
-
-</div>
-
-</section>
-
-<!-- BOOKING POLICIES -->
-
 <section id="policy">
 
 <h2>Booking Policies</h2>
 
-<div class="policy-box">
+<div class="policy">
 
 <p><b>$20 Deposit</b><br>
-A $20 deposit is required to secure your appointment. This deposit will be applied toward the total cost of your service.</p>
+A $20 deposit is required to secure your appointment and will be applied toward your service total.</p>
 
 <p><b>Rescheduling</b><br>
-Life happens! If you need to reschedule, please give at least 24 hours notice so your deposit can be transferred to a new appointment.</p>
+Please provide at least 24 hours notice if you need to reschedule so your deposit can be transferred.</p>
 
 <p><b>Late Arrivals</b><br>
-Clients arriving more than 15 minutes late may need to reschedule so we can respect the time of other clients.</p>
+Clients arriving more than 15 minutes late may need to reschedule.</p>
 
-<p><b>No-Shows</b><br>
+<p><b>No Shows</b><br>
 Missed appointments without notice may require full payment before booking again.</p>
 
-<p><b>Confirmation</b><br>
-Your appointment is officially confirmed once your deposit has been received.</p>
-
-<p>Thank you for choosing Icey Beauty Studio — we look forward to making you look and feel amazing.</p>
+<p>Thank you for respecting our time and supporting Icey Beauty Studio.</p>
 
 </div>
 
 </section>
-
-<!-- CONTACT -->
 
 <section id="contact">
 
 <h2>Visit ICEY BEAUTY STUDIO</h2>
 
 <p style="text-align:center">Windsor Ontario</p>
-
 <p style="text-align:center">226-340-9285</p>
-
-<p style="text-align:center">omoseleesther113@gmail.com</p>
-
-<div class="social">
-
-<a href="https://www.instagram.com/windsor_hairstyles_nailtech">
-<i class="fa-brands fa-instagram"></i>
-</a>
-
-<a href="https://www.tiktok.com/@iceybeautystudio">
-<i class="fa-brands fa-tiktok"></i>
-</a>
-
-</div>
-
-<iframe
-width="100%"
-height="320"
-style="border:none;border-radius:10px"
-src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed">
-</iframe>
 
 </section>
 
@@ -488,11 +363,28 @@ src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&out
 
 </footer>
 
+<!-- FLOAT BUTTONS -->
+
+<div class="float-buttons">
+
 <a href="#"
-class="book-btn"
+class="float-btn book-btn"
 onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
-Book Now
+<i class="fa-solid fa-calendar"></i> Book
 </a>
+
+<a href="sms:2263409285"
+class="float-btn text-btn">
+<i class="fa-solid fa-comment"></i> Text Us
+</a>
+
+<a href="https://wa.me/12263409285?text=Hi%20I%20would%20like%20to%20book%20an%20appointment%20with%20Icey%20Beauty%20Studio"
+class="float-btn whatsapp-btn"
+target="_blank">
+<i class="fa-brands fa-whatsapp"></i> WhatsApp
+</a>
+
+</div>
 
 <script>
 
