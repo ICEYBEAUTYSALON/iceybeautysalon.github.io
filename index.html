@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -154,6 +155,15 @@ max-width:420px;
 text-align:center;
 }
 
+/* PAYMENT BOX */
+
+.payment-box{
+margin-top:20px;
+background:#0e0e0e;
+padding:20px;
+border-radius:10px;
+}
+
 /* GALLERY */
 
 .gallery{
@@ -164,6 +174,15 @@ gap:20px;
 
 .gallery img{
 width:100%;
+border-radius:10px;
+}
+
+/* INSTAGRAM FEED */
+
+.instagram-feed iframe{
+width:100%;
+border:none;
+height:500px;
 border-radius:10px;
 }
 
@@ -220,7 +239,17 @@ text-decoration:none;
 font-weight:bold;
 }
 
-/* FOOTER */
+.sms-btn{
+position:fixed;
+bottom:150px;
+right:25px;
+background:#444;
+color:white;
+padding:14px 20px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+}
 
 footer{
 text-align:center;
@@ -246,6 +275,7 @@ padding:40px;
 <div class="hero-content">
 
 <h1>ICEY BEAUTY STUDIO</h1>
+
 <p>Luxury Beauty Experience in Windsor</p>
 
 <button class="btn"
@@ -273,7 +303,7 @@ Book Appointment
 <b>$50+</b>
 </div>
 
-<div class="card" onclick="openService('Pedicure','Luxury spa pedicure.')">
+<div class="card" onclick="openService('Pedicure','Relaxing spa pedicure.')">
 <h3>Pedicure</h3>
 <b>$45+</b>
 </div>
@@ -288,7 +318,7 @@ Book Appointment
 <b>$120+</b>
 </div>
 
-<div class="card" onclick="openService('Hairstyling','Luxury hairstyling.')">
+<div class="card" onclick="openService('Hairstyling','Luxury hairstyling services.')">
 <h3>Hairstyling</h3>
 <b>$80+</b>
 </div>
@@ -296,6 +326,53 @@ Book Appointment
 </div>
 
 </section>
+
+<div id="serviceModal" class="modal">
+
+<div class="modal-content">
+
+<h2 id="serviceTitle"></h2>
+<p id="serviceDesc"></p>
+
+<button class="btn"
+onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
+Book Appointment
+</button>
+
+<div class="payment-box">
+
+<h3>Deposit Required</h3>
+
+<a href="YOUR_PAYMENT_LINK" target="_blank">
+<button class="btn">Pay Deposit With Card</button>
+</a>
+
+<p style="font-size:14px;margin-top:15px">
+
+Prefer e-Transfer?
+
+Send your deposit to  
+<b>omoseleesther113@gmail.com</b>
+
+<br><br>
+
+Please include your <b>name and service booked</b> in the payment note.
+
+<br><br>
+
+Once your deposit has been received, a <b>confirmation email will be sent to approve and confirm your appointment time.</b>
+
+</p>
+
+</div>
+
+<br>
+
+<button class="btn" onclick="closeService()">Close</button>
+
+</div>
+
+</div>
 
 <section id="gallery">
 
@@ -312,6 +389,18 @@ Book Appointment
 
 </section>
 
+<section>
+
+<h2>Instagram</h2>
+
+<div class="instagram-feed">
+
+<iframe src="https://lightwidget.com/widgets/9b9b9c7e5c965a58a4f0e64f7b6f0e1c.html"></iframe>
+
+</div>
+
+</section>
+
 <section id="reviews">
 
 <h2>Client Reviews</h2>
@@ -320,32 +409,20 @@ Book Appointment
 
 <div class="review">
 ⭐⭐⭐⭐⭐  
-Amazing nails and great service. Highly recommend!
+Amazing nails and great service!
 </div>
 
 <div class="review">
 ⭐⭐⭐⭐⭐  
-Very professional and beautiful salon work!
+Very professional and beautiful work.
 </div>
 
 <div class="review">
 ⭐⭐⭐⭐⭐  
-Best braids I've had in Windsor!
+Best braids in Windsor!
 </div>
 
 </div>
-
-</section>
-
-<section>
-
-<h2>Featured Work</h2>
-
-<blockquote class="instagram-media"
-data-instgrm-permalink="https://www.instagram.com/reel/DKN3Sy8ve59/"
-data-instgrm-version="14"></blockquote>
-
-<script async src="//www.instagram.com/embed.js"></script>
 
 </section>
 
@@ -381,7 +458,7 @@ src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&out
 </section>
 
 <footer>
-<p>© 2026 ICEY BEAUTY STUDIO</p>
+<p>© 2026 ICEYBEAUTYSTUDIO</p>
 </footer>
 
 <a href="#"
@@ -394,14 +471,24 @@ Book Now
 WhatsApp
 </a>
 
+<a href="sms:+12263409285" class="sms-btn">
+Text Us
+</a>
+
 <script>
 
 function openService(title,desc){
-alert(title + " - " + desc + "\n\nClick Book Now to schedule.");
+document.getElementById("serviceTitle").innerText=title;
+document.getElementById("serviceDesc").innerText=desc;
+document.getElementById("serviceModal").style.display="flex";
+}
+
+function closeService(){
+document.getElementById("serviceModal").style.display="none";
 }
 
 </script>
 
 </body>
 </html>
-
+```
