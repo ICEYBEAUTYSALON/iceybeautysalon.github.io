@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,11 +6,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ICEY BEAUTY STUDIO | Windsor Nails, Braids, Lashes & Beauty</title>
+<title>ICEY BEAUTY STUDIO | Windsor Nails Braids Lashes Beauty</title>
 
-<meta name="description" content="Icey Beauty Studio in Windsor Ontario offers acrylic nails, gel nails, braids, hairstyling, lashes, and beauty services. Book your appointment online today.">
+<meta name="description" content="Icey Beauty Studio in Windsor Ontario offering luxury nails, braids, hairstyling, lashes and beauty services. Book your appointment online.">
 
-<meta name="keywords" content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lash extensions Windsor, beauty salon Windsor, Icey Beauty Studio Windsor">
+<meta name="keywords" content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lashes Windsor, beauty salon Windsor, Icey Beauty Studio">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -28,7 +26,7 @@
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#0a0a0a;
+background:#070707;
 color:white;
 scroll-behavior:smooth;
 }
@@ -39,13 +37,13 @@ text-align:center;
 letter-spacing:2px;
 }
 
-/* NAVBAR */
+/* NAV */
 
 nav{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,.8);
+background:rgba(0,0,0,.85);
 backdrop-filter:blur(10px);
 z-index:1000;
 }
@@ -66,7 +64,8 @@ gap:10px;
 }
 
 .logo{
-height:45px;
+height:48px;
+filter:drop-shadow(0 0 6px gold);
 }
 
 .brand-name{
@@ -75,8 +74,8 @@ font-weight:600;
 
 .nav-links a{
 color:white;
-text-decoration:none;
 margin-left:20px;
+text-decoration:none;
 }
 
 .nav-links a:hover{
@@ -92,28 +91,45 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.65);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
 }
 
 .hero h1{
-font-size:65px;
+font-size:70px;
 }
 
 .hero p{
 color:#ddd;
+font-size:20px;
 }
 
 .btn{
-padding:14px 30px;
+padding:14px 32px;
 border:none;
 border-radius:30px;
 background:#00eaff;
+color:black;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 20px rgba(0,234,255,.6);
+box-shadow:0 0 25px rgba(0,234,255,.6);
 }
 
 .btn:hover{
 transform:scale(1.05);
+box-shadow:0 0 35px rgba(0,234,255,.9);
 }
 
 /* SECTIONS */
@@ -135,19 +151,19 @@ margin-top:40px;
 
 .card{
 background:#111;
-padding:25px;
-border-radius:10px;
+padding:30px;
+border-radius:12px;
 text-align:center;
 cursor:pointer;
-transition:.3s;
+transition:.4s;
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 20px rgba(0,234,255,.4);
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(0,234,255,.4);
 }
 
-/* POPUP MODAL */
+/* POPUP */
 
 .modal{
 display:none;
@@ -156,7 +172,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.85);
+background:rgba(0,0,0,.9);
 align-items:center;
 justify-content:center;
 z-index:2000;
@@ -165,18 +181,16 @@ z-index:2000;
 .modal-content{
 background:#111;
 padding:35px;
-border-radius:10px;
+border-radius:12px;
 max-width:420px;
 text-align:center;
 }
 
-/* PAYMENT */
-
 .payment-box{
-margin-top:20px;
-background:#0e0e0e;
+background:#0d0d0d;
 padding:20px;
 border-radius:10px;
+margin-top:20px;
 }
 
 /* GALLERY */
@@ -189,7 +203,7 @@ gap:20px;
 
 .gallery img{
 width:100%;
-border-radius:10px;
+border-radius:12px;
 transition:.4s;
 }
 
@@ -197,13 +211,17 @@ transition:.4s;
 transform:scale(1.05);
 }
 
-/* BOOKING POLICY */
+/* BOOKING POLICIES */
 
-.policy{
+.policy-box{
 background:#111;
-padding:30px;
-border-radius:10px;
+padding:35px;
+border-radius:12px;
 line-height:1.8;
+}
+
+.policy-box p{
+margin-bottom:18px;
 }
 
 /* SOCIAL */
@@ -222,7 +240,7 @@ margin:15px;
 color:#00eaff;
 }
 
-/* FLOAT BOOK BUTTON */
+/* FLOAT BUTTON */
 
 .book-btn{
 position:fixed;
@@ -234,6 +252,7 @@ padding:15px 25px;
 border-radius:30px;
 font-weight:bold;
 text-decoration:none;
+box-shadow:0 0 20px rgba(0,234,255,.7);
 }
 
 /* MOBILE */
@@ -242,6 +261,10 @@ text-decoration:none;
 
 .hero h1{
 font-size:40px;
+}
+
+.hero p{
+font-size:16px;
 }
 
 }
@@ -257,28 +280,23 @@ padding:40px;
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 
 <nav>
 
 <div class="nav-container">
 
 <div class="brand">
-
 <img src="logo.png" class="logo">
-
 <span class="brand-name">ICEY BEAUTY STUDIO</span>
-
 </div>
 
 <div class="nav-links">
-
 <a href="#">Home</a>
 <a href="#services">Services</a>
 <a href="#gallery">Gallery</a>
 <a href="#policy">Policies</a>
 <a href="#contact">Contact</a>
-
 </div>
 
 </div>
@@ -289,7 +307,7 @@ padding:40px;
 
 <div class="hero">
 
-<div>
+<div class="hero-content">
 
 <h1>ICEY BEAUTY STUDIO</h1>
 
@@ -312,23 +330,23 @@ Book Appointment
 
 <div class="services">
 
-<div class="card" onclick="openService('Acrylic Nails','Luxury acrylic nail extensions for a flawless long-lasting finish.')">Acrylic Nails</div>
+<div class="card" onclick="openService('Acrylic Nails','Luxury acrylic nail extensions designed for durability and beauty.')">Acrylic Nails</div>
 
-<div class="card" onclick="openService('Gel Nails','Durable gel manicure with beautiful shine and strength.')">Gel Nails</div>
+<div class="card" onclick="openService('Gel Nails','Long lasting gel manicure with a flawless glossy finish.')">Gel Nails</div>
 
-<div class="card" onclick="openService('Pedicure','Relaxing pedicure including nail care and polish.')">Pedicure</div>
+<div class="card" onclick="openService('Pedicure','Relaxing pedicure treatment for healthy beautiful feet.')">Pedicure</div>
 
-<div class="card" onclick="openService('Lash Application','Professional lash extensions for a full glamorous look.')">Lash Application</div>
+<div class="card" onclick="openService('Lash Extensions','Full beautiful lashes customized for your style.')">Lash Extensions</div>
 
-<div class="card" onclick="openService('Braiding','Protective braid styles customized for your hair.')">Braiding</div>
+<div class="card" onclick="openService('Braiding','Protective braid styles tailored to your hair.')">Braiding</div>
 
-<div class="card" onclick="openService('Weaving','Professional weave installation for natural results.')">Weaving</div>
+<div class="card" onclick="openService('Weaving','Professional weave installations for a natural look.')">Weaving</div>
 
 </div>
 
 </section>
 
-<!-- SERVICE POPUP -->
+<!-- SERVICE MODAL -->
 
 <div id="serviceModal" class="modal">
 
@@ -347,16 +365,22 @@ Book Appointment
 
 <h3>$20 Deposit Required</h3>
 
-<p>A $20 deposit is required to secure your appointment. This amount will be applied toward your final service total.</p>
+<p>
+A $20 deposit is required to reserve your appointment.  
+This deposit goes toward the total cost of your service.
+</p>
 
-<a href="YOUR_PAYMENT_LINK" target="_blank">
-<button class="btn">Pay Deposit With Card</button>
+<p>
+Deposits help us secure your time slot and ensure we can provide the best experience for every client.
+</p>
+
+<a href="YOUR_PAYMENT_LINK">
+<button class="btn">Pay Deposit</button>
 </a>
 
-<p style="font-size:14px;margin-top:15px">
+<p style="font-size:14px">
 
-Prefer e-Transfer?<br>
-
+Prefer e-Transfer?  
 Send your deposit to  
 <b>omoseleesther113@gmail.com</b>
 
@@ -402,24 +426,24 @@ Include your **name and service** in the payment note.
 
 <h2>Booking Policies</h2>
 
-<div class="policy">
+<div class="policy-box">
 
-<p><b>$20 Deposit Required</b><br>
-A $20 deposit is required to secure your appointment. This deposit will be applied toward your total service cost.</p>
+<p><b>$20 Deposit</b><br>
+A $20 deposit is required to secure your appointment. This deposit will be applied toward the total cost of your service.</p>
 
 <p><b>Rescheduling</b><br>
-If you need to reschedule, please provide at least 24 hours notice so your deposit can be transferred to your new appointment.</p>
+Life happens! If you need to reschedule, please give at least 24 hours notice so your deposit can be transferred to a new appointment.</p>
 
 <p><b>Late Arrivals</b><br>
-Clients arriving more than 15 minutes late may need to reschedule so we can stay on schedule for other clients.</p>
+Clients arriving more than 15 minutes late may need to reschedule so we can respect the time of other clients.</p>
 
 <p><b>No-Shows</b><br>
-Clients who miss appointments without notice may be required to pay the full service amount before booking again.</p>
+Missed appointments without notice may require full payment before booking again.</p>
 
-<p><b>Appointment Confirmation</b><br>
+<p><b>Confirmation</b><br>
 Your appointment is officially confirmed once your deposit has been received.</p>
 
-<p>Thank you for respecting our time and supporting Icey Beauty Studio.</p>
+<p>Thank you for choosing Icey Beauty Studio — we look forward to making you look and feel amazing.</p>
 
 </div>
 
@@ -440,22 +464,18 @@ Your appointment is officially confirmed once your deposit has been received.</p
 <div class="social">
 
 <a href="https://www.instagram.com/windsor_hairstyles_nailtech">
-
 <i class="fa-brands fa-instagram"></i>
-
 </a>
 
 <a href="https://www.tiktok.com/@iceybeautystudio">
-
 <i class="fa-brands fa-tiktok"></i>
-
 </a>
 
 </div>
 
 <iframe
 width="100%"
-height="300"
+height="320"
 style="border:none;border-radius:10px"
 src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed">
 </iframe>
@@ -464,7 +484,7 @@ src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&out
 
 <footer>
 
-© 2026 ICEYBEAUTYSTUDIO
+© 2026 ICEY BEAUTY STUDIO
 
 </footer>
 
