@@ -142,7 +142,6 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* NAV */
     nav {
       position: fixed;
       inset: 0 0 auto 0;
@@ -230,13 +229,16 @@
     }
 
     .social-icons a:hover,
-    .social-icons a:focus {
+    .social-icons a:focus,
+    .footer-socials a:hover,
+    .footer-socials a:focus,
+    .contact-social-icons a:hover,
+    .contact-social-icons a:focus {
       transform: translateY(-2px) scale(1.08);
       color: var(--accent);
       box-shadow: var(--glow);
     }
 
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -278,7 +280,6 @@
       flex-wrap: wrap;
     }
 
-    /* SERVICES */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -318,7 +319,6 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* POLICY */
     .policy-box {
       padding: 34px;
       border-radius: 22px;
@@ -338,7 +338,6 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
 
-    /* CONTACT */
     .contact-card {
       padding: 36px 24px;
       border-radius: 24px;
@@ -364,7 +363,8 @@
       margin-top: 10px;
     }
 
-    .contact-social-icons a {
+    .contact-social-icons a,
+    .footer-socials a {
       width: 56px;
       height: 56px;
       display: grid;
@@ -377,14 +377,13 @@
       transition: 0.25s ease;
     }
 
-    .contact-social-icons a:hover,
-    .contact-social-icons a:focus {
-      transform: translateY(-3px) scale(1.06);
-      color: var(--accent);
-      box-shadow: var(--glow);
+    .footer-socials {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
     }
 
-    /* MODAL */
     .modal {
       display: none;
       position: fixed;
@@ -402,7 +401,7 @@
     }
 
     .modal-content {
-      width: min(100%, 470px);
+      width: min(100%, 500px);
       padding: 34px 28px;
       border-radius: 22px;
       position: relative;
@@ -434,7 +433,40 @@
       line-height: 1.7;
     }
 
-    /* FLOAT BUTTONS */
+    .payment-options {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .payment-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .payment-link:hover,
+    .payment-link:focus {
+      transform: translateY(-2px);
+    }
+
+    .pay-card {
+      background: linear-gradient(135deg, #7ef7ff, #b0fbff);
+      color: #081014;
+    }
+
+    .pay-email {
+      background: rgba(255,255,255,0.06);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
     .float-buttons {
       position: fixed;
       right: 18px;
@@ -481,32 +513,6 @@
       padding: 36px 20px 46px;
       text-align: center;
       color: var(--muted);
-    }
-
-    .footer-socials {
-      margin-top: 14px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .footer-socials a {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      text-decoration: none;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 1.15rem;
-      transition: 0.25s ease;
-    }
-
-    .footer-socials a:hover,
-    .footer-socials a:focus {
-      transform: translateY(-2px);
-      color: var(--accent);
     }
 
     @media (max-width: 900px) {
@@ -759,11 +765,29 @@
         <i class="fa-solid fa-calendar-check"></i> Book Appointment
       </button>
 
+      <div class="payment-options">
+        <a
+          href="https://your-card-payment-link.com"
+          class="payment-link pay-card"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-solid fa-credit-card"></i> Pay Deposit by Card
+        </a>
+
+        <a
+          href="mailto:omoseleesther113@gmail.com?subject=Appointment%20Deposit&body=Hi%20I%20would%20like%20to%20send%20my%20%2420%20deposit%20for%20my%20appointment."
+          class="payment-link pay-email"
+        >
+          <i class="fa-solid fa-envelope"></i> Send Deposit by Email
+        </a>
+      </div>
+
       <div class="deposit-note">
         <strong>$20 Deposit Required</strong><br />
         A $20 deposit secures your appointment and goes toward your final service total.
         <br /><br />
-        Send deposit to <strong>omoseleesther113@gmail.com</strong>
+        Deposit email: <strong>omoseleesther113@gmail.com</strong>
       </div>
     </div>
   </div>
