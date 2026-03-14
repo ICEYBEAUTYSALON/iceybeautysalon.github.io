@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,6 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js"></script>
 
 <style>
 
@@ -20,12 +23,6 @@ margin:0;
 font-family:'Poppins',sans-serif;
 background:black;
 color:white;
-}
-
-h1,h2{
-font-family:'Playfair Display',serif;
-letter-spacing:2px;
-text-align:center;
 }
 
 /* NAVBAR */
@@ -96,12 +93,15 @@ content:"";
 position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.55);
 }
 
-.hero-content{z-index:2;}
+.hero-content{z-index:2}
 
-.hero h1{font-size:65px;}
+.hero h1{
+font-family:'Playfair Display';
+font-size:65px;
+}
 
 .hero button{
 margin-top:20px;
@@ -125,25 +125,28 @@ margin:auto;
 
 .services{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:25px;
+margin-top:40px;
 }
 
 .card{
 background:rgba(255,255,255,0.05);
-padding:30px;
-border-radius:12px;
+padding:35px;
+border-radius:15px;
 text-align:center;
 cursor:pointer;
 transition:0.4s;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.1);
 }
 
 .card:hover{
 transform:translateY(-10px);
-background:rgba(255,255,255,0.1);
+box-shadow:0 0 20px rgba(0,234,255,0.4);
 }
 
-/* SERVICE POPUP */
+/* SERVICE MODAL */
 
 .modal{
 display:none;
@@ -162,17 +165,24 @@ z-index:2000;
 background:#111;
 padding:40px;
 border-radius:12px;
+max-width:420px;
 text-align:center;
-max-width:400px;
+animation:fadeIn .4s;
 }
 
-.modal-content button{
+@keyframes fadeIn{
+from{opacity:0;transform:scale(.9);}
+to{opacity:1;transform:scale(1);}
+}
+
+.modal button{
 margin-top:20px;
 padding:12px 25px;
 border:none;
 border-radius:25px;
 background:#00eaff;
 cursor:pointer;
+font-weight:bold;
 }
 
 /* GALLERY */
@@ -181,6 +191,7 @@ cursor:pointer;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
+margin-top:30px;
 }
 
 .gallery img{
@@ -189,9 +200,11 @@ border-radius:12px;
 transition:0.4s;
 }
 
-.gallery img:hover{transform:scale(1.07)}
+.gallery img:hover{
+transform:scale(1.08);
+}
 
-/* BOOKING POLICY */
+/* POLICY */
 
 .policy{
 background:#111;
@@ -200,9 +213,7 @@ border-radius:10px;
 margin-top:40px;
 }
 
-.policy li{
-margin:10px 0;
-}
+.policy li{margin:10px 0}
 
 /* SOCIAL */
 
@@ -227,7 +238,10 @@ padding:16px 25px;
 border-radius:30px;
 font-weight:bold;
 text-decoration:none;
+box-shadow:0 0 20px rgba(0,234,255,0.7);
 }
+
+/* FOOTER */
 
 footer{
 text-align:center;
@@ -236,6 +250,7 @@ background:black;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -260,14 +275,18 @@ background:black;
 <div class="hero-content">
 <h1>ICEY BEAUTY STUDIO</h1>
 <p>Luxury Hair • Nails • Lashes • Beauty</p>
-<button onclick="location.href='#booking'">Book Appointment</button>
+
+<button onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
+Book Appointment
+</button>
+
 </div>
 
 </div>
 
 <section id="services">
 
-<h2>Our Services</h2>
+<h2 style="text-align:center">Our Services</h2>
 
 <div class="services">
 
@@ -290,9 +309,11 @@ background:black;
 
 <h2 id="serviceTitle"></h2>
 
-<p>Luxury professional service at ICEY BEAUTY STUDIO.</p>
+<p>Professional luxury beauty service at ICEY BEAUTY STUDIO.</p>
 
-<button onclick="window.open('https://calendly.com/omoseleesther1113/30min')">Book This Service</button>
+<button onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
+Book This Service
+</button>
 
 <br><br>
 
@@ -303,7 +324,7 @@ background:black;
 
 <section id="gallery">
 
-<h2>Our Work</h2>
+<h2 style="text-align:center">Our Work</h2>
 
 <div class="gallery">
 
@@ -317,20 +338,15 @@ background:black;
 
 <section id="booking">
 
-<h2>Book Appointment</h2>
-
-<iframe src="https://calendly.com/omoseleesther1113/30min" width="100%" height="650"></iframe>
+<h2 style="text-align:center">Booking Policy</h2>
 
 <div class="policy">
-
-<h2>Booking Policy</h2>
 
 <ul>
 <li>Deposit required for appointments.</li>
 <li>24 hour cancellation notice required.</li>
-<li>Late arrivals may result in appointment cancellation.</li>
+<li>Late arrivals may result in cancellation.</li>
 <li>No call no show = deposit forfeited.</li>
-
 </ul>
 
 </div>
@@ -339,11 +355,11 @@ background:black;
 
 <section id="contact">
 
-<h2>Visit ICEY BEAUTY STUDIO</h2>
+<h2 style="text-align:center">Visit ICEY BEAUTY STUDIO</h2>
 
-<p>📍 Windsor, Ontario</p>
-<p>📞 226-340-9285</p>
-<p>📧 omoseleesther113@gmail.com</p>
+<p style="text-align:center">📍 Windsor, Ontario</p>
+<p style="text-align:center">📞 226-340-9285</p>
+<p style="text-align:center">📧 omoseleesther113@gmail.com</p>
 
 <div class="social">
 
@@ -365,7 +381,10 @@ background:black;
 
 </footer>
 
-<a href="#booking" class="book-btn">Book Now</a>
+<a href="#" class="book-btn"
+onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
+Book Now
+</a>
 
 <script>
 
