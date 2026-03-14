@@ -8,11 +8,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Icey Beauty Studio | Nails Hair Lashes Windsor Ontario</title>
+<title>ICEY BEAUTY STUDIO | Windsor Nails, Braids, Lashes & Beauty</title>
 
-<meta name="description" content="Icey Beauty Studio Windsor Ontario offering acrylic nails, braids, weaving, lashes, pedicures and hairstyling. Book your beauty appointment online.">
+<meta name="description" content="Icey Beauty Studio in Windsor Ontario offers acrylic nails, gel nails, braids, hairstyling, lashes, and beauty services. Book your appointment online today.">
 
-<meta name="keywords" content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lashes Windsor Ontario, wig maintenance Windsor, Icey Beauty Studio">
+<meta name="keywords" content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lash extensions Windsor, beauty salon Windsor, Icey Beauty Studio Windsor">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -39,13 +39,7 @@ text-align:center;
 letter-spacing:2px;
 }
 
-section{
-padding:90px 20px;
-max-width:1100px;
-margin:auto;
-}
-
-/* NAV */
+/* NAVBAR */
 
 nav{
 position:fixed;
@@ -62,7 +56,7 @@ justify-content:space-between;
 align-items:center;
 max-width:1200px;
 margin:auto;
-padding:15px 20px;
+padding:15px;
 }
 
 .brand{
@@ -104,15 +98,30 @@ text-align:center;
 font-size:65px;
 }
 
+.hero p{
+color:#ddd;
+}
+
 .btn{
 padding:14px 30px;
 border:none;
 border-radius:30px;
 background:#00eaff;
-color:black;
-font-weight:600;
+font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 18px rgba(0,234,255,.6);
+box-shadow:0 0 20px rgba(0,234,255,.6);
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* SECTIONS */
+
+section{
+padding:90px 20px;
+max-width:1100px;
+margin:auto;
 }
 
 /* SERVICES */
@@ -126,8 +135,8 @@ margin-top:40px;
 
 .card{
 background:#111;
-padding:30px;
-border-radius:12px;
+padding:25px;
+border-radius:10px;
 text-align:center;
 cursor:pointer;
 transition:.3s;
@@ -161,6 +170,8 @@ max-width:420px;
 text-align:center;
 }
 
+/* PAYMENT */
+
 .payment-box{
 margin-top:20px;
 background:#0e0e0e;
@@ -186,11 +197,20 @@ transition:.4s;
 transform:scale(1.05);
 }
 
+/* BOOKING POLICY */
+
+.policy{
+background:#111;
+padding:30px;
+border-radius:10px;
+line-height:1.8;
+}
+
 /* SOCIAL */
 
 .social{
 text-align:center;
-margin-top:15px;
+margin-top:20px;
 }
 
 .social i{
@@ -214,7 +234,6 @@ padding:15px 25px;
 border-radius:30px;
 font-weight:bold;
 text-decoration:none;
-box-shadow:0 0 20px rgba(0,234,255,.7);
 }
 
 /* MOBILE */
@@ -225,10 +244,11 @@ box-shadow:0 0 20px rgba(0,234,255,.7);
 font-size:40px;
 }
 
-.nav-links{
-display:none;
 }
 
+footer{
+text-align:center;
+padding:40px;
 }
 
 </style>
@@ -246,6 +266,7 @@ display:none;
 <div class="brand">
 
 <img src="logo.png" class="logo">
+
 <span class="brand-name">ICEY BEAUTY STUDIO</span>
 
 </div>
@@ -255,6 +276,7 @@ display:none;
 <a href="#">Home</a>
 <a href="#services">Services</a>
 <a href="#gallery">Gallery</a>
+<a href="#policy">Policies</a>
 <a href="#contact">Contact</a>
 
 </div>
@@ -271,7 +293,7 @@ display:none;
 
 <h1>ICEY BEAUTY STUDIO</h1>
 
-<p>Luxury Hair • Nails • Lashes</p>
+<p>Luxury Hair • Nails • Lashes • Beauty</p>
 
 <button class="btn"
 onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
@@ -290,21 +312,17 @@ Book Appointment
 
 <div class="services">
 
-<div class="card" onclick="openService('Acrylic Nails','Luxury acrylic nail extensions.')">Acrylic Nails</div>
+<div class="card" onclick="openService('Acrylic Nails','Luxury acrylic nail extensions for a flawless long-lasting finish.')">Acrylic Nails</div>
 
-<div class="card" onclick="openService('Gel Nails','Long lasting gel manicure.')">Gel Nails</div>
+<div class="card" onclick="openService('Gel Nails','Durable gel manicure with beautiful shine and strength.')">Gel Nails</div>
 
-<div class="card" onclick="openService('Pedicure','Relaxing luxury pedicure service.')">Pedicure</div>
+<div class="card" onclick="openService('Pedicure','Relaxing pedicure including nail care and polish.')">Pedicure</div>
 
-<div class="card" onclick="openService('Lash Application','Professional eyelash extensions.')">Lash Application</div>
+<div class="card" onclick="openService('Lash Application','Professional lash extensions for a full glamorous look.')">Lash Application</div>
 
-<div class="card" onclick="openService('Eyebrows','Eyebrow shaping and styling.')">Eyebrows</div>
+<div class="card" onclick="openService('Braiding','Protective braid styles customized for your hair.')">Braiding</div>
 
-<div class="card" onclick="openService('Braiding','Protective braid styles.')">Braiding</div>
-
-<div class="card" onclick="openService('Weaving','Professional weave installations.')">Weaving</div>
-
-<div class="card" onclick="openService('Wig Maintenance','Professional wig care and styling.')">Wig Maintenance</div>
+<div class="card" onclick="openService('Weaving','Professional weave installation for natural results.')">Weaving</div>
 
 </div>
 
@@ -327,31 +345,24 @@ Book Appointment
 
 <div class="payment-box">
 
-<h3>Deposit Required</h3>
+<h3>$20 Deposit Required</h3>
 
-<a href="YOUR_STRIPE_PAYMENT_LINK" target="_blank">
+<p>A $20 deposit is required to secure your appointment. This amount will be applied toward your final service total.</p>
 
+<a href="YOUR_PAYMENT_LINK" target="_blank">
 <button class="btn">Pay Deposit With Card</button>
-
 </a>
 
 <p style="font-size:14px;margin-top:15px">
 
-Prefer e-Transfer?
+Prefer e-Transfer?<br>
 
-<br><br>
-
-Send deposit to
-
+Send your deposit to  
 <b>omoseleesther113@gmail.com</b>
 
 <br><br>
 
 Include your **name and service** in the payment note.
-
-<br><br>
-
-Once deposit is received your appointment will be confirmed.
 
 </p>
 
@@ -374,9 +385,41 @@ Once deposit is received your appointment will be confirmed.
 <div class="gallery">
 
 <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+
 <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
+
 <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
+
 <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f">
+
+</div>
+
+</section>
+
+<!-- BOOKING POLICIES -->
+
+<section id="policy">
+
+<h2>Booking Policies</h2>
+
+<div class="policy">
+
+<p><b>$20 Deposit Required</b><br>
+A $20 deposit is required to secure your appointment. This deposit will be applied toward your total service cost.</p>
+
+<p><b>Rescheduling</b><br>
+If you need to reschedule, please provide at least 24 hours notice so your deposit can be transferred to your new appointment.</p>
+
+<p><b>Late Arrivals</b><br>
+Clients arriving more than 15 minutes late may need to reschedule so we can stay on schedule for other clients.</p>
+
+<p><b>No-Shows</b><br>
+Clients who miss appointments without notice may be required to pay the full service amount before booking again.</p>
+
+<p><b>Appointment Confirmation</b><br>
+Your appointment is officially confirmed once your deposit has been received.</p>
+
+<p>Thank you for respecting our time and supporting Icey Beauty Studio.</p>
 
 </div>
 
@@ -388,18 +431,24 @@ Once deposit is received your appointment will be confirmed.
 
 <h2>Visit ICEY BEAUTY STUDIO</h2>
 
-<p style="text-align:center">📍 Windsor Ontario</p>
-<p style="text-align:center">📞 226-340-9285</p>
-<p style="text-align:center">📧 omoseleesther113@gmail.com</p>
+<p style="text-align:center">Windsor Ontario</p>
+
+<p style="text-align:center">226-340-9285</p>
+
+<p style="text-align:center">omoseleesther113@gmail.com</p>
 
 <div class="social">
 
 <a href="https://www.instagram.com/windsor_hairstyles_nailtech">
+
 <i class="fa-brands fa-instagram"></i>
+
 </a>
 
 <a href="https://www.tiktok.com/@iceybeautystudio">
+
 <i class="fa-brands fa-tiktok"></i>
+
 </a>
 
 </div>
@@ -407,6 +456,7 @@ Once deposit is received your appointment will be confirmed.
 <iframe
 width="100%"
 height="300"
+style="border:none;border-radius:10px"
 src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed">
 </iframe>
 
@@ -414,7 +464,7 @@ src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&out
 
 <footer>
 
-<p style="text-align:center">© 2026 ICEY BEAUTY STUDIO</p>
+© 2026 ICEYBEAUTYSTUDIO
 
 </footer>
 
