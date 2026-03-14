@@ -12,9 +12,6 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js"></script>
-
 <style>
 
 /* GLOBAL */
@@ -22,14 +19,13 @@
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#0a0a0a;
+background:black;
 color:white;
 scroll-behavior:smooth;
 }
 
 h1,h2{
 font-family:'Playfair Display',serif;
-text-align:center;
 letter-spacing:2px;
 }
 
@@ -39,71 +35,80 @@ nav{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,.7);
+background:rgba(0,0,0,0.8);
 backdrop-filter:blur(10px);
-padding:18px;
-text-align:center;
 z-index:1000;
 }
 
-nav a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-weight:500;
+.nav-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:1200px;
+margin:auto;
+padding:15px;
 }
 
-nav a:hover{color:#00eaff}
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo{
+height:45px;
+filter:drop-shadow(0 0 6px gold);
+}
+
+.brand-name{
+font-size:18px;
+font-weight:600;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+.nav-links a:hover{
+color:#00eaff;
+}
 
 /* HERO */
 
 .hero{
 height:100vh;
-background:url("https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg") center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-position:relative;
-}
-
-.hero::after{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.6);
-}
-
-.hero-content{
-position:relative;
-z-index:2;
+background:url("https://images.unsplash.com/photo-1600948836101-f9ffda59d250") center/cover;
 }
 
 .hero h1{
-font-size:65px;
+font-size:70px;
 }
 
-.btn{
-padding:14px 30px;
+.hero p{
+font-size:22px;
+color:#ddd;
+}
+
+.hero button{
+padding:15px 35px;
 border:none;
 border-radius:30px;
 background:#00eaff;
-color:black;
-font-weight:600;
+font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 18px rgba(0,234,255,.6);
-}
-
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 30px rgba(0,234,255,.9);
+box-shadow:0 0 25px rgba(0,234,255,0.8);
 }
 
 /* SECTIONS */
 
 section{
-padding:80px 20px;
+padding:90px 20px;
 max-width:1100px;
 margin:auto;
 }
@@ -112,55 +117,30 @@ margin:auto;
 
 .services{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
-margin-top:40px;
 }
 
 .card{
-background:#111;
-padding:30px;
+background:rgba(255,255,255,0.05);
+padding:25px;
 border-radius:12px;
 text-align:center;
-cursor:pointer;
-transition:.3s;
+transition:0.4s;
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 20px rgba(0,234,255,.4);
+transform:translateY(-10px);
+background:rgba(255,255,255,0.1);
 }
 
-/* MODAL */
-
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.85);
-align-items:center;
-justify-content:center;
-z-index:2000;
-}
-
-.modal-content{
-background:#111;
-padding:35px;
-border-radius:10px;
-max-width:420px;
-text-align:center;
-}
-
-/* PAYMENT BOX */
-
-.payment-box{
-margin-top:20px;
-background:#0e0e0e;
-padding:20px;
-border-radius:10px;
+.card button{
+margin-top:10px;
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#00eaff;
+cursor:pointer;
 }
 
 /* GALLERY */
@@ -173,16 +153,12 @@ gap:20px;
 
 .gallery img{
 width:100%;
-border-radius:10px;
+border-radius:12px;
+transition:0.3s;
 }
 
-/* INSTAGRAM FEED */
-
-.instagram-feed iframe{
-width:100%;
-border:none;
-height:500px;
-border-radius:10px;
+.gallery img:hover{
+transform:scale(1.05);
 }
 
 /* REVIEWS */
@@ -190,69 +166,50 @@ border-radius:10px;
 .reviews{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+gap:20px;
 }
 
-.review{
-background:#111;
+.review-card{
+background:rgba(255,255,255,0.05);
 padding:20px;
 border-radius:10px;
 }
 
-/* SOCIAL */
+/* CONTACT */
 
 .social{
 text-align:center;
-margin-top:20px;
 }
 
 .social i{
-font-size:28px;
+font-size:30px;
 margin:15px;
 }
 
-/* FLOAT BUTTONS */
+.social i:hover{
+color:#00eaff;
+}
 
-.book-btn{
+/* FLOAT BUTTON */
+
+.float-btn{
 position:fixed;
 bottom:25px;
 right:25px;
 background:#00eaff;
 color:black;
-padding:15px 25px;
+padding:16px 25px;
 border-radius:30px;
 font-weight:bold;
 text-decoration:none;
-box-shadow:0 0 20px rgba(0,234,255,.7);
 }
 
-.whatsapp-btn{
-position:fixed;
-bottom:90px;
-right:25px;
-background:#25D366;
-color:white;
-padding:14px 20px;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.sms-btn{
-position:fixed;
-bottom:150px;
-right:25px;
-background:#444;
-color:white;
-padding:14px 20px;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-}
+/* FOOTER */
 
 footer{
 text-align:center;
 padding:40px;
+background:black;
 }
 
 </style>
@@ -261,30 +218,52 @@ padding:40px;
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav>
+
+<div class="nav-container">
+
+<div class="brand">
+
+<img src="logo.png" class="logo">
+
+<span class="brand-name">ICEY BEAUTY STUDIO</span>
+
+</div>
+
+<div class="nav-links">
+
 <a href="#">Home</a>
 <a href="#services">Services</a>
 <a href="#gallery">Gallery</a>
 <a href="#reviews">Reviews</a>
+<a href="#booking">Booking</a>
 <a href="#contact">Contact</a>
+
+</div>
+
+</div>
+
 </nav>
+
+<!-- HERO -->
 
 <div class="hero">
 
-<div class="hero-content">
+<div>
 
 <h1>ICEY BEAUTY STUDIO</h1>
 
-<p>Luxury Beauty Experience in Windsor</p>
+<p>Luxury Hair • Nails • Lashes • Beauty</p>
 
-<button class="btn"
-onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
-Book Appointment
-</button>
+<button onclick="location.href='#booking'">Book Appointment</button>
 
 </div>
 
 </div>
+
+<!-- SERVICES -->
 
 <section id="services">
 
@@ -292,86 +271,51 @@ Book Appointment
 
 <div class="services">
 
-<div class="card" onclick="openService('Acrylic Nails','Luxury acrylic nail extensions.')">
+<div class="card">
 <h3>Acrylic Nails</h3>
-<b>$65+</b>
+<button onclick="location.href='#booking'">Book</button>
 </div>
 
-<div class="card" onclick="openService('Gel Nails','Long-lasting gel manicure.')">
+<div class="card">
 <h3>Gel Nails</h3>
-<b>$50+</b>
+<button onclick="location.href='#booking'">Book</button>
 </div>
 
-<div class="card" onclick="openService('Pedicure','Relaxing spa pedicure.')">
+<div class="card">
 <h3>Pedicure</h3>
-<b>$45+</b>
+<button onclick="location.href='#booking'">Book</button>
 </div>
 
-<div class="card" onclick="openService('Braiding','Protective braid styles.')">
+<div class="card">
+<h3>Lash Application</h3>
+<button onclick="location.href='#booking'">Book</button>
+</div>
+
+<div class="card">
+<h3>Eyebrows</h3>
+<button onclick="location.href='#booking'">Book</button>
+</div>
+
+<div class="card">
 <h3>Braiding</h3>
-<b>$90+</b>
+<button onclick="location.href='#booking'">Book</button>
 </div>
 
-<div class="card" onclick="openService('Weaving','Professional weave installation.')">
+<div class="card">
 <h3>Weaving</h3>
-<b>$120+</b>
+<button onclick="location.href='#booking'">Book</button>
 </div>
 
-<div class="card" onclick="openService('Hairstyling','Luxury hairstyling services.')">
-<h3>Hairstyling</h3>
-<b>$80+</b>
+<div class="card">
+<h3>Wig Maintenance</h3>
+<button onclick="location.href='#booking'">Book</button>
 </div>
 
 </div>
 
 </section>
 
-<div id="serviceModal" class="modal">
-
-<div class="modal-content">
-
-<h2 id="serviceTitle"></h2>
-<p id="serviceDesc"></p>
-
-<button class="btn"
-onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
-Book Appointment
-</button>
-
-<div class="payment-box">
-
-<h3>Deposit Required</h3>
-
-<a href="YOUR_PAYMENT_LINK" target="_blank">
-<button class="btn">Pay Deposit With Card</button>
-</a>
-
-<p style="font-size:14px;margin-top:15px">
-
-Prefer e-Transfer?
-
-Send your deposit to  
-<b>omoseleesther113@gmail.com</b>
-
-<br><br>
-
-Please include your <b>name and service booked</b> in the payment note.
-
-<br><br>
-
-Once your deposit has been received, a <b>confirmation email will be sent to approve and confirm your appointment time.</b>
-
-</p>
-
-</div>
-
-<br>
-
-<button class="btn" onclick="closeService()">Close</button>
-
-</div>
-
-</div>
+<!-- GALLERY -->
 
 <section id="gallery">
 
@@ -379,26 +323,33 @@ Once your deposit has been received, a <b>confirmation email will be sent to app
 
 <div class="gallery">
 
-<img src="https://images.pexels.com/photos/7755538/pexels-photo-7755538.jpeg">
-<img src="https://images.pexels.com/photos/704815/pexels-photo-704815.jpeg">
-<img src="https://images.pexels.com/photos/3997386/pexels-photo-3997386.jpeg">
-<img src="https://images.pexels.com/photos/3738349/pexels-photo-3738349.jpeg">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+
+<img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
+
+<img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
+
+<img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f">
 
 </div>
 
 </section>
+
+<!-- INSTAGRAM -->
 
 <section>
 
-<h2>Instagram</h2>
+<h2>Latest From Instagram</h2>
 
-<div class="instagram-feed">
+<blockquote class="instagram-media"
+data-instgrm-permalink="https://www.instagram.com/windsor_hairstyles_nailtech/"
+data-instgrm-version="14"></blockquote>
 
-<iframe src="https://lightwidget.com/widgets/9b9b9c7e5c965a58a4f0e64f7b6f0e1c.html"></iframe>
-
-</div>
+<script async src="//www.instagram.com/embed.js"></script>
 
 </section>
+
+<!-- REVIEWS -->
 
 <section id="reviews">
 
@@ -406,87 +357,106 @@ Once your deposit has been received, a <b>confirmation email will be sent to app
 
 <div class="reviews">
 
-<div class="review">
-⭐⭐⭐⭐⭐  
-Amazing nails and great service!
+<div class="review-card">
+⭐️⭐️⭐️⭐️⭐️  
+"Best nail service in Windsor!"
 </div>
 
-<div class="review">
-⭐⭐⭐⭐⭐  
-Very professional and beautiful work.
+<div class="review-card">
+⭐️⭐️⭐️⭐️⭐️  
+"Very professional and clean studio."
 </div>
 
-<div class="review">
-⭐⭐⭐⭐⭐  
-Best braids in Windsor!
+<div class="review-card">
+⭐️⭐️⭐️⭐️⭐️  
+"Amazing hairstyles and lashes."
 </div>
 
 </div>
 
 </section>
 
+<!-- BOOKING -->
+
+<section id="booking">
+
+<h2>Book Appointment</h2>
+
+<iframe src="https://calendly.com/omoseleesther1113/30min"
+width="100%"
+height="650"
+frameborder="0"></iframe>
+
+<p style="text-align:center;margin-top:20px">
+
+A deposit is required to secure your appointment.
+
+</p>
+
+<p style="text-align:center">
+
+<a href="YOUR_STRIPE_PAYMENT_LINK">
+<button>Pay Deposit With Card</button>
+</a>
+
+</p>
+
+<p style="text-align:center">
+
+Or send e-transfer to  
+<b>omoseleesther113@gmail.com</b>
+
+<br><br>
+
+After sending your e-transfer, please wait for a confirmation email confirming your appointment.
+
+</p>
+
+</section>
+
+<!-- CONTACT -->
+
 <section id="contact">
 
 <h2>Visit ICEY BEAUTY STUDIO</h2>
 
-<p style="text-align:center">Windsor Ontario</p>
-<p style="text-align:center">226-340-9285</p>
-<p style="text-align:center">omoseleesther113@gmail.com</p>
+<p>📍 Windsor, Ontario</p>
+
+<p>📞 226-340-9285</p>
+
+<p>📧 omoseleesther113@gmail.com</p>
 
 <div class="social">
 
 <a href="https://www.instagram.com/windsor_hairstyles_nailtech">
+
 <i class="fa-brands fa-instagram"></i>
+
 </a>
 
 <a href="https://www.tiktok.com/@iceybeautystudio">
+
 <i class="fa-brands fa-tiktok"></i>
+
 </a>
 
 </div>
 
-<br>
-
 <iframe
 width="100%"
-height="320"
-style="border:none;border-radius:10px"
+height="300"
 src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed">
 </iframe>
 
 </section>
 
 <footer>
-<p>© 2026 ICEY BEAUTY STUDIO</p>
+
+© 2026 ICEY BEAUTY STUDIO
+
 </footer>
 
-<a href="#"
-class="book-btn"
-onclick="Calendly.initPopupWidget({url:'https://calendly.com/omoseleesther1113/30min'});return false;">
-Book Now
-</a>
-
-<a href="https://wa.me/12263409285" class="whatsapp-btn">
-WhatsApp
-</a>
-
-<a href="sms:+12263409285" class="sms-btn">
-Text Us
-</a>
-
-<script>
-
-function openService(title,desc){
-document.getElementById("serviceTitle").innerText=title;
-document.getElementById("serviceDesc").innerText=desc;
-document.getElementById("serviceModal").style.display="flex";
-}
-
-function closeService(){
-document.getElementById("serviceModal").style.display="none";
-}
-
-</script>
+<a href="#booking" class="float-btn">Book Now</a>
 
 </body>
 </html>
