@@ -1,14 +1,16 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ICEY BEAUTY STUDIO</title>
+<title>ICEY Beauty Studio | Nail Salon Windsor Ontario</title>
+
+<meta name="description" content="ICEY Beauty Studio is a luxury nail salon in Windsor Ontario offering acrylic nails, braids, pedicure, lash extensions and hairstyling services.">
+
+<meta name="keywords" content="nail salon windsor, hairstylist windsor ontario, braids windsor, lash extensions windsor, pedicure windsor, acrylic nails windsor">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -16,39 +18,42 @@
 
 <style>
 
-/* GLOBAL */
+/* GLOBAL /
 
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
 background:black;
 color:white;
-scroll-behavior:smooth;
 }
 
 h1,h2{
 font-family:'Playfair Display',serif;
-letter-spacing:2px;
 }
 
-/* NAVBAR */
+section{
+padding:70px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+/ NAVBAR /
 
 nav{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,0.8);
-backdrop-filter:blur(10px);
-z-index:1000;
+background:rgba(0,0,0,0.9);
+z-index:999;
 }
 
 .nav-container{
 display:flex;
 justify-content:space-between;
 align-items:center;
-max-width:1200px;
+padding:14px 20px;
+max-width:1100px;
 margin:auto;
-padding:15px;
 }
 
 .brand{
@@ -58,85 +63,170 @@ gap:10px;
 }
 
 .logo{
-height:45px;
-filter:drop-shadow(0 0 6px gold);
-}
-
-.brand-name{
-font-size:18px;
-font-weight:600;
+height:40px;
 }
 
 .nav-links a{
 color:white;
+margin-left:15px;
 text-decoration:none;
-margin-left:20px;
+font-size:14px;
 }
 
 .nav-links a:hover{
 color:#00eaff;
 }
 
-/* HERO */
+/ HERO /
 
 .hero{
-height:100vh;
+height:90vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 background:url("https://images.unsplash.com/photo-1600948836101-f9ffda59d250") center/cover;
+padding-top:60px;
 }
 
 .hero h1{
-font-size:70px;
+font-size:42px;
 }
 
 .hero p{
-font-size:22px;
 color:#ddd;
 }
 
 .hero button{
-padding:15px 35px;
+margin-top:20px;
+padding:12px 28px;
 border:none;
 border-radius:30px;
 background:#00eaff;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 25px rgba(0,234,255,0.8);
 }
 
-/* SECTIONS */
-
-section{
-padding:90px 20px;
-max-width:1100px;
-margin:auto;
-}
-
-/* SERVICES */
+/ SERVICES /
 
 .services{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
+grid-template-columns:1fr 1fr;
+gap:15px;
 }
 
 .card{
 background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:12px;
+padding:20px;
+border-radius:10px;
 text-align:center;
-transition:0.4s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-background:rgba(255,255,255,0.1);
 }
 
 .card button{
+margin-top:10px;
+padding:8px 18px;
+border:none;
+border-radius:20px;
+background:#00eaff;
+cursor:pointer;
+}
+
+/ DESKTOP /
+
+@media(min-width:768px){
+
+.services{
+grid-template-columns:repeat(4,1fr);
+}
+
+.hero h1{
+font-size:65px;
+}
+
+}
+
+/ GALLERY /
+
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+@media(min-width:768px){
+.gallery{
+grid-template-columns:repeat(4,1fr);
+}
+}
+
+/ REVIEWS /
+
+.reviews{
+display:grid;
+gap:15px;
+}
+
+.review{
+background:rgba(255,255,255,0.05);
+padding:18px;
+border-radius:10px;
+}
+
+/ CONTACT /
+
+.social i{
+font-size:26px;
+margin:10px;
+}
+
+.social i:hover{
+color:#00eaff;
+}
+
+/ BOOK BUTTON /
+
+.book-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#00eaff;
+color:black;
+padding:14px 22px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/ POPUP */
+
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.popup-content{
+background:#111;
+padding:25px;
+border-radius:10px;
+max-width:400px;
+width:90%;
+text-align:center;
+}
+
+.popup button{
 margin-top:10px;
 padding:10px 20px;
 border:none;
@@ -145,73 +235,16 @@ background:#00eaff;
 cursor:pointer;
 }
 
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+.close{
+cursor:pointer;
+color:white;
+font-size:20px;
+float:right;
 }
-
-.gallery img{
-width:100%;
-border-radius:12px;
-transition:0.3s;
-}
-
-.gallery img:hover{
-transform:scale(1.05);
-}
-
-/* REVIEWS */
-
-.reviews{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.review-card{
-background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:10px;
-}
-
-/* CONTACT */
-
-.social{
-text-align:center;
-}
-
-.social i{
-font-size:30px;
-margin:15px;
-}
-
-.social i:hover{
-color:#00eaff;
-}
-
-/* FLOAT BUTTON */
-
-.float-btn{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#00eaff;
-color:black;
-padding:16px 25px;
-border-radius:30px;
-font-weight:bold;
-text-decoration:none;
-}
-
-/* FOOTER */
 
 footer{
 text-align:center;
-padding:40px;
-background:black;
+padding:30px;
 }
 
 </style>
@@ -219,8 +252,6 @@ background:black;
 </head>
 
 <body>
-
-<!-- NAVBAR -->
 
 <nav>
 
@@ -230,7 +261,7 @@ background:black;
 
 <img src="logo.png" class="logo">
 
-<span class="brand-name">ICEY BEAUTY STUDIO</span>
+<strong>ICEY BEAUTY STUDIO</strong>
 
 </div>
 
@@ -239,9 +270,7 @@ background:black;
 <a href="#">Home</a>
 <a href="#services">Services</a>
 <a href="#gallery">Gallery</a>
-<a href="#reviews">Reviews</a>
 <a href="#booking">Booking</a>
-<a href="#contact">Contact</a>
 
 </div>
 
@@ -249,23 +278,19 @@ background:black;
 
 </nav>
 
-<!-- HERO -->
-
 <div class="hero">
 
 <div>
 
 <h1>ICEY BEAUTY STUDIO</h1>
 
-<p>Luxury Hair • Nails • Lashes • Beauty</p>
+<p>Luxury Nail Salon in Windsor Ontario</p>
 
-<button onclick="location.href='#booking'">Book Appointment</button>
-
-</div>
+<button onclick="openBooking()">Book Appointment</button>
 
 </div>
 
-<!-- SERVICES -->
+</div>
 
 <section id="services">
 
@@ -273,51 +298,18 @@ background:black;
 
 <div class="services">
 
-<div class="card">
-<h3>Acrylic Nails</h3>
-<button onclick="location.href='#booking'">Book</button>
-</div>
-
-<div class="card">
-<h3>Gel Nails</h3>
-<button onclick="location.href='#booking'">Book</button>
-</div>
-
-<div class="card">
-<h3>Pedicure</h3>
-<button onclick="location.href='#booking'">Book</button>
-</div>
-
-<div class="card">
-<h3>Lash Application</h3>
-<button onclick="location.href='#booking'">Book</button>
-</div>
-
-<div class="card">
-<h3>Eyebrows</h3>
-<button onclick="location.href='#booking'">Book</button>
-</div>
-
-<div class="card">
-<h3>Braiding</h3>
-<button onclick="location.href='#booking'">Book</button>
-</div>
-
-<div class="card">
-<h3>Weaving</h3>
-<button onclick="location.href='#booking'">Book</button>
-</div>
-
-<div class="card">
-<h3>Wig Maintenance</h3>
-<button onclick="location.href='#booking'">Book</button>
-</div>
+<div class="card"><h3>Acrylic Nails</h3><button onclick="openBooking()">Book</button></div>
+<div class="card"><h3>Gel Nails</h3><button onclick="openBooking()">Book</button></div>
+<div class="card"><h3>Pedicure</h3><button onclick="openBooking()">Book</button></div>
+<div class="card"><h3>Lash Extensions</h3><button onclick="openBooking()">Book</button></div>
+<div class="card"><h3>Eyebrows</h3><button onclick="openBooking()">Book</button></div>
+<div class="card"><h3>Braiding</h3><button onclick="openBooking()">Book</button></div>
+<div class="card"><h3>Weaving</h3><button onclick="openBooking()">Book</button></div>
+<div class="card"><h3>Wig Maintenance</h3><button onclick="openBooking()">Book</button></div>
 
 </div>
 
 </section>
-
-<!-- GALLERY -->
 
 <section id="gallery">
 
@@ -326,127 +318,46 @@ background:black;
 <div class="gallery">
 
 <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
-
 <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
-
-<img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
-
 <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f">
+<img src="https://images.unsplash.com/photo-1595475038784-bbe439ff41e6">
 
 </div>
 
 </section>
 
-<!-- INSTAGRAM -->
-
 <section>
-
-<h2>Latest From Instagram</h2>
-
-<blockquote class="instagram-media"
-data-instgrm-permalink="https://www.instagram.com/windsor_hairstyles_nailtech/"
-data-instgrm-version="14"></blockquote>
-
-<script async src="//www.instagram.com/embed.js"></script>
-
-</section>
-
-<!-- REVIEWS -->
-
-<section id="reviews">
 
 <h2>Client Reviews</h2>
 
 <div class="reviews">
 
-<div class="review-card">
-⭐️⭐️⭐️⭐️⭐️  
-"Best nail service in Windsor!"
-</div>
-
-<div class="review-card">
-⭐️⭐️⭐️⭐️⭐️  
-"Very professional and clean studio."
-</div>
-
-<div class="review-card">
-⭐️⭐️⭐️⭐️⭐️  
-"Amazing hairstyles and lashes."
-</div>
+<div class="review">⭐⭐⭐⭐⭐ Amazing nail sets!</div>
+<div class="review">⭐⭐⭐⭐⭐ Very professional service.</div>
+<div class="review">⭐⭐⭐⭐⭐ Best beauty studio in Windsor.</div>
 
 </div>
 
 </section>
-
-<!-- BOOKING -->
-
-<section id="booking">
-
-<h2>Book Appointment</h2>
-
-<iframe src="https://calendly.com/omoseleesther1113/30min"
-width="100%"
-height="650"
-frameborder="0"></iframe>
-
-<p style="text-align:center;margin-top:20px">
-
-A deposit is required to secure your appointment.
-
-</p>
-
-<p style="text-align:center">
-
-<a href="YOUR_STRIPE_PAYMENT_LINK">
-<button>Pay Deposit With Card</button>
-</a>
-
-</p>
-
-<p style="text-align:center">
-
-Or send e-transfer to  
-<b>omoseleesther113@gmail.com</b>
-
-<br><br>
-
-After sending your e-transfer, please wait for a confirmation email confirming your appointment.
-
-</p>
-
-</section>
-
-<!-- CONTACT -->
 
 <section id="contact">
 
-<h2>Visit ICEY BEAUTY STUDIO</h2>
+<h2>Visit ICEY Beauty Studio</h2>
 
-<p>📍 Windsor, Ontario</p>
-
+<p>📍 Windsor Ontario</p>
 <p>📞 226-340-9285</p>
-
 <p>📧 omoseleesther113@gmail.com</p>
 
 <div class="social">
 
-<a href="https://www.instagram.com/windsor_hairstyles_nailtech">
-
-<i class="fa-brands fa-instagram"></i>
-
-</a>
-
-<a href="https://www.tiktok.com/@iceybeautystudio">
-
-<i class="fa-brands fa-tiktok"></i>
-
-</a>
+<a href="https://www.instagram.com/windsor_hairstyles_nailtech"><i class="fa-brands fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@iceybeautystudio"><i class="fa-brands fa-tiktok"></i></a>
 
 </div>
 
 <iframe
 width="100%"
-height="300"
+height="280"
 src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&output=embed">
 </iframe>
 
@@ -454,11 +365,59 @@ src="https://maps.google.com/maps?q=windsor%20ontario&t=&z=13&ie=UTF8&iwloc=&out
 
 <footer>
 
-© 2026 ICEYBEAUTYSTUDIO
+© 2026 ICEY Beauty Studio
 
 </footer>
 
-<a href="#booking" class="float-btn">Book Now</a>
+<a href="#" class="book-btn" onclick="openBooking()">Book Now</a>
+
+<!-- BOOKING POPUP -->
+
+<div class="popup" id="bookingPopup">
+
+<div class="popup-content">
+
+<span class="close" onclick="closeBooking()">✕</span>
+
+<h3>Book Appointment</h3>
+
+<iframe src="https://calendly.com/omoseleesther1113/30min"
+width="100%"
+height="400"
+frameborder="0"></iframe>
+
+<p>A deposit is required to secure your booking.</p>
+
+<a href="YOUR_STRIPE_LINK">
+<button>Pay Deposit With Card</button>
+</a>
+
+<p>
+
+Or send e-transfer to  
+<b>omoseleesther113@gmail.com</b>
+
+<br><br>
+
+After sending your e-transfer please wait for a confirmation email confirming your booking.
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+function openBooking(){
+document.getElementById("bookingPopup").style.display="flex";
+}
+
+function closeBooking(){
+document.getElementById("bookingPopup").style.display="none";
+}
+
+</script>
 
 </body>
 </html>
