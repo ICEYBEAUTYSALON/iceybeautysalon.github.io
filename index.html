@@ -440,12 +440,16 @@
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: var(--shadow);
       text-align: center;
+      overscroll-behavior: contain;
     }
 
     .modal-close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
+      position: sticky;
+      top: 0;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 38px;
       height: 38px;
       border-radius: 50%;
@@ -453,6 +457,7 @@
       cursor: pointer;
       color: white;
       background: rgba(255,255,255,0.06);
+      z-index: 5;
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
@@ -687,7 +692,11 @@
       .modal-content {
         width: 100%;
         max-height: calc(100vh - 24px);
-        padding: 28px 20px;
+        padding: 20px 18px 24px;
+      }
+
+      .modal-close {
+        top: 0;
       }
     }
   </style>
@@ -922,10 +931,16 @@
       </div>
 
       <div id="serviceStepTwo" style="display:none;">
+        <button class="btn btn-outline" id="backToStepOneBtn" type="button" style="margin-bottom:16px;">
+          <i class="fa-solid fa-arrow-left"></i> Back
+        </button>
         <div id="serviceOptions" class="payment-options"></div>
       </div>
 
       <div id="serviceStepThree" style="display:none;">
+        <button class="btn btn-outline" id="backToStepTwoBtn" type="button" style="margin-bottom:16px;">
+          <i class="fa-solid fa-arrow-left"></i> Back
+        </button>
         <h3 id="selectedServiceOption" style="margin-bottom:14px;"></h3>
         <div id="serviceAddOns" class="payment-options"></div>
         <button class="btn btn-primary" id="continueToSummaryBtn" style="margin-top:18px;">
@@ -934,6 +949,9 @@
       </div>
 
       <div id="serviceStepFour" style="display:none;">
+        <button class="btn btn-outline" id="backToStepThreeBtn" type="button" style="margin-bottom:16px;">
+          <i class="fa-solid fa-arrow-left"></i> Back
+        </button>
         <h3 id="summaryServiceTitle" style="margin-bottom:10px;"></h3>
         <p id="summaryServiceDesc"></p>
 
@@ -993,6 +1011,7 @@
     const calendlyUrl = "https://calendly.com/omoseleesther1113/30min";
 
     const modal = document.getElementById("serviceModal");
+    const modalContent = document.querySelector(".modal-content");
     const serviceTitle = document.getElementById("serviceTitle");
     const serviceDesc = document.getElementById("serviceDesc");
     const closeModalBtn = document.getElementById("closeModalBtn");
@@ -1005,6 +1024,9 @@
 
     const continueToOptionsBtn = document.getElementById("continueToOptionsBtn");
     const continueToSummaryBtn = document.getElementById("continueToSummaryBtn");
+    const backToStepOneBtn = document.getElementById("backToStepOneBtn");
+    const backToStepTwoBtn = document.getElementById("backToStepTwoBtn");
+    const backToStepThreeBtn = document.getElementById("backToStepThreeBtn");
 
     const serviceOptions = document.getElementById("serviceOptions");
     const serviceAddOns = document.getElementById("serviceAddOns");
@@ -1246,6 +1268,10 @@
       serviceCards.forEach((card) => card.classList.remove("selected"));
     }
 
+    function scrollModalToTop() {
+      modalContent.scrollTop = 0;
+    }
+
     function resetModalSteps() {
       serviceStepOne.style.display = "block";
       serviceStepTwo.style.display = "none";
@@ -1260,9 +1286,7 @@
       summaryTotalPrice.textContent = "CA$0.00";
       currentServiceOption = null;
       selectedAddOns = [];
-      if (modal.querySelector(".modal-content")) {
-        modal.querySelector(".modal-content").scrollTop = 0;
-      }
+      scrollModalToTop();
     }
 
     function formatPrice(price) {
@@ -1301,14 +1325,14 @@
           renderAddOns();
           serviceStepTwo.style.display = "none";
           serviceStepThree.style.display = "block";
-          modal.querySelector(".modal-content").scrollTop = 0;
+          scrollModalToTop();
         });
         serviceOptions.appendChild(optionBtn);
       });
 
       serviceStepOne.style.display = "none";
       serviceStepTwo.style.display = "block";
-      modal.querySelector(".modal-content").scrollTop = 0;
+      scrollModalToTop();
     }
 
     function renderAddOns() {
@@ -1364,7 +1388,31 @@
 
       serviceStepThree.style.display = "none";
       serviceStepFour.style.display = "block";
-      modal.querySelector(".modal-content").scrollTop = 0;
+      scrollModalToTop();
+    }
+
+    function goToStepOne() {
+      serviceStepOne.style.display = "block";
+      serviceStepTwo.style.display = "none";
+      serviceStepThree.style.display = "none";
+      serviceStepFour.style.display = "none";
+      scrollModalToTop();
+    }
+
+    function goToStepTwo() {
+      serviceStepOne.style.display = "none";
+      serviceStepTwo.style.display = "block";
+      serviceStepThree.style.display = "none";
+      serviceStepFour.style.display = "none";
+      scrollModalToTop();
+    }
+
+    function goToStepThree() {
+      serviceStepOne.style.display = "none";
+      serviceStepTwo.style.display = "none";
+      serviceStepThree.style.display = "block";
+      serviceStepFour.style.display = "none";
+      scrollModalToTop();
     }
 
     function closeService() {
@@ -1381,6 +1429,9 @@
     closeModalBtn.addEventListener("click", closeService);
     continueToOptionsBtn.addEventListener("click", showOptions);
     continueToSummaryBtn.addEventListener("click", showSummary);
+    backToStepOneBtn.addEventListener("click", goToStepOne);
+    backToStepTwoBtn.addEventListener("click", goToStepTwo);
+    backToStepThreeBtn.addEventListener("click", goToStepThree);
 
     serviceCards.forEach((card) => {
       card.addEventListener("click", () => {
