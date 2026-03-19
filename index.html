@@ -465,7 +465,7 @@
       z-index: 2000;
       background: rgba(0, 0, 0, 0.78);
       backdrop-filter: blur(8px);
-      align-items: center;
+      align-items: flex-start;;
       justify-content: center;
       padding: 20px;
       overflow-y: auto;
@@ -477,6 +477,7 @@
     }
 
     .modal-content {
+      margin-top: 40px;
       width: min(100%, 500px);
       max-height: 85vh;
       overflow-y: auto;
@@ -493,7 +494,8 @@
 
     .modal-close {
       position: sticky;
-      top: 0;
+      top: 10px;
+      float: right;
       margin-left: auto;
       display: flex;
       align-items: center;
@@ -505,7 +507,7 @@
       cursor: pointer;
       color: white;
       background: rgba(255,255,255,0.06);
-      z-index: 5;
+      z-index: 10;
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
