@@ -1595,6 +1595,16 @@
         link.classList.add("active-link");
       });
     });
+  <script>
+  function openModal() {
+    document.querySelector('.modal').style.display = "flex";
+    document.body.classList.add("modal-open");
+  }
+
+  function closeModal() {
+    document.querySelector('.modal').style.display = "none";
+    document.body.classList.remove("modal-open");
+  }
   </script>
 </body>
 </html>
