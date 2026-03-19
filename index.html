@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,9 +65,8 @@
 
     body.modal-open {
       overflow: hidden;
-      }
     }
-    
+
     img {
       max-width: 100%;
       display: block;
@@ -324,6 +322,10 @@
         border-color 0.2s ease,
         color 0.2s ease;
       font: inherit;
+      -webkit-appearance: none;
+      appearance: none;
+      position: relative;
+      z-index: 1;
     }
 
     .service-icon {
@@ -470,7 +472,7 @@
       z-index: 2000;
       background: rgba(0, 0, 0, 0.78);
       backdrop-filter: blur(8px);
-      align-items: flex-start;;
+      align-items: flex-start;
       justify-content: center;
       padding: 20px;
       overflow-y: auto;
@@ -482,24 +484,22 @@
     }
 
     .modal-content {
-      margin-top: 40px;
+      margin: 40px auto;
       width: min(100%, 500px);
-      max-height: 85vh;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 24px 20px;
+      max-height: none;
+      overflow-y: visible;
+      padding: 24px 20px 32px;
       border-radius: 22px;
       position: relative;
       background: linear-gradient(180deg, rgba(18,18,24,0.96), rgba(10,10,14,0.96));
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: var(--shadow);
       text-align: center;
-      overscroll-behavior: contain;
     }
 
     .modal-close {
       position: sticky;
-      top: 10px;
+      top: 0;
       float: right;
       margin-left: auto;
       display: flex;
@@ -511,7 +511,7 @@
       border: none;
       cursor: pointer;
       color: white;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.12);
       z-index: 10;
       transition:
         transform 0.2s ease,
@@ -546,6 +546,11 @@
       border-radius: 14px;
       text-decoration: none;
       font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: white;
+      cursor: pointer;
+      font: inherit;
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
@@ -695,7 +700,7 @@
 
     .modal-close:hover,
     .modal-close:focus-visible {
-      background: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.2);
       box-shadow: var(--glow);
     }
 
@@ -744,18 +749,13 @@
       }
 
       .modal {
-        padding: 12px;
-        align-items: center;
+        padding: 10px;
       }
 
       .modal-content {
         width: 100%;
-        max-height: calc(100vh - 24px);
-        padding: 20px 18px 24px;
-      }
-
-      .modal-close {
-        top: 0;
+        padding: 20px 16px 28px;
+        margin: 20px auto;
       }
     }
   </style>
@@ -831,37 +831,37 @@
         </p>
 
         <div class="services-grid">
-          <button class="service-card" data-service="acrylic" onclick="openModal()">
+          <button class="service-card" data-service="acrylic">
             <div class="service-icon"><i class="fa-solid fa-hand-sparkles"></i></div>
             <h3>ACRYLIC</h3>
             <p>Short, medium, long full sets and fill-ins.</p>
           </button>
 
-          <button class="service-card" data-service="gel" onclick="openModal()">
+          <button class="service-card" data-service="gel">
             <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
             <h3>GEL</h3>
             <p>Gel manicure, clear manicure, and Gel-X sets.</p>
           </button>
 
-          <button class="service-card" data-service="sew-in" onclick="openModal()">
+          <button class="service-card" data-service="sew-in">
             <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
             <h3>SEW-IN</h3>
             <p>Basic sew, closure sew-in, locs, and maintenance.</p>
           </button>
 
-          <button class="service-card" data-service="twist" onclick="openModal()">
+          <button class="service-card" data-service="twist">
             <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
             <h3>TWIST</h3>
             <p>Barrel twists, twists, and kinky twist styles.</p>
           </button>
 
-          <button class="service-card" data-service="knotless" onclick="openModal()">
+          <button class="service-card" data-service="knotless">
             <div class="service-icon"><i class="fa-solid fa-link"></i></div>
             <h3>KNOTLESS</h3>
             <p>Small, medium, and large knotless braid options.</p>
           </button>
 
-          <button class="service-card" data-service="boho" onclick="openModal()">
+          <button class="service-card" data-service="boho">
             <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
             <h3>BOHO</h3>
             <p>Small and medium boho braid styles with curly ends.</p>
@@ -1391,10 +1391,11 @@
     }
 
     function clearSelectedCards() {
-      serviceCards.forEach((card) => card.classList.remove("selected"));
+      serviceCards.forEach(function(card) { card.classList.remove("selected"); });
     }
 
     function scrollModalToTop() {
+      modal.scrollTop = 0;
       modalContent.scrollTop = 0;
     }
 
@@ -1416,11 +1417,11 @@
     }
 
     function formatPrice(price) {
-      return price > 0 ? `CA$${price.toFixed(2)}` : "Price varies";
+      return price > 0 ? "CA$" + price.toFixed(2) : "Price varies";
     }
 
     function openService(card, serviceKey) {
-      const service = serviceData[serviceKey];
+      var service = serviceData[serviceKey];
       if (!service) return;
 
       clearSelectedCards();
@@ -1432,19 +1433,20 @@
       serviceDesc.textContent = service.desc;
       modal.classList.add("active");
       modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
     }
 
     function showOptions() {
       if (!currentServiceKey) return;
-      const service = serviceData[currentServiceKey];
+      var service = serviceData[currentServiceKey];
       serviceOptions.innerHTML = "";
 
-      service.options.forEach((option) => {
-        const optionBtn = document.createElement("button");
+      service.options.forEach(function(option) {
+        var optionBtn = document.createElement("button");
         optionBtn.type = "button";
         optionBtn.className = "payment-link";
-        optionBtn.innerHTML = `<i class="fa-solid fa-check"></i> ${option.title}`;
-        optionBtn.addEventListener("click", () => {
+        optionBtn.innerHTML = '<i class="fa-solid fa-check"></i> ' + option.title;
+        optionBtn.addEventListener("click", function() {
           currentServiceOption = option;
           selectedAddOns = [];
           selectedServiceOption.textContent = option.title;
@@ -1465,27 +1467,27 @@
       serviceAddOns.innerHTML = "";
 
       if (!currentServiceOption || !currentServiceOption.addOns || currentServiceOption.addOns.length === 0) {
-        const emptyNote = document.createElement("div");
+        var emptyNote = document.createElement("div");
         emptyNote.className = "deposit-note";
         emptyNote.innerHTML = "No add-ons available for this service.";
         serviceAddOns.appendChild(emptyNote);
         return;
       }
 
-      currentServiceOption.addOns.forEach((addOn, index) => {
-        const label = document.createElement("label");
+      currentServiceOption.addOns.forEach(function(addOn, index) {
+        var label = document.createElement("label");
         label.className = "payment-link";
         label.style.cursor = "pointer";
-        label.innerHTML = `
-          <input type="checkbox" data-addon-index="${index}" style="margin-right:8px;">
-          <span><strong>${addOn.title}</strong><br><small>${addOn.desc}</small></span>
-        `;
-        const checkbox = label.querySelector("input");
-        checkbox.addEventListener("change", (e) => {
+        label.style.textAlign = "left";
+        label.innerHTML =
+          '<input type="checkbox" data-addon-index="' + index + '" style="margin-right:8px;">' +
+          '<span><strong>' + addOn.title + '</strong><br><small>' + addOn.desc + '</small></span>';
+        var checkbox = label.querySelector("input");
+        checkbox.addEventListener("change", function(e) {
           if (e.target.checked) {
             selectedAddOns.push(addOn);
           } else {
-            selectedAddOns = selectedAddOns.filter((item) => item.title !== addOn.title);
+            selectedAddOns = selectedAddOns.filter(function(item) { return item.title !== addOn.title; });
           }
         });
         serviceAddOns.appendChild(label);
@@ -1495,16 +1497,16 @@
     function showSummary() {
       if (!currentServiceOption) return;
 
-      const basePrice = currentServiceOption.price || 0;
-      const addOnTotal = selectedAddOns.reduce((sum, item) => sum + (item.price || 0), 0);
-      const total = basePrice + addOnTotal;
+      var basePrice = currentServiceOption.price || 0;
+      var addOnTotal = selectedAddOns.reduce(function(sum, item) { return sum + (item.price || 0); }, 0);
+      var total = basePrice + addOnTotal;
 
       summaryServiceTitle.textContent = currentServiceOption.title;
       summaryServiceDesc.textContent = currentServiceOption.desc;
 
       if (selectedAddOns.length > 0) {
         summaryAddOns.innerHTML = selectedAddOns
-          .map((item) => `${item.title} (${formatPrice(item.price || 0)})`)
+          .map(function(item) { return item.title + " (" + formatPrice(item.price || 0) + ")"; })
           .join("<br>");
       } else {
         summaryAddOns.textContent = "No add-ons selected.";
@@ -1544,6 +1546,7 @@
     function closeService() {
       modal.classList.remove("active");
       modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
       clearSelectedCards();
       resetModalSteps();
       currentServiceKey = null;
@@ -1559,54 +1562,41 @@
     backToStepTwoBtn.addEventListener("click", goToStepTwo);
     backToStepThreeBtn.addEventListener("click", goToStepThree);
 
-    serviceCards.forEach((card) => {
-      card.addEventListener("click", () => {
+    serviceCards.forEach(function(card) {
+      card.addEventListener("click", function() {
         openService(card, card.dataset.service);
       });
     });
 
-    modal.addEventListener("click", (e) => {
+    modal.addEventListener("click", function(e) {
       if (e.target === modal) closeService();
     });
 
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener("keydown", function(e) {
       if (e.key === "Escape") closeService();
     });
 
     document.getElementById("footerYear").textContent =
-      `© ${new Date().getFullYear()} ICEY BEAUTY STUDIO`;
+      "\u00A9 " + new Date().getFullYear() + " ICEY BEAUTY STUDIO";
 
-    const clickables = document.querySelectorAll(
+    var clickables = document.querySelectorAll(
       'a, button, .service-card, .modal-close, .payment-link, .float-btn'
     );
 
-    clickables.forEach((el) => {
-      el.addEventListener("click", () => {
+    clickables.forEach(function(el) {
+      el.addEventListener("click", function() {
         el.classList.add("clicked");
-        setTimeout(() => el.classList.remove("clicked"), 180);
+        setTimeout(function() { el.classList.remove("clicked"); }, 180);
       });
     });
 
-    const navLinks = document.querySelectorAll(".nav-links a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.forEach((item) => item.classList.remove("active-link"));
+    var navLinks = document.querySelectorAll(".nav-links a");
+    navLinks.forEach(function(link) {
+      link.addEventListener("click", function() {
+        navLinks.forEach(function(item) { item.classList.remove("active-link"); });
         link.classList.add("active-link");
       });
     });
-  <script>
-  function openModal() {
-    document.querySelector('.modal').style.display = "flex";
-    document.body.classList.add("modal-open");
-  }
-
-  function closeModal() {
-    document.querySelector('.modal').style.display = "none";
-    document.body.classList.remove("modal-open");
-  }
   </script>
 </body>
 </html>
-
-
-
