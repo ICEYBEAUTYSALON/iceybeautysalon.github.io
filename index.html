@@ -263,8 +263,8 @@
       place-items: center;
       background:
         linear-gradient(rgba(7,7,10,0.55), rgba(7,7,10,0.75)),
-        url("https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1600&q=80")
-        center/cover no-repeat;
+        url("herpicture.jpeg")
+        center top/cover no-repeat;
       padding: 120px 0 70px;
       text-align: center;
     }
@@ -614,7 +614,6 @@
       color: var(--muted);
     }
 
-    /* GLOBAL CLICK / TAP / FOCUS FEEDBACK */
     button,
     a,
     .service-card,
@@ -774,8 +773,10 @@
       <div class="nav-right">
         <div class="nav-links">
           <a href="#">Home</a>
-          <a href="#services">Services</a>
+          <a href="#artist">About</a>
           <a href="#policy">Policies</a>
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
           <a href="#contact">Contact</a>
         </div>
 
@@ -802,6 +803,7 @@
     </div>
   </nav>
 
+  <!-- 1. HERO — Owner's photo as background -->
   <header class="hero">
     <div class="hero-card">
       <h1>Luxury Hair, Nails & Lashes</h1>
@@ -823,6 +825,64 @@
   </header>
 
   <main>
+    <!-- 2. MEET YOUR ARTIST — Build trust first -->
+    <section id="artist" class="section">
+      <div class="container">
+        <h2 class="section-title">Meet Your Artist</h2>
+        <p class="section-subtitle">
+          The face behind Icey Beauty Studio — bringing beauty, precision, and creativity to every appointment.
+        </p>
+
+        <div class="artist-layout">
+          <div class="artist-image">
+            <img src="herpicture.jpeg" alt="Artist at Icey Beauty Studio">
+          </div>
+
+          <div class="artist-card glass">
+            <h3>Luxury beauty with care and precision</h3>
+            <p>
+              At Icey Beauty Studio, every service is delivered with attention to detail, creativity, and a passion for helping clients look and feel their best.
+            </p>
+            <p>
+              From nails to braids and beauty services, each appointment is designed to leave you polished, confident, and camera-ready.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BOOKING POLICIES — Set expectations before services -->
+    <section id="policy" class="section">
+      <div class="container">
+        <h2 class="section-title">Booking Policies</h2>
+
+        <div class="policy-box glass">
+          <div class="policy-grid">
+            <div class="policy-item">
+              <strong>$20 Deposit</strong>
+              <p>A $20 deposit is required to secure your appointment and is applied toward your service total.</p>
+            </div>
+
+            <div class="policy-item">
+              <strong>Rescheduling</strong>
+              <p>Please provide at least 24 hours notice if you need to reschedule so your deposit can be transferred.</p>
+            </div>
+
+            <div class="policy-item">
+              <strong>Late Arrivals</strong>
+              <p>Clients arriving more than 15 minutes late may need to reschedule.</p>
+            </div>
+
+            <div class="policy-item">
+              <strong>No Shows</strong>
+              <p>Missed appointments without notice may require full payment before booking again.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SERVICES — Now they're ready to pick and book -->
     <section id="services" class="section">
       <div class="container">
         <h2 class="section-title">Our Services</h2>
@@ -870,31 +930,7 @@
       </div>
     </section>
 
-    <section id="artist" class="section">
-      <div class="container">
-        <h2 class="section-title">Meet Your Artist</h2>
-        <p class="section-subtitle">
-          The face behind Icey Beauty Studio — bringing beauty, precision, and creativity to every appointment.
-        </p>
-
-        <div class="artist-layout">
-          <div class="artist-image">
-            <img src="herpicture.jpeg" alt="Artist at Icey Beauty Studio">
-          </div>
-
-          <div class="artist-card glass">
-            <h3>Luxury beauty with care and precision</h3>
-            <p>
-              At Icey Beauty Studio, every service is delivered with attention to detail, creativity, and a passion for helping clients look and feel their best.
-            </p>
-            <p>
-              From nails to braids and beauty services, each appointment is designed to leave you polished, confident, and camera-ready.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- 5. GALLERY — Showcase work -->
     <section id="gallery" class="section">
       <div class="container">
         <h2 class="section-title">Our Work</h2>
@@ -937,36 +973,7 @@
       </div>
     </section>
 
-    <section id="policy" class="section">
-      <div class="container">
-        <h2 class="section-title">Booking Policies</h2>
-
-        <div class="policy-box glass">
-          <div class="policy-grid">
-            <div class="policy-item">
-              <strong>$20 Deposit</strong>
-              <p>A $20 deposit is required to secure your appointment and is applied toward your service total.</p>
-            </div>
-
-            <div class="policy-item">
-              <strong>Rescheduling</strong>
-              <p>Please provide at least 24 hours notice if you need to reschedule so your deposit can be transferred.</p>
-            </div>
-
-            <div class="policy-item">
-              <strong>Late Arrivals</strong>
-              <p>Clients arriving more than 15 minutes late may need to reschedule.</p>
-            </div>
-
-            <div class="policy-item">
-              <strong>No Shows</strong>
-              <p>Missed appointments without notice may require full payment before booking again.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- 6. CONTACT — Final call to action -->
     <section id="contact" class="section">
       <div class="container">
         <h2 class="section-title">Visit Icey Beauty Studio</h2>
@@ -1134,40 +1141,40 @@
   </div>
 
   <script>
-    const calendlyUrl = "https://calendly.com/omoseleesther1113/30min";
+    var calendlyUrl = "https://calendly.com/omoseleesther1113/30min";
 
-    const modal = document.getElementById("serviceModal");
-    const modalContent = document.querySelector(".modal-content");
-    const serviceTitle = document.getElementById("serviceTitle");
-    const serviceDesc = document.getElementById("serviceDesc");
-    const closeModalBtn = document.getElementById("closeModalBtn");
-    const serviceCards = document.querySelectorAll(".service-card");
+    var modal = document.getElementById("serviceModal");
+    var modalContent = document.querySelector(".modal-content");
+    var serviceTitle = document.getElementById("serviceTitle");
+    var serviceDesc = document.getElementById("serviceDesc");
+    var closeModalBtn = document.getElementById("closeModalBtn");
+    var serviceCards = document.querySelectorAll(".service-card");
 
-    const serviceStepOne = document.getElementById("serviceStepOne");
-    const serviceStepTwo = document.getElementById("serviceStepTwo");
-    const serviceStepThree = document.getElementById("serviceStepThree");
-    const serviceStepFour = document.getElementById("serviceStepFour");
+    var serviceStepOne = document.getElementById("serviceStepOne");
+    var serviceStepTwo = document.getElementById("serviceStepTwo");
+    var serviceStepThree = document.getElementById("serviceStepThree");
+    var serviceStepFour = document.getElementById("serviceStepFour");
 
-    const continueToOptionsBtn = document.getElementById("continueToOptionsBtn");
-    const continueToSummaryBtn = document.getElementById("continueToSummaryBtn");
-    const backToStepOneBtn = document.getElementById("backToStepOneBtn");
-    const backToStepTwoBtn = document.getElementById("backToStepTwoBtn");
-    const backToStepThreeBtn = document.getElementById("backToStepThreeBtn");
+    var continueToOptionsBtn = document.getElementById("continueToOptionsBtn");
+    var continueToSummaryBtn = document.getElementById("continueToSummaryBtn");
+    var backToStepOneBtn = document.getElementById("backToStepOneBtn");
+    var backToStepTwoBtn = document.getElementById("backToStepTwoBtn");
+    var backToStepThreeBtn = document.getElementById("backToStepThreeBtn");
 
-    const serviceOptions = document.getElementById("serviceOptions");
-    const serviceAddOns = document.getElementById("serviceAddOns");
+    var serviceOptions = document.getElementById("serviceOptions");
+    var serviceAddOns = document.getElementById("serviceAddOns");
 
-    const selectedServiceOption = document.getElementById("selectedServiceOption");
-    const summaryServiceTitle = document.getElementById("summaryServiceTitle");
-    const summaryServiceDesc = document.getElementById("summaryServiceDesc");
-    const summaryAddOns = document.getElementById("summaryAddOns");
-    const summaryTotalPrice = document.getElementById("summaryTotalPrice");
+    var selectedServiceOption = document.getElementById("selectedServiceOption");
+    var summaryServiceTitle = document.getElementById("summaryServiceTitle");
+    var summaryServiceDesc = document.getElementById("summaryServiceDesc");
+    var summaryAddOns = document.getElementById("summaryAddOns");
+    var summaryTotalPrice = document.getElementById("summaryTotalPrice");
 
-    let currentServiceKey = null;
-    let currentServiceOption = null;
-    let selectedAddOns = [];
+    var currentServiceKey = null;
+    var currentServiceOption = null;
+    var selectedAddOns = [];
 
-    const commonAddOns = [
+    var commonAddOns = [
       { title: "3D designs (Flowers, Sculpted art, etc.)", price: 20, desc: "+ 15 minutes @ CA$20.00" },
       { title: "3d lines", price: 5, desc: "+ 10 minutes @ CA$5.00" },
       { title: "Gel x Toes", price: 40, desc: "+ 1 hour 30 minutes @ CA$40.00" },
@@ -1176,7 +1183,7 @@
       { title: "Soak Off", price: 15, desc: "CA$15.00" }
     ];
 
-    const serviceData = {
+    var serviceData = {
       "acrylic": {
         title: "ACRYLIC",
         desc: "Choose your acrylic service, then continue to view available options.",
@@ -1185,25 +1192,25 @@
             title: "Short Full Set @ CA$40.00",
             price: 40,
             desc: "A short acrylic full set (1-2) magnets. 1-2 solid gel color polishes.",
-            addOns: [...commonAddOns]
+            addOns: [].concat(commonAddOns)
           },
           {
             title: "Medium Full Set @ CA$55.00",
             price: 55,
             desc: "A medium length full set (3-4 magnets). 1-2 solid gel color polishes.",
-            addOns: [...commonAddOns]
+            addOns: [].concat(commonAddOns)
           },
           {
             title: "Long Full Set @ CA$70.00",
             price: 70,
             desc: "Long acrylic full set (5-6 magnets). 1-2 solid gel color polishes.",
-            addOns: [...commonAddOns]
+            addOns: [].concat(commonAddOns)
           },
           {
             title: "Fill-In @ CA$50.00",
             price: 50,
             desc: "An acrylic fill-in on your enhancements. This service is for nails that are LESS than 4 weeks old.",
-            addOns: [...commonAddOns]
+            addOns: [].concat(commonAddOns)
           }
         ]
       },
@@ -1215,31 +1222,31 @@
             title: "Gel Manicure @ CA$30.00",
             price: 30,
             desc: "Selecting this service ensures a solid base color on your natural nail only.",
-            addOns: [...commonAddOns]
+            addOns: [].concat(commonAddOns)
           },
           {
             title: "Clear Manicure @ CA$25.00",
             price: 25,
             desc: "Selecting this option offers a cuticle and nail clean up with absolutely no color or designs, offering a clear clean up to your nails. Perfect for men and women.",
-            addOns: [...commonAddOns]
+            addOns: [].concat(commonAddOns)
           },
           {
             title: "Short Gel-X Set @ CA$40.00",
             price: 40,
             desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape.",
-            addOns: [...commonAddOns]
+            addOns: [].concat(commonAddOns)
           },
           {
             title: "Medium Gel-X Set @ CA$55.00",
             price: 55,
             desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape.",
-            addOns: [...commonAddOns]
+            addOns: [].concat(commonAddOns)
           },
           {
             title: "Long Gel-X Set",
             price: 0,
             desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape.",
-            addOns: [...commonAddOns]
+            addOns: [].concat(commonAddOns)
           }
         ]
       },
