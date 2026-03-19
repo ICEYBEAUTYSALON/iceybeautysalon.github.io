@@ -748,40 +748,40 @@
         </p>
 
         <div class="services-grid">
-          <button class="service-card" data-title="Acrylic" data-desc="Luxury acrylic nail extensions tailored to your desired shape and style.">
+          <button class="service-card" data-service="acrylic">
             <div class="service-icon"><i class="fa-solid fa-hand-sparkles"></i></div>
-            <h3>Acrylic</h3>
-            <p>Luxury nail extensions with a flawless finish.</p>
+            <h3>ACRYLIC</h3>
+            <p>Short, medium, long full sets and fill-ins.</p>
           </button>
 
-          <button class="service-card" data-title="Gel" data-desc="Durable glossy gel manicure with a sleek, long-lasting shine.">
+          <button class="service-card" data-service="gel">
             <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
-            <h3>Gel</h3>
-            <p>Glossy, durable manicures with long-lasting beauty.</p>
+            <h3>GEL</h3>
+            <p>Gel manicure, clear manicure, and Gel-X sets.</p>
           </button>
 
-          <button class="service-card" data-title="Pedicure" data-desc="Relaxing luxury pedicure for soft, polished, beautiful feet.">
-            <div class="service-icon"><i class="fa-solid fa-spa"></i></div>
-            <h3>Pedicure</h3>
-            <p>A soothing treatment for refreshed and polished feet.</p>
-          </button>
-
-          <button class="service-card" data-title="Lash Extensions" data-desc="Full beautiful lash extensions that elevate your everyday look.">
-            <div class="service-icon"><i class="fa-solid fa-eye"></i></div>
-            <h3>Lash Extensions</h3>
-            <p>Soft, full lashes that enhance your natural beauty.</p>
-          </button>
-
-          <button class="service-card" data-title="Braiding" data-desc="Protective braid styles customized to your preferred look.">
-            <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
-            <h3>Braiding</h3>
-            <p>Beautiful protective styles crafted with care.</p>
-          </button>
-
-          <button class="service-card" data-title="Weaving" data-desc="Professional weave installation with a neat and glamorous finish.">
+          <button class="service-card" data-service="sew-in">
             <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
-            <h3>Weaving</h3>
-            <p>Professional installs for a sleek, luxurious look.</p>
+            <h3>SEW-IN</h3>
+            <p>Basic sew, closure sew-in, locs, and maintenance.</p>
+          </button>
+
+          <button class="service-card" data-service="twist">
+            <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
+            <h3>TWIST</h3>
+            <p>Barrel twists, twists, and kinky twist styles.</p>
+          </button>
+
+          <button class="service-card" data-service="knotless">
+            <div class="service-icon"><i class="fa-solid fa-braid"></i></div>
+            <h3>KNOTLESS</h3>
+            <p>Small, medium, and large knotless braid options.</p>
+          </button>
+
+          <button class="service-card" data-service="boho">
+            <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>BOHO</h3>
+            <p>Small and medium boho braid styles with curly ends.</p>
           </button>
         </div>
       </div>
@@ -900,26 +900,41 @@
       <h2 id="serviceTitle"></h2>
       <p id="serviceDesc"></p>
 
-      <button class="btn btn-primary" id="modalBookBtn">
-        <i class="fa-solid fa-calendar-check"></i> Book Appointment
-      </button>
-
-      <div class="payment-options">
-        <a
-          href="https://buy.stripe.com/cNi5kE4IDgQt3MRd495os00"
-          class="payment-link pay-card"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="fa-solid fa-credit-card"></i> Pay Deposit by Card
-        </a>
+      <div id="serviceStepOne">
+        <button class="btn btn-primary" id="continueServiceBtn">
+          <i class="fa-solid fa-arrow-right"></i> Continue
+        </button>
       </div>
 
-      <div class="deposit-note">
-        <strong>$20 Deposit Required</strong><br />
-        A $20 deposit secures your appointment and goes toward your final service total.
-        <br /><br />
-        Deposit email: <strong>omoseleesther113@gmail.com</strong>
+      <div id="serviceStepTwo" style="display:none;">
+        <div id="serviceOptions" class="payment-options"></div>
+      </div>
+
+      <div id="serviceStepThree" style="display:none;">
+        <button class="btn btn-primary" id="modalBookBtn">
+          <i class="fa-solid fa-calendar-check"></i> Book Appointment
+        </button>
+
+        <div class="payment-options">
+          <a
+            href="https://buy.stripe.com/cNi5kE4IDgQt3MRd495os00"
+            class="payment-link pay-card"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-solid fa-credit-card"></i> Pay Deposit by Card
+          </a>
+        </div>
+
+        <div class="deposit-note">
+          <strong id="selectedOptionTitle"></strong><br />
+          <span id="selectedOptionDesc"></span>
+          <br /><br />
+          <strong>$20 Deposit Required</strong><br />
+          A $20 deposit secures your appointment and goes toward your final service total.
+          <br /><br />
+          Deposit email: <strong>omoseleesther113@gmail.com</strong>
+        </div>
       </div>
     </div>
   </div>
@@ -951,6 +966,166 @@
     const serviceDesc = document.getElementById("serviceDesc");
     const closeModalBtn = document.getElementById("closeModalBtn");
     const serviceCards = document.querySelectorAll(".service-card");
+    const continueServiceBtn = document.getElementById("continueServiceBtn");
+    const serviceStepOne = document.getElementById("serviceStepOne");
+    const serviceStepTwo = document.getElementById("serviceStepTwo");
+    const serviceStepThree = document.getElementById("serviceStepThree");
+    const serviceOptions = document.getElementById("serviceOptions");
+    const selectedOptionTitle = document.getElementById("selectedOptionTitle");
+    const selectedOptionDesc = document.getElementById("selectedOptionDesc");
+
+    let currentServiceKey = null;
+
+    const serviceData = {
+      "acrylic": {
+        title: "ACRYLIC",
+        desc: "Choose your acrylic service, then continue to view available options.",
+        options: [
+          {
+            title: "Short Full Set @ CA$40.00",
+            desc: "A short acrylic full set (1-2 magnets). 1-2 solid gel color polishes. Add-ons: 3D designs +15 minutes @ CA$20.00, 3d lines +10 minutes @ CA$5.00, Gel x Toes +1 hour 30 minutes @ CA$40.00, Chrome +CA$5.00, Designed French tips +30 minutes @ CA$20.00, Soak Off CA$15.00."
+          },
+          {
+            title: "Medium Full Set @ CA$55.00",
+            desc: "A medium length full set (3-4 magnets). 1-2 solid gel color polishes. Add-ons: 3D designs +15 minutes @ $20.00, 3d lines +10 minutes @ $5.00, Gel x Toes +1 hour 30 minutes @ $40.00, Chrome +$5.00, Designed French tips +30 minutes @ $20.00, Soak Off $15.00."
+          },
+          {
+            title: "Long Full Set @ CA$70.00",
+            desc: "Long acrylic full set (5-6 magnets). 1-2 solid gel color polishes. Add-ons: 3D designs +15 minutes @ $20.00, 3d lines +10 minutes @ $5.00, Gel x Toes +1 hour 30 minutes @ $40.00, Chrome +$5.00, Designed French tips +30 minutes @ $20.00, Soak Off $15.00."
+          },
+          {
+            title: "Fill-In @ CA$50.00",
+            desc: "An acrylic fill-in on your enhancements. This service is for nails that are LESS than 4 weeks old. Add-ons: 3D designs +15 minutes @ $20.00, 3d lines +10 minutes @ $5.00, Gel x Toes +1 hour 30 minutes @ $40.00, Chrome +$5.00, Designed French tips +30 minutes @ $20.00, Soak Off $15.00."
+          }
+        ]
+      },
+      "gel": {
+        title: "GEL",
+        desc: "Choose your gel service, then continue to view available options.",
+        options: [
+          {
+            title: "Gel Manicure @ CA$30.00",
+            desc: "Selecting this service ensures a solid base color on your natural nail only. Add-ons: 3D designs +15 minutes @ $20.00, 3d lines +10 minutes @ $5.00, Gel x Toes +1 hour 30 minutes @ $40.00, Chrome +$5.00, Designed French tips +30 minutes @ $20.00, Soak Off $15.00."
+          },
+          {
+            title: "Clear Manicure @ CA$25.00",
+            desc: "Offers a cuticle and nail clean up with absolutely no color or designs, offering a clear clean up to your nails. Perfect for men and women. Add-ons: 3D designs +15 minutes @ $20.00, 3d lines +10 minutes @ $5.00, Gel x Toes +1 hour 30 minutes @ $40.00, Chrome +$5.00, Designed French tips +30 minutes @ $20.00, Soak Off $15.00."
+          },
+          {
+            title: "Short Gel-X Set @ CA$40.00",
+            desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape. Add-ons: 3D designs +15 minutes @ $20.00, 3d lines +10 minutes @ $5.00, Gel x Toes +1 hour 30 minutes @ $40.00, Chrome +$5.00, Designed French tips +30 minutes @ $20.00, Soak Off $15.00."
+          },
+          {
+            title: "Medium Gel-X Set @ CA$55.00",
+            desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape. Add-ons: 3D designs +15 minutes @ $20.00, 3d lines +10 minutes @ $5.00, Gel x Toes +1 hour 30 minutes @ $40.00, Chrome +$5.00, Designed French tips +30 minutes @ $20.00, Soak Off $15.00."
+          },
+          {
+            title: "Long Gel-X Set",
+            desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape. Add-ons: 3D designs +15 minutes @ $20.00, 3d lines +10 minutes @ $5.00, Gel x Toes +1 hour 30 minutes @ $40.00, Chrome +$5.00, Designed French tips +30 minutes @ $20.00, Soak Off $15.00."
+          }
+        ]
+      },
+      "sew-in": {
+        title: "SEW-IN",
+        desc: "Choose your sew-in or loc service, then continue to view available options.",
+        options: [
+          {
+            title: "Basic Sew @ CA$90",
+            desc: "Middle / side part. This service includes braiding down and styling. Must provide at least 3-4 bundles. Natural hair must be washed and blown out. No products in hair."
+          },
+          {
+            title: "Closure Sew-In @ CA$120",
+            desc: "This service includes braiding down and styling. Must provide at least a closure with 3-4 bundles. Natural hair must be washed and blown out. No products in hair."
+          },
+          {
+            title: "Braids + Quick Weave @ CA$175.00",
+            desc: "Jayda style."
+          },
+          {
+            title: "Starter Locs (Small)",
+            desc: "The price for small starter locs starts at $250 and goes up based on the length of your hair. If your hair length is past your neck, you will be charged more. Please text me based on your hair length if longer than your neck."
+          },
+          {
+            title: "Starter Locs (Medium)",
+            desc: "The price for medium starter locs starts at $180 and goes up based on the length of your hair. If your hair length is past your neck, you will be charged more. Please text me based on your hair length if longer than your neck."
+          },
+          {
+            title: "MicroLoc Retwist",
+            desc: "This method uses an interlocking tool. If you have over 200 locs, you will be charged an additional fee. There will be add-on fees for every 20 locs that you have if over 200."
+          },
+          {
+            title: "Loc Maintenance Interlocking (1-75 Locs) @ CA$80.00",
+            desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance."
+          },
+          {
+            title: "Interlocking (75-100 Locs) @ CA$120.00",
+            desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance."
+          },
+          {
+            title: "Interlocking (100-130 Locs) @ CA$140.00",
+            desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance."
+          }
+        ]
+      },
+      "twist": {
+        title: "TWIST",
+        desc: "Choose your twist service, then continue to view available options.",
+        options: [
+          {
+            title: "Barrel Twists (Natural Hair, Not Locs)",
+            desc: "Hair must be washed and blow-dried. Price may vary depending on length and thickness of hair and desired style."
+          },
+          {
+            title: "Twists (Natural Hair) @ CA$70.00",
+            desc: "Medium-sized. Hair must be washed and blow dried."
+          },
+          {
+            title: "Kinky Twist @ CA$100.00",
+            desc: "Medium-sized hair must be washed and blow-dried."
+          }
+        ]
+      },
+      "knotless": {
+        title: "KNOTLESS",
+        desc: "Choose your knotless braid service, then continue to view available options.",
+        options: [
+          {
+            title: "Small (Midback) @ CA$180.00",
+            desc: "Small knotless braids with midback length."
+          },
+          {
+            title: "Medium (Midback) @ CA$130.00",
+            desc: "Medium knotless braids with midback length."
+          },
+          {
+            title: "Medium (Waist Length) @ CA$150.00",
+            desc: "Medium knotless braids with waist length."
+          },
+          {
+            title: "Medium (Butt Length) @ CA$180.00",
+            desc: "Medium knotless braids with butt length."
+          },
+          {
+            title: "Large (Waist/Butt) @ CA$120.00",
+            desc: "Large knotless braids with waist or butt length."
+          }
+        ]
+      },
+      "boho": {
+        title: "BOHO",
+        desc: "Choose your boho braid service, then continue to view available options.",
+        options: [
+          {
+            title: "Small (Midback) @ CA$250.00",
+            desc: "This style includes curly ends, with length up to the lower back."
+          },
+          {
+            title: "Medium (Midback/Waist) @ CA$200.00",
+            desc: "This style includes curly ends, with length up to the lower back."
+          }
+        ]
+      }
+    };
 
     function openCalendly(e) {
       if (e) e.preventDefault();
@@ -963,30 +1138,72 @@
       serviceCards.forEach((card) => card.classList.remove("selected"));
     }
 
-    function openService(card, title, desc) {
+    function resetModalSteps() {
+      serviceStepOne.style.display = "block";
+      serviceStepTwo.style.display = "none";
+      serviceStepThree.style.display = "none";
+      serviceOptions.innerHTML = "";
+      selectedOptionTitle.textContent = "";
+      selectedOptionDesc.textContent = "";
+    }
+
+    function openService(card, serviceKey) {
+      const service = serviceData[serviceKey];
+      if (!service) return;
+
       clearSelectedCards();
       card.classList.add("selected");
+      currentServiceKey = serviceKey;
 
-      serviceTitle.textContent = title;
-      serviceDesc.textContent = desc;
+      resetModalSteps();
+      serviceTitle.textContent = service.title;
+      serviceDesc.textContent = service.desc;
       modal.classList.add("active");
       modal.setAttribute("aria-hidden", "false");
+    }
+
+    function showServiceOptions() {
+      if (!currentServiceKey || !serviceData[currentServiceKey]) return;
+
+      const service = serviceData[currentServiceKey];
+      serviceOptions.innerHTML = "";
+
+      service.options.forEach((option, index) => {
+        const optionButton = document.createElement("button");
+        optionButton.className = "payment-link";
+        optionButton.type = "button";
+        optionButton.innerHTML = `<i class="fa-solid fa-check"></i> ${option.title}`;
+        optionButton.addEventListener("click", () => {
+          selectedOptionTitle.textContent = option.title;
+          selectedOptionDesc.textContent = option.desc;
+          serviceStepTwo.style.display = "none";
+          serviceStepThree.style.display = "block";
+        });
+        serviceOptions.appendChild(optionButton);
+      });
+
+      serviceStepOne.style.display = "none";
+      serviceStepTwo.style.display = "block";
+      serviceStepThree.style.display = "none";
     }
 
     function closeService() {
       modal.classList.remove("active");
       modal.setAttribute("aria-hidden", "true");
       clearSelectedCards();
+      resetModalSteps();
+      currentServiceKey = null;
     }
 
     document.getElementById("bookNowBtn").addEventListener("click", openCalendly);
     document.getElementById("modalBookBtn").addEventListener("click", openCalendly);
     document.getElementById("floatBookBtn").addEventListener("click", openCalendly);
     closeModalBtn.addEventListener("click", closeService);
+    continueServiceBtn.addEventListener("click", showServiceOptions);
 
     serviceCards.forEach((card) => {
       card.addEventListener("click", () => {
-        openService(card, card.dataset.title, card.dataset.desc);
+        openService(card, card.dataset.service);
       });
     });
 
