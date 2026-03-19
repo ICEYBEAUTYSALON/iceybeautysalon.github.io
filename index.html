@@ -420,6 +420,8 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .modal.active {
@@ -428,6 +430,9 @@
 
     .modal-content {
       width: min(100%, 500px);
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       padding: 34px 28px;
       border-radius: 22px;
       position: relative;
@@ -672,6 +677,17 @@
       .float-buttons {
         right: 12px;
         bottom: 12px;
+      }
+
+      .modal {
+        padding: 12px;
+        align-items: center;
+      }
+
+      .modal-content {
+        width: 100%;
+        max-height: calc(100vh - 24px);
+        padding: 28px 20px;
       }
     }
   </style>
@@ -1244,6 +1260,9 @@
       summaryTotalPrice.textContent = "CA$0.00";
       currentServiceOption = null;
       selectedAddOns = [];
+      if (modal.querySelector(".modal-content")) {
+        modal.querySelector(".modal-content").scrollTop = 0;
+      }
     }
 
     function formatPrice(price) {
@@ -1282,12 +1301,14 @@
           renderAddOns();
           serviceStepTwo.style.display = "none";
           serviceStepThree.style.display = "block";
+          modal.querySelector(".modal-content").scrollTop = 0;
         });
         serviceOptions.appendChild(optionBtn);
       });
 
       serviceStepOne.style.display = "none";
       serviceStepTwo.style.display = "block";
+      modal.querySelector(".modal-content").scrollTop = 0;
     }
 
     function renderAddOns() {
@@ -1343,6 +1364,7 @@
 
       serviceStepThree.style.display = "none";
       serviceStepFour.style.display = "block";
+      modal.querySelector(".modal-content").scrollTop = 0;
     }
 
     function closeService() {
