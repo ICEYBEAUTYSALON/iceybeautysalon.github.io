@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,237 +6,1019 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>ICEY BEAUTY STUDIO | Windsor Nails, Braids, Lashes & Beauty</title>
+  <meta
+    name="description"
+    content="Icey Beauty Studio in Windsor, Ontario offers luxury nails, braids, hairstyling, lashes, and beauty services. Book your appointment online today."
+  />
+  <meta
+    name="keywords"
+    content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lashes Windsor, beauty salon Windsor, Icey Beauty Studio"
+  />
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link
+    href="https://assets.calendly.com/assets/external/widget.css"
+    rel="stylesheet"
+  />
   <script src="https://assets.calendly.com/assets/external/widget.js" defer></script>
 
-  <!-- ✅ YOUR ORIGINAL STYLE KEPT EXACT -->
   <style>
-  /* (UNCHANGED — your entire style remains EXACT) */
+    :root {
+      --bg: #070709;
+      --panel: rgba(255, 255, 255, 0.06);
+      --text: #ffffff;
+      --muted: #d6d6df;
+      --accent: #7ef7ff;
+      --accent-2: #ff7ad9;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+      --glow: 0 0 30px rgba(126, 247, 255, 0.25);
+      --radius: 18px;
+      --max-width: 1150px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Poppins", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,122,217,0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(126,247,255,0.1), transparent 30%),
+        linear-gradient(180deg, #050507 0%, #0b0b11 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      margin-top: 0;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .btn-primary {
+      color: #081014;
+      background: linear-gradient(135deg, var(--accent), #b0fbff);
+      box-shadow: 0 0 24px rgba(126, 247, 255, 0.35);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: white;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      background: rgba(4, 4, 7, 0.6);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-wrap {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 120px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 0.96rem;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-text span {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      position: relative;
+      border-radius: 8px;
+      padding: 4px 2px;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--accent);
+    }
+
+    .nav-links a.active-link {
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(126, 247, 255, 0.45);
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      font-size: 1.2rem;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(rgba(7,7,10,0.55), rgba(7,7,10,0.75)),
+        url("https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+      padding: 120px 0 70px;
+      text-align: center;
+    }
+
+    .hero-card {
+      width: min(100%, 850px);
+      padding: 44px 28px;
+      border-radius: 28px;
+      background: rgba(8, 8, 12, 0.42);
+      border: 1px solid rgba(255,255,255,0.09);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 28px;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .service-card {
+      padding: 26px 22px;
+      border-radius: var(--radius);
+      text-align: left;
+      color: white;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+      font: inherit;
+    }
+
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      font-size: 1.35rem;
+      background: linear-gradient(135deg, rgba(126,247,255,0.18), rgba(255,122,217,0.18));
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .policy-box {
+      padding: 34px;
+      border-radius: 22px;
+    }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .policy-item {
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-card {
+      padding: 36px 24px;
+      border-radius: 24px;
+      text-align: center;
+    }
+
+    .contact-top {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .contact-top a {
+      text-decoration: none;
+      font-weight: 600;
+      color: white;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .contact-social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .contact-social-icons a,
+    .footer-socials a {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .footer-socials {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      width: min(100%, 500px);
+      padding: 34px 28px;
+      border-radius: 22px;
+      position: relative;
+      background: linear-gradient(180deg, rgba(18,18,24,0.96), rgba(10,10,14,0.96));
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      color: white;
+      background: rgba(255,255,255,0.06);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .deposit-note {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      line-height: 1.7;
+    }
+
+    .payment-options {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .payment-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .pay-card {
+      background: linear-gradient(135deg, #7ef7ff, #b0fbff);
+      color: #081014;
+    }
+
+    .float-buttons {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .float-btn {
+      padding: 13px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .book-btn {
+      background: linear-gradient(135deg, var(--accent), #bcfbff);
+      color: #081014;
+    }
+
+    .text-btn {
+      background: linear-gradient(135deg, #ffe27c, #ffd24b);
+      color: #1e1800;
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #35d86c, #1fb357);
+      color: white;
+    }
+
+    footer {
+      padding: 36px 20px 46px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    /* GLOBAL CLICK / TAP / FOCUS FEEDBACK */
+    button,
+    a,
+    .service-card,
+    .modal-close,
+    .payment-link,
+    .float-btn,
+    .social-icons a,
+    .contact-social-icons a,
+    .footer-socials a,
+    .nav-links a {
+      -webkit-tap-highlight-color: rgba(126, 247, 255, 0.25);
+    }
+
+    button:active,
+    a:active,
+    .float-btn:active,
+    .payment-link:active,
+    .modal-close:active,
+    .social-icons a:active,
+    .contact-social-icons a:active,
+    .footer-socials a:active,
+    .nav-links a:active,
+    .service-card:active {
+      transform: scale(0.97);
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    .service-card:focus-visible,
+    .modal-close:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 4px rgba(126, 247, 255, 0.18);
+    }
+
+    .social-icons a:hover,
+    .social-icons a:focus-visible,
+    .contact-social-icons a:hover,
+    .contact-social-icons a:focus-visible,
+    .footer-socials a:hover,
+    .footer-socials a:focus-visible {
+      transform: translateY(-2px) scale(1.08);
+      color: var(--accent);
+      box-shadow: var(--glow);
+      border-color: rgba(126, 247, 255, 0.35);
+    }
+
+    .btn:hover,
+    .btn:focus-visible,
+    .float-btn:hover,
+    .float-btn:focus-visible,
+    .payment-link:hover,
+    .payment-link:focus-visible {
+      box-shadow: 0 0 0 1px rgba(126, 247, 255, 0.25), var(--shadow), var(--glow);
+    }
+
+    .btn.clicked,
+    .float-btn.clicked,
+    .payment-link.clicked,
+    .social-icons a.clicked,
+    .contact-social-icons a.clicked,
+    .footer-socials a.clicked,
+    .nav-links a.clicked,
+    .modal-close.clicked {
+      transform: scale(0.96);
+      box-shadow: 0 0 0 1px rgba(126, 247, 255, 0.3), var(--glow);
+    }
+
+    .service-card:hover,
+    .service-card:focus-visible {
+      transform: translateY(-7px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.4), var(--glow);
+      border-color: rgba(126,247,255,0.28);
+    }
+
+    .service-card.selected {
+      border-color: var(--accent);
+      box-shadow:
+        0 0 0 1px rgba(126, 247, 255, 0.45),
+        0 14px 36px rgba(0,0,0,0.4),
+        var(--glow);
+    }
+
+    .modal-close:hover,
+    .modal-close:focus-visible {
+      background: rgba(255,255,255,0.12);
+      box-shadow: var(--glow);
+    }
+
+    .pay-card:hover,
+    .pay-card:focus-visible {
+      box-shadow: 0 0 0 1px rgba(126, 247, 255, 0.25), 0 0 24px rgba(126,247,255,0.35);
+    }
+
+    @media (hover: none) {
+      .btn:hover,
+      .float-btn:hover,
+      .payment-link:hover,
+      .service-card:hover,
+      .social-icons a:hover,
+      .contact-social-icons a:hover,
+      .footer-socials a:hover,
+      .modal-close:hover,
+      .nav-links a:hover {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-wrap {
+        flex-direction: column;
+        padding: 12px 0;
+      }
+
+      .nav-right {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding-top: 150px;
+      }
+
+      .float-buttons {
+        right: 12px;
+        bottom: 12px;
+      }
+    }
   </style>
 </head>
-
 <body>
+  <nav aria-label="Main Navigation">
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <img src="logo.png" class="logo" alt="Icey Beauty Studio logo" />
+        <div class="brand-text">
+          <strong>ICEY BEAUTY STUDIO</strong>
+          <span>Luxury Beauty</span>
+        </div>
+      </a>
 
-<!-- ✅ EVERYTHING ABOVE UNCHANGED (NAV / HERO / SERVICES / ETC) -->
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#">Home</a>
+          <a href="#services">Services</a>
+          <a href="#policy">Policies</a>
+          <a href="#contact">Contact</a>
+        </div>
 
-<!-- KEEP YOUR ENTIRE HTML EXACTLY SAME UNTIL SCRIPT -->
+        <div class="social-icons">
+          <a
+            href="https://www.instagram.com/windsor_hairstyles_nailtech?igsh=MWM1Mm13aTUyOTByeA=="
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </a>
 
-<script>
-const calendlyUrl = "https://calendly.com/omoseleesther1113/30min";
+          <a
+            href="https://www.tiktok.com/@iceybeautystudio?_r=1&_t=ZS-94eC0AoOTtY"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+          >
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-const modal = document.getElementById("serviceModal");
-const serviceTitle = document.getElementById("serviceTitle");
-const serviceDesc = document.getElementById("serviceDesc");
-const closeModalBtn = document.getElementById("closeModalBtn");
-const serviceCards = document.querySelectorAll(".service-card");
-const modalBookBtn = document.getElementById("modalBookBtn");
+  <header class="hero">
+    <div class="hero-card">
+      <h1>Luxury Hair, Nails & Lashes</h1>
+      <p>
+        Welcome to Icey Beauty Studio — where beauty meets style. Book your next
+        appointment for nails, braids, weaving, lashes, and glam beauty services.
+      </p>
 
-let currentService = null;
-let selectedOption = null;
-let selectedAddons = [];
-let totalPrice = 0;
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="bookNowBtn">
+          <i class="fa-solid fa-calendar-check"></i> Book Appointment
+        </button>
 
-// ✅ FULL DATA (SERVICE + PRICE + ADDONS)
-const servicesData = {
-  "Acrylic": {
-    options: [
-      { name: "Short Full Set", price: 40 },
-      { name: "Medium Full Set", price: 55 },
-      { name: "Long Full Set", price: 70 },
-      { name: "Fill-In", price: 50 }
-    ]
-  },
-  "Gel": {
-    options: [
-      { name: "Gel Manicure", price: 30 },
-      { name: "Clear Manicure", price: 25 },
-      { name: "Short Gel-X Set", price: 40 },
-      { name: "Medium Gel-X Set", price: 55 },
-      { name: "Long Gel-X Set", price: 60 }
-    ]
-  },
-  "Weaving": {
-    options: [
-      { name: "Basic Sew-In", price: 90 },
-      { name: "Closure Sew-In", price: 120 },
-      { name: "Braids + Quick Weave", price: 175 }
-    ]
-  }
-};
+        <a href="#services" class="btn btn-outline">
+          <i class="fa-solid fa-sparkles"></i> View Services
+        </a>
+      </div>
+    </div>
+  </header>
 
-// ✅ ADDONS (GLOBAL)
-const addonsList = [
-  { name: "3D Designs", price: 20 },
-  { name: "3D Lines", price: 5 },
-  { name: "Gel X Toes", price: 40 },
-  { name: "Chrome", price: 5 },
-  { name: "French Tips Design", price: 20 },
-  { name: "Soak Off", price: 15 }
-];
+  <main>
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">
+          Explore our beauty services designed to leave you feeling polished and confident.
+        </p>
 
-// Calendly
-function openCalendly(e) {
-  if (e) e.preventDefault();
-  if (window.Calendly) {
-    Calendly.initPopupWidget({ url: calendlyUrl });
-  }
-}
+        <div class="services-grid">
+          <button class="service-card" data-title="Acrylic" data-desc="Luxury acrylic nail extensions tailored to your desired shape and style.">
+            <div class="service-icon"><i class="fa-solid fa-hand-sparkles"></i></div>
+            <h3>Acrylic</h3>
+            <p>Luxury nail extensions with a flawless finish.</p>
+          </button>
 
-function clearSelectedCards() {
-  serviceCards.forEach((card) => card.classList.remove("selected"));
-}
+          <button class="service-card" data-title="Gel" data-desc="Durable glossy gel manicure with a sleek, long-lasting shine.">
+            <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
+            <h3>Gel</h3>
+            <p>Glossy, durable manicures with long-lasting beauty.</p>
+          </button>
 
-// STEP 1
-function openService(card, title, desc) {
-  clearSelectedCards();
-  card.classList.add("selected");
+          <button class="service-card" data-title="Pedicure" data-desc="Relaxing luxury pedicure for soft, polished, beautiful feet.">
+            <div class="service-icon"><i class="fa-solid fa-spa"></i></div>
+            <h3>Pedicure</h3>
+            <p>A soothing treatment for refreshed and polished feet.</p>
+          </button>
 
-  currentService = title;
-  selectedOption = null;
-  selectedAddons = [];
-  totalPrice = 0;
+          <button class="service-card" data-title="Lash Extensions" data-desc="Full beautiful lash extensions that elevate your everyday look.">
+            <div class="service-icon"><i class="fa-solid fa-eye"></i></div>
+            <h3>Lash Extensions</h3>
+            <p>Soft, full lashes that enhance your natural beauty.</p>
+          </button>
 
-  serviceTitle.textContent = title;
-  serviceDesc.textContent = desc;
+          <button class="service-card" data-title="Braiding" data-desc="Protective braid styles customized to your preferred look.">
+            <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
+            <h3>Braiding</h3>
+            <p>Beautiful protective styles crafted with care.</p>
+          </button>
 
-  modalBookBtn.style.display = "none";
+          <button class="service-card" data-title="Weaving" data-desc="Professional weave installation with a neat and glamorous finish.">
+            <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
+            <h3>Weaving</h3>
+            <p>Professional installs for a sleek, luxurious look.</p>
+          </button>
+        </div>
+      </div>
+    </section>
 
-  renderContinueBtn();
+    <section id="policy" class="section">
+      <div class="container">
+        <h2 class="section-title">Booking Policies</h2>
 
-  modal.classList.add("active");
-}
+        <div class="policy-box glass">
+          <div class="policy-grid">
+            <div class="policy-item">
+              <strong>$20 Deposit</strong>
+              <p>A $20 deposit is required to secure your appointment and is applied toward your service total.</p>
+            </div>
 
-// STEP 2
-function renderContinueBtn() {
-  let btn = document.getElementById("continueBtn");
+            <div class="policy-item">
+              <strong>Rescheduling</strong>
+              <p>Please provide at least 24 hours notice if you need to reschedule so your deposit can be transferred.</p>
+            </div>
 
-  if (!btn) {
-    btn = document.createElement("button");
-    btn.id = "continueBtn";
-    btn.className = "btn btn-primary";
-    btn.innerHTML = "Continue";
-    modalBookBtn.parentNode.insertBefore(btn, modalBookBtn);
-  }
+            <div class="policy-item">
+              <strong>Late Arrivals</strong>
+              <p>Clients arriving more than 15 minutes late may need to reschedule.</p>
+            </div>
 
-  btn.onclick = showOptions;
-  btn.style.display = "inline-flex";
-}
+            <div class="policy-item">
+              <strong>No Shows</strong>
+              <p>Missed appointments without notice may require full payment before booking again.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-// STEP 3 OPTIONS
-function showOptions() {
-  const data = servicesData[currentService];
-  serviceDesc.innerHTML = "";
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Visit Icey Beauty Studio</h2>
 
-  data.options.forEach(opt => {
-    const btn = document.createElement("button");
-    btn.className = "btn btn-outline";
-    btn.style.marginTop = "10px";
-    btn.textContent = `${opt.name} - $${opt.price}`;
+        <div class="contact-card glass">
+          <div class="contact-top">
+            <p><i class="fa-solid fa-location-dot"></i> Windsor, Ontario</p>
+            <p><a href="tel:12263409285"><i class="fa-solid fa-phone"></i> 226-340-9285</a></p>
+          </div>
 
-    btn.onclick = () => {
-      selectedOption = opt;
-      totalPrice = opt.price;
-      showAddons();
-    };
+          <div class="contact-social-icons">
+            <a
+              href="https://www.instagram.com/windsor_hairstyles_nailtech?igsh=MWM1Mm13aTUyOTByeA=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
 
-    serviceDesc.appendChild(btn);
-  });
+            <a
+              href="https://www.tiktok.com/@iceybeautystudio?_r=1&_t=ZS-94eC0AoOTtY"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+            >
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
 
-  document.getElementById("continueBtn").style.display = "none";
-}
+            <a
+              href="https://wa.me/12263409285?text=Hi%20I%20would%20like%20to%20book%20an%20appointment%20with%20Icey%20Beauty%20Studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-// STEP 4 ADDONS
-function showAddons() {
-  serviceDesc.innerHTML = "<strong>Select Add-ons:</strong><br>";
+  <footer>
+    <div id="footerYear"></div>
 
-  addonsList.forEach(add => {
-    const btn = document.createElement("button");
-    btn.className = "btn btn-outline";
-    btn.style.marginTop = "10px";
-    btn.textContent = `${add.name} +$${add.price}`;
+    <div class="footer-socials">
+      <a
+        href="https://www.instagram.com/windsor_hairstyles_nailtech?igsh=MWM1Mm13aTUyOTByeA=="
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <i class="fa-brands fa-instagram"></i>
+      </a>
 
-    btn.onclick = () => toggleAddon(add, btn);
+      <a
+        href="https://www.tiktok.com/@iceybeautystudio?_r=1&_t=ZS-94eC0AoOTtY"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="TikTok"
+      >
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+    </div>
+  </footer>
 
-    serviceDesc.appendChild(btn);
-  });
+  <div
+    id="serviceModal"
+    class="modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-labelledby="serviceTitle"
+    aria-describedby="serviceDesc"
+  >
+    <div class="modal-content">
+      <button class="modal-close" id="closeModalBtn" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
-  const next = document.createElement("button");
-  next.className = "btn btn-primary";
-  next.style.marginTop = "15px";
-  next.textContent = "Continue";
+      <h2 id="serviceTitle"></h2>
+      <p id="serviceDesc"></p>
 
-  next.onclick = showSummary;
+      <button class="btn btn-primary" id="modalBookBtn">
+        <i class="fa-solid fa-calendar-check"></i> Book Appointment
+      </button>
 
-  serviceDesc.appendChild(next);
-}
+      <div class="payment-options">
+        <a
+          href="https://buy.stripe.com/cNi5kE4IDgQt3MRd495os00"
+          class="payment-link pay-card"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-solid fa-credit-card"></i> Pay Deposit by Card
+        </a>
+      </div>
 
-// ADDON SELECT
-function toggleAddon(add, btn) {
-  const exists = selectedAddons.find(a => a.name === add.name);
+      <div class="deposit-note">
+        <strong>$20 Deposit Required</strong><br />
+        A $20 deposit secures your appointment and goes toward your final service total.
+        <br /><br />
+        Deposit email: <strong>omoseleesther113@gmail.com</strong>
+      </div>
+    </div>
+  </div>
 
-  if (exists) {
-    selectedAddons = selectedAddons.filter(a => a.name !== add.name);
-    totalPrice -= add.price;
-    btn.classList.remove("selected");
-  } else {
-    selectedAddons.push(add);
-    totalPrice += add.price;
-    btn.classList.add("selected");
-  }
-}
+  <div class="float-buttons">
+    <a href="#" class="float-btn book-btn" id="floatBookBtn">
+      <i class="fa-solid fa-calendar"></i> Book
+    </a>
 
-// STEP 5 SUMMARY
-function showSummary() {
-  let html = `<strong>${selectedOption.name}</strong><br>`;
-  html += `Base: $${selectedOption.price}<br><br>`;
+    <a href="sms:2263409285" class="float-btn text-btn">
+      <i class="fa-solid fa-comment"></i> Text Us
+    </a>
 
-  if (selectedAddons.length) {
-    html += "<strong>Add-ons:</strong><br>";
-    selectedAddons.forEach(a => {
-      html += `+ ${a.name} ($${a.price})<br>`;
+    <a
+      href="https://wa.me/12263409285?text=Hi%20I%20would%20like%20to%20book%20an%20appointment%20with%20Icey%20Beauty%20Studio"
+      class="float-btn whatsapp-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+
+  <script>
+    const calendlyUrl = "https://calendly.com/omoseleesther1113/30min";
+
+    const modal = document.getElementById("serviceModal");
+    const serviceTitle = document.getElementById("serviceTitle");
+    const serviceDesc = document.getElementById("serviceDesc");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const serviceCards = document.querySelectorAll(".service-card");
+
+    function openCalendly(e) {
+      if (e) e.preventDefault();
+      if (window.Calendly) {
+        Calendly.initPopupWidget({ url: calendlyUrl });
+      }
+    }
+
+    function clearSelectedCards() {
+      serviceCards.forEach((card) => card.classList.remove("selected"));
+    }
+
+    function openService(card, title, desc) {
+      clearSelectedCards();
+      card.classList.add("selected");
+
+      serviceTitle.textContent = title;
+      serviceDesc.textContent = desc;
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeService() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      clearSelectedCards();
+    }
+
+    document.getElementById("bookNowBtn").addEventListener("click", openCalendly);
+    document.getElementById("modalBookBtn").addEventListener("click", openCalendly);
+    document.getElementById("floatBookBtn").addEventListener("click", openCalendly);
+    closeModalBtn.addEventListener("click", closeService);
+
+    serviceCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        openService(card, card.dataset.title, card.dataset.desc);
+      });
     });
-  }
 
-  html += `<br><strong>Total: $${totalPrice}</strong>`;
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeService();
+    });
 
-  serviceDesc.innerHTML = html;
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeService();
+    });
 
-  modalBookBtn.style.display = "inline-flex";
-}
+    document.getElementById("footerYear").textContent =
+      `© ${new Date().getFullYear()} ICEY BEAUTY STUDIO`;
 
-// CLOSE
-function closeService() {
-  modal.classList.remove("active");
-  clearSelectedCards();
-}
+    const clickables = document.querySelectorAll(
+      'a, button, .service-card, .modal-close, .payment-link, .float-btn'
+    );
 
-// EVENTS
-document.getElementById("bookNowBtn").addEventListener("click", openCalendly);
-document.getElementById("modalBookBtn").addEventListener("click", openCalendly);
-document.getElementById("floatBookBtn").addEventListener("click", openCalendly);
-closeModalBtn.addEventListener("click", closeService);
+    clickables.forEach((el) => {
+      el.addEventListener("click", () => {
+        el.classList.add("clicked");
+        setTimeout(() => el.classList.remove("clicked"), 180);
+      });
+    });
 
-serviceCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    openService(card, card.dataset.title, card.dataset.desc);
-  });
-});
-
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) closeService();
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeService();
-});
-
-// FOOTER
-document.getElementById("footerYear").textContent =
-  `© ${new Date().getFullYear()} ICEY BEAUTY STUDIO`;
-</script>
-
+    const navLinks = document.querySelectorAll(".nav-links a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.forEach((item) => item.classList.remove("active-link"));
+        link.classList.add("active-link");
+      });
+    });
+  </script>
 </body>
 </html>
