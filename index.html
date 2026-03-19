@@ -332,6 +332,28 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
     .policy-box {
       padding: 34px;
       border-radius: 22px;
@@ -807,6 +829,48 @@
             <h3>BOHO</h3>
             <p>Small and medium boho braid styles with curly ends.</p>
           </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <h2 class="section-title">Our Work</h2>
+        <p class="section-subtitle">
+          A look at recent styles, nails, braids, and beauty work from Icey Beauty Studio.
+        </p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="work1.jpg" alt="Icey Beauty Studio work photo 1">
+          </div>
+          <div class="gallery-item">
+            <img src="work2.jpg" alt="Icey Beauty Studio work photo 2">
+          </div>
+          <div class="gallery-item">
+            <img src="work3.jpg" alt="Icey Beauty Studio work photo 3">
+          </div>
+          <div class="gallery-item">
+            <img src="work4.jpg" alt="Icey Beauty Studio work photo 4">
+          </div>
+          <div class="gallery-item">
+            <img src="work5.jpg" alt="Icey Beauty Studio work photo 5">
+          </div>
+          <div class="gallery-item">
+            <img src="work6.jpg" alt="Icey Beauty Studio work photo 6">
+          </div>
+          <div class="gallery-item">
+            <img src="work7.jpg" alt="Icey Beauty Studio work photo 7">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=80" alt="Icey Beauty Studio beauty work sample 8">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80" alt="Icey Beauty Studio beauty work sample 9">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Icey Beauty Studio beauty work sample 10">
+          </div>
         </div>
       </div>
     </section>
