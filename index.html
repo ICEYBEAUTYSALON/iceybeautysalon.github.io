@@ -14,7 +14,6 @@
     content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lashes Windsor, beauty salon Windsor, Icey Beauty Studio, piercing Windsor"
   />
 
-  <!-- Open Graph for social sharing -->
   <meta property="og:title" content="ICEY BEAUTY STUDIO | Luxury Beauty in Windsor" />
   <meta property="og:description" content="Luxury nails, braids, lashes, piercing and beauty services in Windsor, Ontario. Book your appointment today." />
   <meta property="og:type" content="website" />
@@ -36,6 +35,9 @@
     rel="stylesheet"
   />
   <script src="https://assets.calendly.com/assets/external/widget.js" defer></script>
+
+  <!-- Stripe Buy Button Script -->
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
   <style>
     :root {
@@ -159,7 +161,49 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* ===== NAV ===== */
+    /* Locked button style */
+    .btn-locked {
+      color: #888;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .btn-unlocked {
+      color: #081014;
+      background: linear-gradient(135deg, #35d86c, #1fb357);
+      box-shadow: 0 0 24px rgba(53, 216, 108, 0.35);
+      cursor: pointer;
+      opacity: 1;
+      pointer-events: auto;
+      animation: unlockPulse 0.6s ease;
+    }
+
+    @keyframes unlockPulse {
+      0% { transform: scale(0.95); opacity: 0.5; }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .lock-notice {
+      margin-top: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(255, 122, 217, 0.08);
+      border: 1px solid rgba(255, 122, 217, 0.2);
+      font-size: 0.85rem;
+      color: var(--accent-2);
+      text-align: center;
+    }
+
+    .lock-notice.paid {
+      background: rgba(53, 216, 108, 0.08);
+      border-color: rgba(53, 216, 108, 0.2);
+      color: #35d86c;
+    }
+
     nav {
       position: fixed;
       inset: 0 0 auto 0;
@@ -287,7 +331,6 @@
         color 0.2s ease;
     }
 
-    /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -330,7 +373,6 @@
       flex-wrap: wrap;
     }
 
-    /* ===== SERVICES ===== */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -374,7 +416,6 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* ===== ARTIST ===== */
     .artist-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -400,7 +441,6 @@
       border-radius: 22px;
     }
 
-    /* ===== GALLERY ===== */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -423,7 +463,6 @@
       object-fit: cover;
     }
 
-    /* ===== POLICY ===== */
     .policy-box {
       padding: 34px;
       border-radius: 22px;
@@ -443,7 +482,6 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
 
-    /* ===== CONTACT ===== */
     .contact-card {
       padding: 36px 24px;
       border-radius: 24px;
@@ -503,7 +541,6 @@
       gap: 12px;
     }
 
-    /* ===== MODAL ===== */
     .modal {
       display: none;
       position: fixed;
@@ -621,7 +658,13 @@
       color: #081014;
     }
 
-    /* ===== FLOAT BUTTONS ===== */
+    .stripe-payment-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .float-buttons {
       position: fixed;
       right: 18px;
@@ -651,11 +694,6 @@
         color 0.2s ease;
     }
 
-    .book-btn {
-      background: linear-gradient(135deg, var(--accent), #bcfbff);
-      color: #081014;
-    }
-
     .text-btn {
       background: linear-gradient(135deg, #ffe27c, #ffd24b);
       color: #1e1800;
@@ -672,7 +710,6 @@
       color: var(--muted);
     }
 
-    /* ===== INTERACTIONS ===== */
     button,
     a,
     .service-card,
@@ -781,7 +818,6 @@
       }
     }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .nav-wrap {
         flex-direction: column;
@@ -898,20 +934,17 @@
     </div>
   </nav>
 
+  <!-- HERO: Removed Book Appointment button, kept View Services only -->
   <header class="hero">
     <div class="hero-card">
       <h1>Luxury Hair, Nails & Lashes</h1>
       <p>
-        Welcome to Icey Beauty Studio — where beauty meets style. Book your next
-        appointment for nails, braids, weaving, lashes, and glam beauty services.
+        Welcome to Icey Beauty Studio — where beauty meets style. Explore our
+        services for nails, braids, weaving, lashes, piercing, and glam beauty.
       </p>
 
       <div class="hero-actions">
-        <button type="button" class="btn btn-primary" id="bookNowBtn">
-          <i class="fa-solid fa-calendar-check"></i> Book Appointment
-        </button>
-
-        <a href="#services" class="btn btn-outline">
+        <a href="#services" class="btn btn-primary">
           <i class="fa-solid fa-star"></i> View Services
         </a>
       </div>
@@ -1204,37 +1237,44 @@
           <span id="summaryTotalPrice">CA$0.00</span>
         </div>
 
-        <button type="button" class="btn btn-primary" id="modalBookBtn" style="margin-top:18px;">
-          <i class="fa-solid fa-calendar-check"></i> Book Appointment
-        </button>
-
-        <div class="payment-options">
-          <a
-            href="https://buy.stripe.com/cNi5kE4IDgQt3MRd495os00"
-            class="payment-link pay-card"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i class="fa-solid fa-credit-card"></i> Pay Deposit by Card
-          </a>
-        </div>
-
-        <div class="deposit-note">
-          <strong>$20 Deposit Required</strong><br />
-          A $20 deposit secures your appointment and goes toward your final service total.
+        <!-- STEP 1: PAY DEPOSIT FIRST -->
+        <div class="deposit-note" style="margin-top:22px;">
+          <strong><i class="fa-solid fa-lock"></i> Step 1: Pay Your $20 Deposit</strong><br />
+          A $20 deposit is required before you can book your appointment. It goes toward your final service total.
           <br /><br />
           Deposit email: <strong>omoseleesther113@gmail.com</strong>
+        </div>
+
+        <div class="stripe-payment-container">
+          <stripe-buy-button
+            buy-button-id="buy_btn_1TDAAuKKhxTLEvu1T8Y8O2TE"
+            publishable-key="pk_live_51TApJ2KKhxTLEvu1IWxXClWqmjCJc4TDt4bOXhMUd8QCrAJyR2V1YlefouLP8BwwqoB7xPgMH9P8YYxKPd2FHhfs00pf00VAvs"
+          >
+          </stripe-buy-button>
+        </div>
+
+        <!-- STEP 2: BOOK APPOINTMENT (LOCKED UNTIL DEPOSIT PAID) -->
+        <div style="margin-top:24px;">
+          <strong style="display:block;margin-bottom:8px;"><i class="fa-solid fa-calendar-check"></i> Step 2: Book Your Appointment</strong>
+
+          <div id="lockNotice" class="lock-notice">
+            <i class="fa-solid fa-lock"></i> Pay your $20 deposit above to unlock booking.
+          </div>
+
+          <button type="button" class="btn btn-locked" id="modalBookBtn" style="margin-top:12px;width:100%;" disabled>
+            <i class="fa-solid fa-lock"></i> Book Appointment (Pay Deposit First)
+          </button>
+
+          <button type="button" class="btn btn-outline" id="unlockBookingBtn" style="margin-top:12px;font-size:0.85rem;">
+            <i class="fa-solid fa-unlock"></i> I've Already Paid My Deposit
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- FLOATING BUTTONS -->
+  <!-- FLOATING BUTTONS: Removed Book button, kept Text & WhatsApp -->
   <div class="float-buttons">
-    <a href="#" class="float-btn book-btn" id="floatBookBtn">
-      <i class="fa-solid fa-calendar"></i> Book
-    </a>
-
     <a href="sms:2263409285" class="float-btn text-btn">
       <i class="fa-solid fa-comment"></i> Text Us
     </a>
@@ -1251,6 +1291,7 @@
 
   <script>
     var calendlyUrl = "https://calendly.com/omoseleesther1113/30min";
+    var depositPaid = false;
 
     var modal = document.getElementById("serviceModal");
     var modalContent = document.querySelector(".modal-content");
@@ -1279,6 +1320,10 @@
     var summaryAddOns = document.getElementById("summaryAddOns");
     var summaryTotalPrice = document.getElementById("summaryTotalPrice");
 
+    var modalBookBtn = document.getElementById("modalBookBtn");
+    var unlockBookingBtn = document.getElementById("unlockBookingBtn");
+    var lockNotice = document.getElementById("lockNotice");
+
     var currentServiceKey = null;
     var currentServiceOption = null;
     var selectedAddOns = [];
@@ -1297,252 +1342,118 @@
         title: "ACRYLIC",
         desc: "Choose your acrylic service, then continue to view available options.",
         options: [
-          {
-            title: "Short Full Set @ CA$40.00",
-            price: 40,
-            desc: "A short acrylic full set (1-2) magnets. 1-2 solid gel color polishes.",
-            addOns: [].concat(commonAddOns)
-          },
-          {
-            title: "Medium Full Set @ CA$55.00",
-            price: 55,
-            desc: "A medium length full set (3-4 magnets). 1-2 solid gel color polishes.",
-            addOns: [].concat(commonAddOns)
-          },
-          {
-            title: "Long Full Set @ CA$70.00",
-            price: 70,
-            desc: "Long acrylic full set (5-6 magnets). 1-2 solid gel color polishes.",
-            addOns: [].concat(commonAddOns)
-          },
-          {
-            title: "Fill-In @ CA$50.00",
-            price: 50,
-            desc: "An acrylic fill-in on your enhancements. This service is for nails that are LESS than 4 weeks old.",
-            addOns: [].concat(commonAddOns)
-          }
+          { title: "Short Full Set @ CA$40.00", price: 40, desc: "A short acrylic full set (1-2) magnets. 1-2 solid gel color polishes.", addOns: [].concat(commonAddOns) },
+          { title: "Medium Full Set @ CA$55.00", price: 55, desc: "A medium length full set (3-4 magnets). 1-2 solid gel color polishes.", addOns: [].concat(commonAddOns) },
+          { title: "Long Full Set @ CA$70.00", price: 70, desc: "Long acrylic full set (5-6 magnets). 1-2 solid gel color polishes.", addOns: [].concat(commonAddOns) },
+          { title: "Fill-In @ CA$50.00", price: 50, desc: "An acrylic fill-in on your enhancements. This service is for nails that are LESS than 4 weeks old.", addOns: [].concat(commonAddOns) }
         ]
       },
       "gel": {
         title: "GEL",
         desc: "Choose your gel service, then continue to view available options.",
         options: [
-          {
-            title: "Gel Manicure @ CA$30.00",
-            price: 30,
-            desc: "Selecting this service ensures a solid base color on your natural nail only.",
-            addOns: [].concat(commonAddOns)
-          },
-          {
-            title: "Clear Manicure @ CA$25.00",
-            price: 25,
-            desc: "Selecting this option offers a cuticle and nail clean up with absolutely no color or designs, offering a clear clean up to your nails. Perfect for men and women.",
-            addOns: [].concat(commonAddOns)
-          },
-          {
-            title: "Short Gel-X Set @ CA$40.00",
-            price: 40,
-            desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape.",
-            addOns: [].concat(commonAddOns)
-          },
-          {
-            title: "Medium Gel-X Set @ CA$55.00",
-            price: 55,
-            desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape.",
-            addOns: [].concat(commonAddOns)
-          },
-          {
-            title: "Long Gel-X Set",
-            price: 0,
-            desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape.",
-            addOns: [].concat(commonAddOns)
-          }
+          { title: "Gel Manicure @ CA$30.00", price: 30, desc: "Selecting this service ensures a solid base color on your natural nail only.", addOns: [].concat(commonAddOns) },
+          { title: "Clear Manicure @ CA$25.00", price: 25, desc: "Selecting this option offers a cuticle and nail clean up with absolutely no color or designs, offering a clear clean up to your nails. Perfect for men and women.", addOns: [].concat(commonAddOns) },
+          { title: "Short Gel-X Set @ CA$40.00", price: 40, desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape.", addOns: [].concat(commonAddOns) },
+          { title: "Medium Gel-X Set @ CA$55.00", price: 55, desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape.", addOns: [].concat(commonAddOns) },
+          { title: "Long Gel-X Set", price: 0, desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel. This gives the nail a natural looking, flexible, but durable shape.", addOns: [].concat(commonAddOns) }
         ]
       },
       "sew-in": {
         title: "SEW-IN",
         desc: "Choose your sew-in service, then continue to view available options.",
         options: [
-          {
-            title: "Basic Sew @ CA$90.00",
-            price: 90,
-            desc: "Middle / side part. This service includes braiding down and styling. Must provide at least 3-4 bundles. Natural Hair must be washed and blown out. No products in hair.",
-            addOns: []
-          },
-          {
-            title: "Closure Sew-In @ CA$120.00",
-            price: 120,
-            desc: "This service includes braiding down and styling. Must provide at least a closure with 3-4 bundles. Natural Hair must be washed and blown out. No products in hair.",
-            addOns: []
-          },
-          {
-            title: "Braids + Quick Weave @ CA$175.00",
-            price: 175,
-            desc: "Jayda style.",
-            addOns: []
-          }
+          { title: "Basic Sew @ CA$90.00", price: 90, desc: "Middle / side part. This service includes braiding down and styling. Must provide at least 3-4 bundles. Natural Hair must be washed and blown out. No products in hair.", addOns: [] },
+          { title: "Closure Sew-In @ CA$120.00", price: 120, desc: "This service includes braiding down and styling. Must provide at least a closure with 3-4 bundles. Natural Hair must be washed and blown out. No products in hair.", addOns: [] },
+          { title: "Braids + Quick Weave @ CA$175.00", price: 175, desc: "Jayda style.", addOns: [] }
         ]
       },
       "locs": {
         title: "LOCS",
         desc: "Choose your loc service, then continue to view available options.",
         options: [
-          {
-            title: "Starter Locs (Small) @ CA$250.00",
-            price: 250,
-            desc: "The price for small starter Locs starts at $250 and goes up based on the length of your hair. If your hair length is past your neck, you will be charged more. Please text me based on your hair length IF longer than your neck.",
-            addOns: []
-          },
-          {
-            title: "Starter Locs (Medium) @ CA$180.00",
-            price: 180,
-            desc: "The price for medium starter Locs starts at $180 and goes up based on the length of your hair. If your hair length is past your neck, you will be charged more. Please text me based on your hair length IF longer than your neck.",
-            addOns: []
-          },
-          {
-            title: "MicroLoc Retwist",
-            price: 0,
-            desc: "This method uses an interlocking tool. If you have over 200 locs, you will be charged an additional fee. There will be add on fees for every 20 locs that you have if over 200.",
-            addOns: []
-          },
-          {
-            title: "Loc Maintenance — Interlocking (1-75 Locs) @ CA$80.00",
-            price: 80,
-            desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance.",
-            addOns: []
-          },
-          {
-            title: "Interlocking (75-100 Locs) @ CA$120.00",
-            price: 120,
-            desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance.",
-            addOns: []
-          },
-          {
-            title: "Interlocking (100-130 Locs) @ CA$140.00",
-            price: 140,
-            desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance.",
-            addOns: []
-          }
+          { title: "Starter Locs (Small) @ CA$250.00", price: 250, desc: "The price for small starter Locs starts at $250 and goes up based on the length of your hair. If your hair length is past your neck, you will be charged more. Please text me based on your hair length IF longer than your neck.", addOns: [] },
+          { title: "Starter Locs (Medium) @ CA$180.00", price: 180, desc: "The price for medium starter Locs starts at $180 and goes up based on the length of your hair. If your hair length is past your neck, you will be charged more. Please text me based on your hair length IF longer than your neck.", addOns: [] },
+          { title: "MicroLoc Retwist", price: 0, desc: "This method uses an interlocking tool. If you have over 200 locs, you will be charged an additional fee. There will be add on fees for every 20 locs that you have if over 200.", addOns: [] },
+          { title: "Loc Maintenance — Interlocking (1-75 Locs) @ CA$80.00", price: 80, desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance.", addOns: [] },
+          { title: "Interlocking (75-100 Locs) @ CA$120.00", price: 120, desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance.", addOns: [] },
+          { title: "Interlocking (100-130 Locs) @ CA$140.00", price: 140, desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance.", addOns: [] }
         ]
       },
       "twist": {
         title: "TWIST",
         desc: "Choose your twist service, then continue to view available options.",
         options: [
-          {
-            title: "Barrel Twists (Natural Hair, Not Locs)",
-            price: 0,
-            desc: "Hair must be washed & blow-dried. Price may vary depending on length & thickness of hair & desired style.",
-            addOns: []
-          },
-          {
-            title: "Twists (Natural Hair) @ CA$70.00",
-            price: 70,
-            desc: "Medium-sized. Hair must be washed & blow dried.",
-            addOns: []
-          },
-          {
-            title: "Kinky Twist @ CA$100.00",
-            price: 100,
-            desc: "Medium-sized hair must be washed and blow-dried.",
-            addOns: []
-          }
+          { title: "Barrel Twists (Natural Hair, Not Locs)", price: 0, desc: "Hair must be washed & blow-dried. Price may vary depending on length & thickness of hair & desired style.", addOns: [] },
+          { title: "Twists (Natural Hair) @ CA$70.00", price: 70, desc: "Medium-sized. Hair must be washed & blow dried.", addOns: [] },
+          { title: "Kinky Twist @ CA$100.00", price: 100, desc: "Medium-sized hair must be washed and blow-dried.", addOns: [] }
         ]
       },
       "knotless": {
         title: "KNOTLESS",
         desc: "Choose your knotless braid service, then continue to view available options.",
         options: [
-          {
-            title: "Small (Midback) @ CA$180.00",
-            price: 180,
-            desc: "Small knotless braids with midback length.",
-            addOns: []
-          },
-          {
-            title: "Medium (Midback) @ CA$130.00",
-            price: 130,
-            desc: "Medium knotless braids with midback length.",
-            addOns: []
-          },
-          {
-            title: "Medium (Waist Length) @ CA$150.00",
-            price: 150,
-            desc: "Medium knotless braids with waist length.",
-            addOns: []
-          },
-          {
-            title: "Medium (Butt Length) @ CA$180.00",
-            price: 180,
-            desc: "Medium knotless braids with butt length.",
-            addOns: []
-          },
-          {
-            title: "Large (Waist/Butt) @ CA$120.00",
-            price: 120,
-            desc: "Large knotless braids with waist/butt length.",
-            addOns: []
-          }
+          { title: "Small (Midback) @ CA$180.00", price: 180, desc: "Small knotless braids with midback length.", addOns: [] },
+          { title: "Medium (Midback) @ CA$130.00", price: 130, desc: "Medium knotless braids with midback length.", addOns: [] },
+          { title: "Medium (Waist Length) @ CA$150.00", price: 150, desc: "Medium knotless braids with waist length.", addOns: [] },
+          { title: "Medium (Butt Length) @ CA$180.00", price: 180, desc: "Medium knotless braids with butt length.", addOns: [] },
+          { title: "Large (Waist/Butt) @ CA$120.00", price: 120, desc: "Large knotless braids with waist/butt length.", addOns: [] }
         ]
       },
       "boho": {
         title: "BOHO",
         desc: "Choose your boho braid service, then continue to view available options.",
         options: [
-          {
-            title: "Small (Midback) @ CA$250.00",
-            price: 250,
-            desc: "This style includes curly ends, with length up to the lower back.",
-            addOns: []
-          },
-          {
-            title: "Medium (Midback/Waist) @ CA$200.00",
-            price: 200,
-            desc: "This style includes curly ends, with length up to the lower back.",
-            addOns: []
-          }
+          { title: "Small (Midback) @ CA$250.00", price: 250, desc: "This style includes curly ends, with length up to the lower back.", addOns: [] },
+          { title: "Medium (Midback/Waist) @ CA$200.00", price: 200, desc: "This style includes curly ends, with length up to the lower back.", addOns: [] }
         ]
       },
       "piercing": {
         title: "PIERCING",
         desc: "Choose your piercing service, then continue to view available options.",
         options: [
-          {
-            title: "Ear Piercing @ CA$25.00",
-            price: 25,
-            desc: "30 minutes. This service includes stainless steel jewelry. A piercing gun is being used.",
-            addOns: []
-          },
-          {
-            title: "Nose Piercing @ CA$30.00",
-            price: 30,
-            desc: "30 minutes. This service includes stainless steel jewelry. A piercing gun is being used.",
-            addOns: []
-          }
+          { title: "Ear Piercing @ CA$25.00", price: 25, desc: "30 minutes. This service includes stainless steel jewelry. A piercing gun is being used.", addOns: [] },
+          { title: "Nose Piercing @ CA$30.00", price: 30, desc: "30 minutes. This service includes stainless steel jewelry. A piercing gun is being used.", addOns: [] }
         ]
       },
       "lashes": {
         title: "LASHES",
         desc: "Choose your lash service, then continue to view available options.",
         options: [
-          {
-            title: "Classic & Hybrid Full Set @ CA$40.00",
-            price: 40,
-            desc: "45 minutes. Classic and hybrid lash full set application.",
-            addOns: []
-          },
-          {
-            title: "All Cluster Sets @ CA$40.00",
-            price: 40,
-            desc: "Cluster lash set application. Starting at CA$40.00.",
-            addOns: []
-          }
+          { title: "Classic & Hybrid Full Set @ CA$40.00", price: 40, desc: "45 minutes. Classic and hybrid lash full set application.", addOns: [] },
+          { title: "All Cluster Sets @ CA$40.00", price: 40, desc: "Cluster lash set application. Starting at CA$40.00.", addOns: [] }
         ]
       }
     };
 
+    // Unlock booking function
+    function unlockBooking() {
+      depositPaid = true;
+      modalBookBtn.disabled = false;
+      modalBookBtn.className = "btn btn-unlocked";
+      modalBookBtn.innerHTML = '<i class="fa-solid fa-calendar-check"></i> Book Appointment Now';
+      lockNotice.className = "lock-notice paid";
+      lockNotice.innerHTML = '<i class="fa-solid fa-check-circle"></i> Deposit confirmed! You can now book your appointment.';
+      unlockBookingBtn.style.display = "none";
+    }
+
+    // Reset booking lock
+    function resetBookingLock() {
+      depositPaid = false;
+      modalBookBtn.disabled = true;
+      modalBookBtn.className = "btn btn-locked";
+      modalBookBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Book Appointment (Pay Deposit First)';
+      lockNotice.className = "lock-notice";
+      lockNotice.innerHTML = '<i class="fa-solid fa-lock"></i> Pay your $20 deposit above to unlock booking.';
+      unlockBookingBtn.style.display = "inline-flex";
+    }
+
     function openCalendly(e) {
       if (e) e.preventDefault();
+      if (!depositPaid) {
+        alert("Please pay your $20 deposit first before booking your appointment.");
+        return;
+      }
       if (window.Calendly) {
         Calendly.initPopupWidget({ url: calendlyUrl });
       } else {
@@ -1573,6 +1484,7 @@
       summaryTotalPrice.textContent = "CA$0.00";
       currentServiceOption = null;
       selectedAddOns = [];
+      resetBookingLock();
       scrollModalToTop();
     }
 
@@ -1595,7 +1507,6 @@
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("modal-open");
 
-      // Focus on close button for accessibility
       setTimeout(function() { closeModalBtn.focus(); }, 100);
     }
 
@@ -1715,9 +1626,19 @@
       currentServiceKey = null;
     }
 
-    document.getElementById("bookNowBtn").addEventListener("click", openCalendly);
-    document.getElementById("modalBookBtn").addEventListener("click", openCalendly);
-    document.getElementById("floatBookBtn").addEventListener("click", openCalendly);
+    // Event listeners
+    modalBookBtn.addEventListener("click", openCalendly);
+    unlockBookingBtn.addEventListener("click", function() {
+      var confirmed = confirm(
+        "Please confirm: Have you already paid the $20 deposit via the Stripe button above?\n\n" +
+        "If yes, click OK to unlock booking.\n" +
+        "If no, please pay your deposit first."
+      );
+      if (confirmed) {
+        unlockBooking();
+      }
+    });
+
     closeModalBtn.addEventListener("click", closeService);
     continueToOptionsBtn.addEventListener("click", showOptions);
     continueToSummaryBtn.addEventListener("click", showSummary);
@@ -1731,12 +1652,10 @@
       });
     });
 
-    // Close modal on backdrop click
     modal.addEventListener("click", function(e) {
       if (e.target === modal) closeService();
     });
 
-    // Close modal on Escape key
     document.addEventListener("keydown", function(e) {
       if (e.key === "Escape") closeService();
     });
@@ -1763,11 +1682,10 @@
       }
     });
 
-    // Footer year
     document.getElementById("footerYear").textContent =
       "\u00A9 " + new Date().getFullYear() + " ICEY BEAUTY STUDIO. All rights reserved.";
 
-    // Click animation using event delegation (catches dynamically created elements too)
+    // Click animation using event delegation
     document.addEventListener("click", function(e) {
       var el = e.target.closest(
         'a, button, .service-card, .modal-close, .payment-link, .float-btn'
@@ -1778,7 +1696,6 @@
       }
     });
 
-    // Active nav link highlight
     var navLinks = document.querySelectorAll(".nav-links a");
     navLinks.forEach(function(link) {
       link.addEventListener("click", function() {
