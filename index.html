@@ -175,23 +175,41 @@
       text-decoration: none;
     }
 
-    .logo {
-      width: 120px;
-      height: auto;
-      object-fit: contain;
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      color: var(--accent);
+      background: linear-gradient(135deg, rgba(126,247,255,0.12), rgba(255,122,217,0.12));
+      border: 1px solid rgba(126, 247, 255, 0.2);
+      box-shadow: 0 0 16px rgba(126, 247, 255, 0.15);
     }
 
     .brand-text strong {
       display: block;
-      font-size: 0.96rem;
-      letter-spacing: 0.08em;
+      font-family: "Playfair Display", serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+
+    .brand-highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .brand-text span {
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       color: var(--muted);
-      letter-spacing: 0.18em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
     }
 
     .nav-right {
@@ -763,10 +781,12 @@
   <nav aria-label="Main Navigation">
     <div class="container nav-wrap">
       <a href="#" class="brand">
-        <img src="logo.png" class="logo" alt="Icey Beauty Studio logo" />
+        <div class="brand-icon">
+          <i class="fa-solid fa-snowflake"></i>
+        </div>
         <div class="brand-text">
-          <strong>ICEY BEAUTY STUDIO</strong>
-          <span>Luxury Beauty</span>
+          <strong>ICEY <span class="brand-highlight">BEAUTY</span> STUDIO</strong>
+          <span>Luxury Beauty &bull; Windsor</span>
         </div>
       </a>
 
@@ -803,7 +823,6 @@
     </div>
   </nav>
 
-  <!-- 1. HERO — Owner's photo as background -->
   <header class="hero">
     <div class="hero-card">
       <h1>Luxury Hair, Nails & Lashes</h1>
@@ -825,7 +844,6 @@
   </header>
 
   <main>
-    <!-- 2. MEET YOUR ARTIST — Build trust first -->
     <section id="artist" class="section">
       <div class="container">
         <h2 class="section-title">Meet Your Artist</h2>
@@ -851,7 +869,6 @@
       </div>
     </section>
 
-    <!-- 3. BOOKING POLICIES — Set expectations before services -->
     <section id="policy" class="section">
       <div class="container">
         <h2 class="section-title">Booking Policies</h2>
@@ -882,7 +899,6 @@
       </div>
     </section>
 
-    <!-- 4. SERVICES — Now they're ready to pick and book -->
     <section id="services" class="section">
       <div class="container">
         <h2 class="section-title">Our Services</h2>
@@ -906,7 +922,13 @@
           <button class="service-card" data-service="sew-in">
             <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
             <h3>SEW-IN</h3>
-            <p>Basic sew, closure sew-in, locs, and maintenance.</p>
+            <p>Basic sew, closure sew-in, and quick weave styles.</p>
+          </button>
+
+          <button class="service-card" data-service="locs">
+            <div class="service-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+            <h3>LOCS</h3>
+            <p>Starter locs, retwists, and loc maintenance.</p>
           </button>
 
           <button class="service-card" data-service="twist">
@@ -930,7 +952,6 @@
       </div>
     </section>
 
-    <!-- 5. GALLERY — Showcase work -->
     <section id="gallery" class="section">
       <div class="container">
         <h2 class="section-title">Our Work</h2>
@@ -973,7 +994,6 @@
       </div>
     </section>
 
-    <!-- 6. CONTACT — Final call to action -->
     <section id="contact" class="section">
       <div class="container">
         <h2 class="section-title">Visit Icey Beauty Studio</h2>
@@ -1252,16 +1272,16 @@
       },
       "sew-in": {
         title: "SEW-IN",
-        desc: "Choose your sew-in or loc service, then continue to view available options.",
+        desc: "Choose your sew-in service, then continue to view available options.",
         options: [
           {
-            title: "Basic Sew @ CA$90",
+            title: "Basic Sew @ CA$90.00",
             price: 90,
             desc: "Middle / side part. This service includes braiding down and styling. Must provide at least 3-4 bundles. Natural Hair must be washed and blown out. No products in hair.",
             addOns: []
           },
           {
-            title: "Closure Sew-In @ CA$120",
+            title: "Closure Sew-In @ CA$120.00",
             price: 120,
             desc: "This service includes braiding down and styling. Must provide at least a closure with 3-4 bundles. Natural Hair must be washed and blown out. No products in hair.",
             addOns: []
@@ -1271,15 +1291,21 @@
             price: 175,
             desc: "Jayda style.",
             addOns: []
-          },
+          }
+        ]
+      },
+      "locs": {
+        title: "LOCS",
+        desc: "Choose your loc service, then continue to view available options.",
+        options: [
           {
-            title: "Starter Locs (Small)",
+            title: "Starter Locs (Small) @ CA$250.00",
             price: 250,
             desc: "The price for small starter Locs starts at $250 and goes up based on the length of your hair. If your hair length is past your neck, you will be charged more. Please text me based on your hair length IF longer than your neck.",
             addOns: []
           },
           {
-            title: "Starter Locs (Medium)",
+            title: "Starter Locs (Medium) @ CA$180.00",
             price: 180,
             desc: "The price for medium starter Locs starts at $180 and goes up based on the length of your hair. If your hair length is past your neck, you will be charged more. Please text me based on your hair length IF longer than your neck.",
             addOns: []
@@ -1291,7 +1317,7 @@
             addOns: []
           },
           {
-            title: "Loc Maintenance Interlocking (1-75 Locs) @ CA$80.00",
+            title: "Loc Maintenance — Interlocking (1-75 Locs) @ CA$80.00",
             price: 80,
             desc: "If you need more than a basic retwist then you need to book a consultation. For example, if you haven't had a retwist in 2+ months, you may need crochet maintenance.",
             addOns: []
