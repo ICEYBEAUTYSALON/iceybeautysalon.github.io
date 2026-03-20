@@ -11,8 +11,15 @@
   />
   <meta
     name="keywords"
-    content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lashes Windsor, beauty salon Windsor, Icey Beauty Studio"
+    content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lashes Windsor, beauty salon Windsor, Icey Beauty Studio, piercing Windsor"
   />
+
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="ICEY BEAUTY STUDIO | Luxury Beauty in Windsor" />
+  <meta property="og:description" content="Luxury nails, braids, lashes, piercing and beauty services in Windsor, Ontario. Book your appointment today." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo.png" />
+  <meta property="og:url" content="https://iceybeautystudio.com" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,6 +131,7 @@
       border-radius: 999px;
       cursor: pointer;
       font-weight: 700;
+      font-size: 1rem;
       text-decoration: none;
       transition:
         transform 0.2s ease,
@@ -151,6 +159,7 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
+    /* ===== NAV ===== */
     nav {
       position: fixed;
       inset: 0 0 auto 0;
@@ -161,7 +170,7 @@
     }
 
     .nav-wrap {
-      min-height: 78px;
+      min-height: 100px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -171,21 +180,24 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
     }
 
-    .brand-icon {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      font-size: 1.2rem;
-      color: var(--accent);
-      background: linear-gradient(135deg, rgba(126,247,255,0.12), rgba(255,122,217,0.12));
-      border: 1px solid rgba(126, 247, 255, 0.2);
-      box-shadow: 0 0 16px rgba(126, 247, 255, 0.15);
+    .brand-logo {
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      mix-blend-mode: lighten;
     }
 
     .brand-text strong {
@@ -275,6 +287,7 @@
         color 0.2s ease;
     }
 
+    /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -283,7 +296,8 @@
         linear-gradient(rgba(7,7,10,0.55), rgba(7,7,10,0.75)),
         url("herpicture.jpeg")
         center top/cover no-repeat;
-      padding: 120px 0 70px;
+      background-color: #0a0a10;
+      padding: 140px 0 70px;
       text-align: center;
     }
 
@@ -316,6 +330,7 @@
       flex-wrap: wrap;
     }
 
+    /* ===== SERVICES ===== */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -340,6 +355,7 @@
         border-color 0.2s ease,
         color 0.2s ease;
       font: inherit;
+      font-size: 1rem;
       -webkit-appearance: none;
       appearance: none;
       position: relative;
@@ -358,6 +374,7 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
 
+    /* ===== ARTIST ===== */
     .artist-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -383,6 +400,7 @@
       border-radius: 22px;
     }
 
+    /* ===== GALLERY ===== */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -405,6 +423,7 @@
       object-fit: cover;
     }
 
+    /* ===== POLICY ===== */
     .policy-box {
       padding: 34px;
       border-radius: 22px;
@@ -424,6 +443,7 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
 
+    /* ===== CONTACT ===== */
     .contact-card {
       padding: 36px 24px;
       border-radius: 24px;
@@ -483,6 +503,7 @@
       gap: 12px;
     }
 
+    /* ===== MODAL ===== */
     .modal {
       display: none;
       position: fixed;
@@ -495,10 +516,13 @@
       padding: 20px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .modal.active {
       display: flex;
+      opacity: 1;
     }
 
     .modal-content {
@@ -513,6 +537,18 @@
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: var(--shadow);
       text-align: center;
+      animation: modalSlideIn 0.3s ease;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .modal-close {
@@ -531,6 +567,7 @@
       color: white;
       background: rgba(255,255,255,0.12);
       z-index: 10;
+      font-size: 1rem;
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
@@ -564,11 +601,12 @@
       border-radius: 14px;
       text-decoration: none;
       font-weight: 700;
+      font-size: 0.95rem;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.04);
       color: white;
       cursor: pointer;
-      font: inherit;
+      font-family: "Poppins", sans-serif;
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
@@ -583,6 +621,7 @@
       color: #081014;
     }
 
+    /* ===== FLOAT BUTTONS ===== */
     .float-buttons {
       position: fixed;
       right: 18px;
@@ -598,6 +637,7 @@
       border-radius: 999px;
       text-decoration: none;
       font-weight: 700;
+      font-size: 0.95rem;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -632,6 +672,7 @@
       color: var(--muted);
     }
 
+    /* ===== INTERACTIONS ===== */
     button,
     a,
     .service-card,
@@ -740,6 +781,7 @@
       }
     }
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .nav-wrap {
         flex-direction: column;
@@ -753,11 +795,17 @@
       .artist-layout {
         grid-template-columns: 1fr;
       }
+
+      .brand-logo,
+      .brand-logo img {
+        width: 110px;
+        height: 110px;
+      }
     }
 
     @media (max-width: 700px) {
       .hero {
-        padding-top: 150px;
+        padding-top: 180px;
       }
 
       .float-buttons {
@@ -774,15 +822,41 @@
         padding: 20px 16px 28px;
         margin: 20px auto;
       }
+
+      .brand-logo,
+      .brand-logo img {
+        width: 90px;
+        height: 90px;
+      }
+
+      .brand-text strong {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .brand-logo,
+      .brand-logo img {
+        width: 75px;
+        height: 75px;
+      }
+
+      .brand-text strong {
+        font-size: 0.9rem;
+      }
+
+      .brand-text span {
+        font-size: 0.55rem;
+      }
     }
   </style>
 </head>
 <body>
   <nav aria-label="Main Navigation">
     <div class="container nav-wrap">
-      <a href="#" class="brand">
-        <div class="brand-icon" style="background:none;border:none;box-shadow:none;padding:0;width:80px;height:80px;">
-          <img src="logo.png" alt="Icey Beauty Studio Logo" style="width:80px;height:80px;object-fit:contain;mix-blend-mode:lighten;" />
+      <a href="#" class="brand" aria-label="Icey Beauty Studio Home">
+        <div class="brand-logo">
+          <img src="logo.png" alt="Icey Beauty Studio Logo" />
         </div>
 
         <div class="brand-text">
@@ -793,7 +867,7 @@
 
       <div class="nav-right">
         <div class="nav-links">
-          <a href="#">Home</a>
+          <a href="#" class="active-link">Home</a>
           <a href="#artist">About</a>
           <a href="#policy">Policies</a>
           <a href="#services">Services</a>
@@ -833,12 +907,12 @@
       </p>
 
       <div class="hero-actions">
-        <button class="btn btn-primary" id="bookNowBtn">
+        <button type="button" class="btn btn-primary" id="bookNowBtn">
           <i class="fa-solid fa-calendar-check"></i> Book Appointment
         </button>
 
         <a href="#services" class="btn btn-outline">
-          <i class="fa-solid fa-sparkles"></i> View Services
+          <i class="fa-solid fa-star"></i> View Services
         </a>
       </div>
     </div>
@@ -854,7 +928,7 @@
 
         <div class="artist-layout">
           <div class="artist-image">
-            <img src="herpicture.jpeg" alt="Artist at Icey Beauty Studio">
+            <img src="herpicture.jpeg" alt="Artist at Icey Beauty Studio" loading="lazy">
           </div>
 
           <div class="artist-card glass">
@@ -908,55 +982,55 @@
         </p>
 
         <div class="services-grid">
-          <button class="service-card" data-service="acrylic">
+          <button type="button" class="service-card" data-service="acrylic">
             <div class="service-icon"><i class="fa-solid fa-hand-sparkles"></i></div>
             <h3>ACRYLIC</h3>
             <p>Short, medium, long full sets and fill-ins.</p>
           </button>
 
-          <button class="service-card" data-service="gel">
+          <button type="button" class="service-card" data-service="gel">
             <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
             <h3>GEL</h3>
             <p>Gel manicure, clear manicure, and Gel-X sets.</p>
           </button>
 
-          <button class="service-card" data-service="sew-in">
+          <button type="button" class="service-card" data-service="sew-in">
             <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
             <h3>SEW-IN</h3>
             <p>Basic sew, closure sew-in, and quick weave styles.</p>
           </button>
 
-          <button class="service-card" data-service="locs">
+          <button type="button" class="service-card" data-service="locs">
             <div class="service-icon"><i class="fa-solid fa-circle-nodes"></i></div>
             <h3>LOCS</h3>
             <p>Starter locs, retwists, and loc maintenance.</p>
           </button>
 
-          <button class="service-card" data-service="twist">
+          <button type="button" class="service-card" data-service="twist">
             <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
             <h3>TWIST</h3>
             <p>Barrel twists, twists, and kinky twist styles.</p>
           </button>
 
-          <button class="service-card" data-service="knotless">
+          <button type="button" class="service-card" data-service="knotless">
             <div class="service-icon"><i class="fa-solid fa-link"></i></div>
             <h3>KNOTLESS</h3>
             <p>Small, medium, and large knotless braid options.</p>
           </button>
 
-          <button class="service-card" data-service="boho">
+          <button type="button" class="service-card" data-service="boho">
             <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
             <h3>BOHO</h3>
             <p>Small and medium boho braid styles with curly ends.</p>
           </button>
 
-          <button class="service-card" data-service="piercing">
+          <button type="button" class="service-card" data-service="piercing">
             <div class="service-icon"><i class="fa-solid fa-ring"></i></div>
             <h3>PIERCING</h3>
             <p>Ear and nose piercing with stainless steel jewelry.</p>
           </button>
 
-          <button class="service-card" data-service="lashes">
+          <button type="button" class="service-card" data-service="lashes">
             <div class="service-icon"><i class="fa-solid fa-eye"></i></div>
             <h3>LASHES</h3>
             <p>Classic, hybrid full sets and cluster lash sets.</p>
@@ -974,34 +1048,34 @@
 
         <div class="gallery-grid">
           <div class="gallery-item">
-            <img src="theworkimage1.jpeg" alt="Icey Beauty Studio work photo 1">
+            <img src="theworkimage1.jpeg" alt="Icey Beauty Studio work photo 1" loading="lazy">
           </div>
           <div class="gallery-item">
-            <img src="theworkimage2.jpeg" alt="Icey Beauty Studio work photo 2">
+            <img src="theworkimage2.jpeg" alt="Icey Beauty Studio work photo 2" loading="lazy">
           </div>
           <div class="gallery-item">
-            <img src="theworkimage3.jpeg" alt="Icey Beauty Studio work photo 3">
+            <img src="theworkimage3.jpeg" alt="Icey Beauty Studio work photo 3" loading="lazy">
           </div>
           <div class="gallery-item">
-            <img src="theworkimage4.jpeg" alt="Icey Beauty Studio work photo 4">
+            <img src="theworkimage4.jpeg" alt="Icey Beauty Studio work photo 4" loading="lazy">
           </div>
           <div class="gallery-item">
-            <img src="theworkimage5.jpeg" alt="Icey Beauty Studio work photo 5">
+            <img src="theworkimage5.jpeg" alt="Icey Beauty Studio work photo 5" loading="lazy">
           </div>
           <div class="gallery-item">
-            <img src="theworkimage6.jpeg" alt="Icey Beauty Studio work photo 6">
+            <img src="theworkimage6.jpeg" alt="Icey Beauty Studio work photo 6" loading="lazy">
           </div>
           <div class="gallery-item">
-            <img src="theworkimage7.jpeg" alt="Icey Beauty Studio work photo 7">
+            <img src="theworkimage7.jpeg" alt="Icey Beauty Studio work photo 7" loading="lazy">
           </div>
           <div class="gallery-item">
-            <img src="theworkimage8.jpeg" alt="Icey Beauty Studio beauty work sample 8">
+            <img src="theworkimage8.jpeg" alt="Icey Beauty Studio beauty work sample 8" loading="lazy">
           </div>
           <div class="gallery-item">
-            <img src="theworkimage9.jpeg" alt="Icey Beauty Studio beauty work sample 9">
+            <img src="theworkimage9.jpeg" alt="Icey Beauty Studio beauty work sample 9" loading="lazy">
           </div>
           <div class="gallery-item">
-            <img src="theworkimage10.jpeg" alt="Icey Beauty Studio beauty work sample 10">
+            <img src="theworkimage10.jpeg" alt="Icey Beauty Studio beauty work sample 10" loading="lazy">
           </div>
         </div>
       </div>
@@ -1074,6 +1148,7 @@
     </div>
   </footer>
 
+  <!-- SERVICE MODAL -->
   <div
     id="serviceModal"
     class="modal"
@@ -1083,7 +1158,7 @@
     aria-describedby="serviceDesc"
   >
     <div class="modal-content">
-      <button class="modal-close" id="closeModalBtn" aria-label="Close modal">
+      <button type="button" class="modal-close" id="closeModalBtn" aria-label="Close modal">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
@@ -1091,31 +1166,31 @@
       <p id="serviceDesc"></p>
 
       <div id="serviceStepOne">
-        <button class="btn btn-primary" id="continueToOptionsBtn">
+        <button type="button" class="btn btn-primary" id="continueToOptionsBtn">
           <i class="fa-solid fa-arrow-right"></i> Continue
         </button>
       </div>
 
       <div id="serviceStepTwo" style="display:none;">
-        <button class="btn btn-outline" id="backToStepOneBtn" type="button" style="margin-bottom:16px;">
+        <button type="button" class="btn btn-outline" id="backToStepOneBtn" style="margin-bottom:16px;">
           <i class="fa-solid fa-arrow-left"></i> Back
         </button>
         <div id="serviceOptions" class="payment-options"></div>
       </div>
 
       <div id="serviceStepThree" style="display:none;">
-        <button class="btn btn-outline" id="backToStepTwoBtn" type="button" style="margin-bottom:16px;">
+        <button type="button" class="btn btn-outline" id="backToStepTwoBtn" style="margin-bottom:16px;">
           <i class="fa-solid fa-arrow-left"></i> Back
         </button>
         <h3 id="selectedServiceOption" style="margin-bottom:14px;"></h3>
         <div id="serviceAddOns" class="payment-options"></div>
-        <button class="btn btn-primary" id="continueToSummaryBtn" style="margin-top:18px;">
+        <button type="button" class="btn btn-primary" id="continueToSummaryBtn" style="margin-top:18px;">
           <i class="fa-solid fa-arrow-right"></i> Continue
         </button>
       </div>
 
       <div id="serviceStepFour" style="display:none;">
-        <button class="btn btn-outline" id="backToStepThreeBtn" type="button" style="margin-bottom:16px;">
+        <button type="button" class="btn btn-outline" id="backToStepThreeBtn" style="margin-bottom:16px;">
           <i class="fa-solid fa-arrow-left"></i> Back
         </button>
         <h3 id="summaryServiceTitle" style="margin-bottom:10px;"></h3>
@@ -1129,7 +1204,7 @@
           <span id="summaryTotalPrice">CA$0.00</span>
         </div>
 
-        <button class="btn btn-primary" id="modalBookBtn" style="margin-top:18px;">
+        <button type="button" class="btn btn-primary" id="modalBookBtn" style="margin-top:18px;">
           <i class="fa-solid fa-calendar-check"></i> Book Appointment
         </button>
 
@@ -1154,6 +1229,7 @@
     </div>
   </div>
 
+  <!-- FLOATING BUTTONS -->
   <div class="float-buttons">
     <a href="#" class="float-btn book-btn" id="floatBookBtn">
       <i class="fa-solid fa-calendar"></i> Book
@@ -1469,6 +1545,8 @@
       if (e) e.preventDefault();
       if (window.Calendly) {
         Calendly.initPopupWidget({ url: calendlyUrl });
+      } else {
+        alert("Booking system is loading. Please try again in a moment, or call us at 226-340-9285 to book.");
       }
     }
 
@@ -1516,6 +1594,9 @@
       modal.classList.add("active");
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("modal-open");
+
+      // Focus on close button for accessibility
+      setTimeout(function() { closeModalBtn.focus(); }, 100);
     }
 
     function showOptions() {
@@ -1650,28 +1731,54 @@
       });
     });
 
+    // Close modal on backdrop click
     modal.addEventListener("click", function(e) {
       if (e.target === modal) closeService();
     });
 
+    // Close modal on Escape key
     document.addEventListener("keydown", function(e) {
       if (e.key === "Escape") closeService();
     });
 
-    document.getElementById("footerYear").textContent =
-      "\u00A9 " + new Date().getFullYear() + " ICEY BEAUTY STUDIO";
-
-    var clickables = document.querySelectorAll(
-      'a, button, .service-card, .modal-close, .payment-link, .float-btn'
-    );
-
-    clickables.forEach(function(el) {
-      el.addEventListener("click", function() {
-        el.classList.add("clicked");
-        setTimeout(function() { el.classList.remove("clicked"); }, 180);
-      });
+    // Focus trap for modal accessibility
+    modal.addEventListener("keydown", function(e) {
+      if (e.key !== "Tab") return;
+      var focusable = modal.querySelectorAll(
+        'button:not([disabled]), a[href], input, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
 
+    // Footer year
+    document.getElementById("footerYear").textContent =
+      "\u00A9 " + new Date().getFullYear() + " ICEY BEAUTY STUDIO. All rights reserved.";
+
+    // Click animation using event delegation (catches dynamically created elements too)
+    document.addEventListener("click", function(e) {
+      var el = e.target.closest(
+        'a, button, .service-card, .modal-close, .payment-link, .float-btn'
+      );
+      if (el) {
+        el.classList.add("clicked");
+        setTimeout(function() { el.classList.remove("clicked"); }, 180);
+      }
+    });
+
+    // Active nav link highlight
     var navLinks = document.querySelectorAll(".nav-links a");
     navLinks.forEach(function(link) {
       link.addEventListener("click", function() {
