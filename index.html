@@ -329,6 +329,52 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
 
+    /* ===== HAMBURGER MENU ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 46px;
+      height: 46px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      cursor: pointer;
+      padding: 0;
+      z-index: 10;
+      flex-shrink: 0;
+      transition: background 0.2s ease;
+    }
+
+    .hamburger:hover,
+    .hamburger:focus-visible {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+    /* ===== END HAMBURGER ===== */
+
     .hero {
       min-height: 100vh;
       display: grid;
@@ -699,47 +745,110 @@
       }
     }
 
+    /* ===== MOBILE NAV WITH HAMBURGER ===== */
     @media (max-width: 900px) {
-  .nav-wrap {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 16px;
-    gap: 6px;
-  }
+      .hamburger {
+        display: flex;
+      }
 
-  .brand {
-    width: 100%;
-    justify-content: flex-start;
-    margin-left: -35px;
-    padding-left: 0;
-  }
+      .nav-wrap {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 16px;
+        min-height: auto;
+        gap: 10px;
+        position: relative;
+      }
 
-  .nav-right {
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 0;
-    padding-left: 0;
-    gap: 8px;
-  }
-  .nav-links {
-    width: 100%;
-    justify-content: flex-start;
-    margin-left: 0;
-    padding-left: 0;
-  }
+      .brand {
+        width: auto;
+        justify-content: flex-start;
+        margin-left: 0;
+        padding-left: 0;
+      }
 
-  .social-icons {
-    width: 100%;
-    justify-content: center;
-    margin-left: 0;
-    padding-left: 0;
-  }
+      .brand-logo {
+        width: 70px;
+        height: 70px;
+      }
 
-  .artist-layout { grid-template-columns: 1fr; }
-}
+      .brand-logo img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .nav-right {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 28px 20px;
+        background: rgba(4, 4, 7, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        border-top: 1px solid rgba(255,255,255,0.06);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        transform: translateY(-15px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .nav-right.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 14px 16px;
+        border-radius: 12px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus {
+        background: rgba(255,255,255,0.06);
+      }
+
+      .nav-links a.active-link {
+        background: rgba(126, 247, 255, 0.08);
+      }
+
+      .social-icons {
+        justify-content: center;
+        margin-top: 10px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        width: 100%;
+      }
+
+      .artist-layout { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 700px) {
-      .hero { padding-top: 180px; }
+      .hero { padding-top: 140px; }
       .float-buttons { right: 12px; bottom: 12px; }
       .modal { padding: 10px; }
       .modal-content { width: 100%; padding: 20px 16px 28px; margin: 20px auto; }
@@ -766,7 +875,14 @@
         </div>
       </a>
 
-      <div class="nav-right">
+      <!-- HAMBURGER BUTTON -->
+      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-right" id="navRight">
         <div class="nav-links">
           <a href="#" class="active-link">Home</a>
           <a href="#artist">About</a>
@@ -1111,6 +1227,39 @@
     var currentServiceKey = null;
     var currentServiceOption = null;
     var selectedAddOns = [];
+
+    /* ===== HAMBURGER MENU ===== */
+    var hamburgerBtn = document.getElementById("hamburgerBtn");
+    var navRight = document.getElementById("navRight");
+
+    function closeMenu() {
+      hamburgerBtn.classList.remove("active");
+      navRight.classList.remove("open");
+      hamburgerBtn.setAttribute("aria-expanded", "false");
+    }
+
+    hamburgerBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      var isOpen = navRight.classList.contains("open");
+      if (isOpen) {
+        closeMenu();
+      } else {
+        hamburgerBtn.classList.add("active");
+        navRight.classList.add("open");
+        hamburgerBtn.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    document.addEventListener("click", function(e) {
+      if (!e.target.closest("nav")) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("scroll", function() {
+      closeMenu();
+    });
+    /* ===== END HAMBURGER ===== */
 
     var commonAddOns = [
       { title: "3D designs (Flowers, Sculpted art, etc.)", price: 20, desc: "+ 15 minutes @ CA$20.00" },
@@ -1480,12 +1629,13 @@
       }
     });
 
-    // Active nav link
+    // Active nav link + close hamburger menu on link click
     var navLinks = document.querySelectorAll(".nav-links a");
     navLinks.forEach(function(link) {
       link.addEventListener("click", function() {
         navLinks.forEach(function(item) { item.classList.remove("active-link"); });
         link.classList.add("active-link");
+        closeMenu();
       });
     });
   </script>
