@@ -757,7 +757,6 @@
         align-items: center;
         justify-content: space-between;
         padding: 8px 16px;
-        min-height: auto;
         gap: 10px;
         position: relative;
       }
@@ -767,16 +766,6 @@
         justify-content: flex-start;
         margin-left: 0;
         padding-left: 0;
-      }
-
-      .brand-logo {
-        width: 70px;
-        height: 70px;
-      }
-
-      .brand-logo img {
-        width: 70px;
-        height: 70px;
       }
 
       .nav-right {
@@ -848,7 +837,7 @@
     }
 
     @media (max-width: 700px) {
-      .hero { padding-top: 140px; }
+      .hero { padding-top: 180px; }
       .float-buttons { right: 12px; bottom: 12px; }
       .modal { padding: 10px; }
       .modal-content { width: 100%; padding: 20px 16px 28px; margin: 20px auto; }
@@ -1082,14 +1071,12 @@
       <h2 id="serviceTitle"></h2>
       <p id="serviceDesc"></p>
 
-      <!-- STEP ONE: Service Intro -->
       <div id="serviceStepOne">
         <button type="button" class="btn btn-primary" id="continueToOptionsBtn">
           <i class="fa-solid fa-arrow-right"></i> Continue
         </button>
       </div>
 
-      <!-- STEP TWO: Choose Option -->
       <div id="serviceStepTwo" style="display:none;">
         <button type="button" class="btn btn-outline" id="backToStepOneBtn" style="margin-bottom:16px;">
           <i class="fa-solid fa-arrow-left"></i> Back
@@ -1097,7 +1084,6 @@
         <div id="serviceOptions" class="payment-options"></div>
       </div>
 
-      <!-- STEP THREE: Add-ons -->
       <div id="serviceStepThree" style="display:none;">
         <button type="button" class="btn btn-outline" id="backToStepTwoBtn" style="margin-bottom:16px;">
           <i class="fa-solid fa-arrow-left"></i> Back
@@ -1109,7 +1095,6 @@
         </button>
       </div>
 
-      <!-- STEP FOUR: Summary + Pay + Book -->
       <div id="serviceStepFour" style="display:none;">
         <button type="button" class="btn btn-outline" id="backToStepThreeBtn" style="margin-bottom:16px;">
           <i class="fa-solid fa-arrow-left"></i> Back
@@ -1117,7 +1102,6 @@
         <h3 id="summaryServiceTitle" style="margin-bottom:10px;"></h3>
         <p id="summaryServiceDesc"></p>
 
-        <!-- Summary Box -->
         <div class="deposit-note">
           <strong>Selected Add-ons</strong><br />
           <span id="summaryAddOns">No add-ons selected.</span>
@@ -1126,7 +1110,6 @@
           <span id="summaryTotalPrice">CA$0.00</span>
         </div>
 
-        <!-- ====== STEP 1: PAY DEPOSIT ====== -->
         <hr class="step-divider" />
 
         <div class="step-label">
@@ -1148,7 +1131,6 @@
           </stripe-buy-button>
         </div>
 
-        <!-- ====== STEP 2: BOOK APPOINTMENT (LOCKED) ====== -->
         <hr class="step-divider" />
 
         <div class="step-label">
@@ -1570,7 +1552,6 @@
       currentServiceKey = null;
     }
 
-    // Event listeners
     modalBookBtn.addEventListener("click", openCalendly);
 
     unlockBookingBtn.addEventListener("click", function() {
@@ -1604,7 +1585,6 @@
       if (e.key === "Escape") closeService();
     });
 
-    // Focus trap
     modal.addEventListener("keydown", function(e) {
       if (e.key !== "Tab") return;
       var focusable = modal.querySelectorAll('button:not([disabled]), a[href], input, [tabindex]:not([tabindex="-1"])');
@@ -1620,7 +1600,6 @@
 
     document.getElementById("footerYear").textContent = "\u00A9 " + new Date().getFullYear() + " ICEY BEAUTY STUDIO. All rights reserved.";
 
-    // Click animation
     document.addEventListener("click", function(e) {
       var el = e.target.closest('a, button, .service-card, .modal-close, .payment-link, .float-btn');
       if (el) {
@@ -1629,7 +1608,6 @@
       }
     });
 
-    // Active nav link + close hamburger menu on link click
     var navLinks = document.querySelectorAll(".nav-links a");
     navLinks.forEach(function(link) {
       link.addEventListener("click", function() {
