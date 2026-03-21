@@ -30,6 +30,11 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
+  <link
+    href="https://assets.calendly.com/assets/external/widget.css"
+    rel="stylesheet"
+  />
+  <script src="https://assets.calendly.com/assets/external/widget.js" defer></script>
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
   <style>
@@ -527,6 +532,15 @@
       animation: modalSlideIn 0.3s ease;
     }
 
+    .calendly-inline-wrapper {
+      min-width: 320px;
+      height: 700px;
+      margin-top: 18px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+    }
+
     @keyframes modalSlideIn {
       from { opacity: 0; transform: translateY(20px) scale(0.97); }
       to { opacity: 1; transform: translateY(0) scale(1); }
@@ -697,6 +711,7 @@
       .modal-content { width: 100%; padding: 20px 16px 28px; margin: 20px auto; }
       .brand-logo, .brand-logo img { width: 90px; height: 90px; }
       .brand-text strong { font-size: 1rem; }
+      .calendly-inline-wrapper { height: 620px; }
     }
 
     @media (max-width: 400px) {
@@ -1004,6 +1019,10 @@
         <button type="button" class="btn btn-outline" id="unlockBookingBtn" style="margin-top:14px;font-size:0.85rem;">
           <i class="fa-solid fa-unlock"></i> I've Already Paid My Deposit
         </button>
+
+        <div id="calendlyEmbedContainer" style="display:none;">
+          <div id="calendlyInlineWidget" class="calendly-inline-wrapper"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1019,7 +1038,7 @@
   </div>
 
   <script>
-    var calendlyUrl = "https://calendly.com/omoseleesther1113/30min";
+    var calendlyUrl = "https://calendly.com/iceybeautystudio/appointment";
     var depositPaid = false;
 
     var modal = document.getElementById("serviceModal");
@@ -1054,6 +1073,8 @@
     var lockNotice = document.getElementById("lockNotice");
     var stepOneNumber = document.getElementById("stepOneNumber");
     var stepTwoNumber = document.getElementById("stepTwoNumber");
+    var calendlyEmbedContainer = document.getElementById("calendlyEmbedContainer");
+    var calendlyInlineWidget = document.getElementById("calendlyInlineWidget");
 
     var currentServiceKey = null;
     var currentServiceOption = null;
@@ -1185,15 +1206,34 @@
       stepOneNumber.textContent = "1";
       stepTwoNumber.className = "step-number step-number-locked";
       stepTwoNumber.textContent = "2";
+      calendlyEmbedContainer.style.display = "none";
+      calendlyInlineWidget.innerHTML = "";
     }
 
     function openCalendly(e) {
       if (e) e.preventDefault();
+
       if (!depositPaid) {
         alert("Please pay your $20 deposit first before booking your appointment.");
         return;
       }
-      window.open(calendlyUrl, "_blank", "noopener,noreferrer");
+
+      calendlyEmbedContainer.style.display = "block";
+      calendlyInlineWidget.innerHTML = "";
+
+      if (window.Calendly) {
+        Calendly.initInlineWidget({
+          url: calendlyUrl,
+          parentElement: calendlyInlineWidget,
+          prefill: {},
+          utm: {}
+        });
+        setTimeout(function() {
+          calendlyEmbedContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 150);
+      } else {
+        calendlyInlineWidget.innerHTML = '<div class="deposit-note">Booking system is loading. Please try again in a moment.</div>';
+      }
     }
 
     function clearSelectedCards() {
